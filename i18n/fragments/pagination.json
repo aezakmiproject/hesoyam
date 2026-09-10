@@ -1,0 +1,38 @@
+{
+  "en": {
+    "title": "Pagination",
+    "description": "Previous and next links for a linear docs or settings sequence. Not a numbered page list.",
+    "default": "Default",
+    "defaultDescription": "Pass previous and next as {'{ title, href }'}. Either side may be omitted.",
+    "previous": "Previous",
+    "next": "Next",
+    "previewModal": "Modal",
+    "previewProgress": "Progress",
+    "previewMenu": "Menu",
+    "previewNote": "Note",
+    "bestPractices": "Best practices",
+    "bestPractice1": "This control is for a path the user walks in order — docs, onboarding, a wizard. A table with many pages needs a different pattern.",
+    "bestPractice2After": " is the destination page name, Title Case, not “Previous page”. The word Previous / Next is already in the chrome.",
+    "bestPractice3": "Omit the side that does not exist. Do not invent a disabled link back to the same URL.",
+    "bestPractice4": "Keep titles short enough to truncate cleanly. The row caps each side at half the width.",
+    "bestPractice5After": " should be a real route. This component renders anchors, not buttons, so it is for navigation only."
+  },
+  "ru": {
+    "title": "Pagination",
+    "description": "Ссылки «назад» и «вперёд» для линейной последовательности в документации или настройках. Не нумерованный список страниц.",
+    "default": "Default",
+    "defaultDescription": "Передавайте previous и next как {'{ title, href }'}. Любую сторону можно опустить.",
+    "previous": "Previous",
+    "next": "Next",
+    "previewModal": "Modal",
+    "previewProgress": "Progress",
+    "previewMenu": "Menu",
+    "previewNote": "Note",
+    "bestPractices": "Рекомендации",
+    "bestPractice1": "Этот контрол — для пути, по которому пользователь идёт по порядку: документация, онбординг, wizard. Таблице с множеством страниц нужен другой паттерн.",
+    "bestPractice2After": " — имя целевой страницы в Title Case, не «Previous page». Слова Previous / Next уже есть в chrome.",
+    "bestPractice3": "Опускайте сторону, которой нет. Не выдумывайте disabled-ссылку на тот же URL.",
+    "bestPractice4": "Держите заголовки достаточно короткими для аккуратного обрезания. Строка ограничивает каждую сторону половиной ширины.",
+    "bestPractice5After": " должен быть реальным маршрутом. Компонент рендерит anchor, не button — только для навигации."
+  }
+}

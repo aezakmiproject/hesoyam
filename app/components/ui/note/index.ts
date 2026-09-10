@@ -1,0 +1,6 @@
+export { default as Note } from './Note.vue'
+export { default as NoteAction } from './NoteAction.vue'
+export { default as NoteContent } from './NoteContent.vue'
+export { default as NoteLabel } from './NoteLabel.vue'
+export { noteVariants } from './variants'
+export type { NoteSize, NoteVariant, NoteVariants } from './variants'

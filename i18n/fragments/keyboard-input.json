@@ -1,0 +1,40 @@
+{
+  "en": {
+    "title": "Keyboard Input",
+    "description": "Shortcut hint. Kbd swaps glyphs for the current OS — do not hard-code ⌘.",
+    "modifiers": "Modifiers",
+    "modifiersHint": "Boolean props render the platform key. Apple gets Command / Control / Option / Shift glyphs; other platforms get Ctrl, Alt, and Shift.",
+    "combination": "Combination",
+    "combinationHint": "Stack modifiers, then put the trigger key in the default slot.",
+    "small": "Small",
+    "smallHint": "Use small inside menus, command rows, and table cells.",
+    "inProse": "In prose",
+    "prosePress": "Press",
+    "proseCommand": "to open the command menu.",
+    "bestPractices": "Best practices",
+    "bestPractice1": "Shortcut chips in UI chrome: menus, button suffixes, empty states. Long-form docs that narrate a shortcut can write the glyphs in text so a copy stays readable.",
+    "bestPractice2": "Pass {meta}, {shift}, {alt}, {ctrl}. Hard-coding {cmdK} is wrong on Windows and Linux.",
+    "bestPractice3": "Children are one key: {k}, {seven}, {enter}, {esc}. Do not lowercase, do not spell modifiers in the slot.",
+    "bestPractice4": "Punctuation stays outside the element. “Press K to open the command menu.” — the period is not a key.",
+    "bestPractice5": "{keyboardInput} is the same export as {kbd}. New code should import {kbdImport}."
+  },
+  "ru": {
+    "title": "Keyboard Input",
+    "description": "Подсказка сочетания. Kbd подставляет символы под текущую ОС — не хардкодите ⌘.",
+    "modifiers": "Модификаторы",
+    "modifiersHint": "Boolean props рендерят клавишу платформы. На Apple — Command / Control / Option / Shift; на остальных — Ctrl, Alt и Shift.",
+    "combination": "Сочетание",
+    "combinationHint": "Сложите модификаторы, затем укажите клавишу-триггер в default-слоте.",
+    "small": "Small",
+    "smallHint": "Используйте small в меню, строках команд и ячейках таблицы.",
+    "inProse": "В тексте",
+    "prosePress": "Нажмите",
+    "proseCommand": "чтобы открыть меню команд.",
+    "bestPractices": "Рекомендации",
+    "bestPractice1": "Чипы сочетаний в UI chrome: меню, суффиксы кнопок, empty states. В длинных текстах, где рассказываете про shortcut, можно писать символы в тексте — так копия читается лучше.",
+    "bestPractice2": "Передавайте {meta}, {shift}, {alt}, {ctrl}. Хардкод {cmdK} неверен на Windows и Linux.",
+    "bestPractice3": "Children — одна клавиша: {k}, {seven}, {enter}, {esc}. Не пишите в нижнем регистре, не пишите модификаторы в слоте.",
+    "bestPractice4": "Пунктуация остаётся вне элемента. «Press K to open the command menu.» — точка не клавиша.",
+    "bestPractice5": "{keyboardInput} — тот же экспорт, что и {kbd}. В новом коде импортируйте {kbdImport}."
+  }
+}

@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import type { DialogDescriptionProps } from 'reka-ui'
+import type { HTMLAttributes } from 'vue'
+import { reactiveOmit } from '@vueuse/core'
+import { DialogDescription } from 'reka-ui'
+import { cn } from '@/lib/utils'
+
+const props = defineProps<DialogDescriptionProps & { class?: HTMLAttributes['class'] }>()
+const delegatedProps = reactiveOmit(props, 'class')
+</script>
+
+<template>
+  <DialogDescription
+    data-slot="modal-subtitle"
+    :class="cn(
+      'text-[14px] leading-5 text-[var(--ds-gray-900)]',
+      props.class,
+    )"
+    v-bind="delegatedProps"
+  >
+    <slot />
+  </DialogDescription>
+</template>

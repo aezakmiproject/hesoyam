@@ -1,0 +1,32 @@
+{
+  "en": {
+    "title": "Video",
+    "description": "Embed a clip with lazy load, loop, and a compact control bar.",
+    "default": "Default",
+    "defaultHint": "src is required. lazy, loop, and controls default to true. Pass width and height so the frame keeps ratio before metadata arrives.",
+    "noLoop": "No loop",
+    "noControls": "No controls",
+    "noControlsHint": "Without controls the clip is decorative: muted, autoplay, no chrome.",
+    "bestPractices": "Best practices",
+    "bestPractice1": "Keep {lazy} on in product views so the file waits for the viewport. Docs previews set it false so the first paint is a frame, not a hole.",
+    "bestPractice2": "Set {width} and {height} together. The wrapper uses them as an aspect-ratio lock.",
+    "bestPractice3": "Use controls when the clip is the content. Drop them for ambient loops in a hero or empty state.",
+    "bestPractice4": "Pass {poster} when the first frame is black or a flash. Do not restyle the built-in bar.",
+    "bestPractice5": "This is not a player product. Long-form or chapters stay on the host page, not inside Video."
+  },
+  "ru": {
+    "title": "Video",
+    "description": "Встраивание клипа с lazy load, loop и компактной панелью управления.",
+    "default": "По умолчанию",
+    "defaultHint": "src обязателен. lazy, loop и controls по умолчанию true. Передайте width и height, чтобы кадр сохранял пропорции до загрузки метаданных.",
+    "noLoop": "Без loop",
+    "noControls": "Без controls",
+    "noControlsHint": "Без controls клип декоративный: muted, autoplay, без панели.",
+    "bestPractices": "Рекомендации",
+    "bestPractice1": "Оставляйте {lazy} включённым в продакшене, чтобы файл ждал viewport. В превью документации задайте false, чтобы первый paint был кадром, а не пустотой.",
+    "bestPractice2": "Задайте {width} и {height} вместе. Обёртка использует их как блокировку aspect-ratio.",
+    "bestPractice3": "Подключайте controls, когда клип — это контент. Убирайте для фоновых loop в hero или empty state.",
+    "bestPractice4": "Передайте {poster}, если первый кадр чёрный или мелькает. Не переоформляйте встроенную панель.",
+    "bestPractice5": "Это не продукт-плеер. Длинные ролики и главы остаются на странице-хосте, а не внутри Video."
+  }
+}

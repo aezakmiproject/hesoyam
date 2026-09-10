@@ -1,0 +1,24 @@
+{
+  "en": {
+    "title": "Icons",
+    "description": "Hugeicons for this port. Import icon data from {core} and render with {icon} or {hugeiconsIcon}.",
+    "import": "Import",
+    "importCallout": "Never import icon arrays from {vue}. That package only exports the renderer. Wrong imports break HMR and SSR.",
+    "sizes": "Sizes",
+    "sizesHint": "Match the control. 14px on h-8, 12px on meta rows, 32px only inside EmptyStateIcon.",
+    "inButton": "In a button",
+    "addNew": "Add New",
+    "catalog": "Catalog (sample)"
+  },
+  "ru": {
+    "title": "Иконки",
+    "description": "Hugeicons для этого порта. Данные — из {core}, рендер — через {icon} или {hugeiconsIcon}.",
+    "import": "Импорт",
+    "importCallout": "Никогда не импортируйте массивы иконок из {vue}. Пакет экспортирует только рендерер. Неверный импорт ломает HMR и SSR.",
+    "sizes": "Размеры",
+    "sizesHint": "Подгоняйте под контрол. 14px на h-8, 12px в meta-строках, 32px только внутри EmptyStateIcon.",
+    "inButton": "В кнопке",
+    "addNew": "Добавить",
+    "catalog": "Каталог (пример)"
+  }
+}

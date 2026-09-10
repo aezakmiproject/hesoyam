@@ -1,0 +1,6 @@
+export { default as MultiSelect } from './MultiSelectRoot.vue'
+export { default as MultiSelectContent } from './MultiSelectContent.vue'
+export { default as MultiSelectRoot } from './MultiSelectRoot.vue'
+export { default as MultiSelectRow } from './MultiSelectRow.vue'
+export { default as MultiSelectTrigger } from './MultiSelectTrigger.vue'
+export type { MultiSelectAlign } from './context'

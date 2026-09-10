@@ -1,0 +1,122 @@
+{
+  "en": {
+    "title": "Materials",
+    "description": "Radius, fill, stroke, and lift. Keep these presets — do not invent a fourth radius for a one-off card.",
+    "radius": "Radius",
+    "fills": {
+      "title": "Fills",
+      "page": "Page",
+      "raised": "Raised",
+      "hover": "Hover"
+    },
+    "strokes": {
+      "title": "Strokes",
+      "hairline": {
+        "name": "Hairline",
+        "use": "Default border on dark and light"
+      },
+      "focus": {
+        "name": "Focus",
+        "use": "2px ring on interactive controls"
+      },
+      "error": {
+        "name": "Error",
+        "use": "Invalid inputs and error notes"
+      }
+    },
+    "radii": {
+      "control": {
+        "name": "Control",
+        "use": "Button, Input, Switch, Badge"
+      },
+      "card": {
+        "name": "Card",
+        "use": "Project rows and DocsPreview frames — not docs chrome"
+      },
+      "menu": {
+        "name": "Menu",
+        "use": "Menu, Modal, EmptyState icon well"
+      },
+      "pill": {
+        "name": "Pill",
+        "use": "shape=\"rounded\" / circle buttons"
+      }
+    },
+    "elevation": {
+      "title": "Elevation",
+      "hint": "Menus and modals lift off the page. Tooltips stay the lightest.",
+      "tooltip": {
+        "name": "Tooltip",
+        "hint": "6px · light shadow"
+      },
+      "menu": {
+        "name": "Menu",
+        "hint": "12px · 8 / 30"
+      },
+      "modal": {
+        "name": "Modal",
+        "hint": "12px · deeper lift"
+      }
+    }
+  },
+  "ru": {
+    "title": "Материалы",
+    "description": "Радиус, заливка, обводка и подъём. Оставляйте эти пресеты — не придумывайте четвёртый радиус для разовой карточки.",
+    "radius": "Радиус",
+    "fills": {
+      "title": "Заливки",
+      "page": "Page",
+      "raised": "Raised",
+      "hover": "Hover"
+    },
+    "strokes": {
+      "title": "Обводки",
+      "hairline": {
+        "name": "Hairline",
+        "use": "Бордер по умолчанию на тёмной и светлой теме"
+      },
+      "focus": {
+        "name": "Focus",
+        "use": "Кольцо 2px на интерактивных контролах"
+      },
+      "error": {
+        "name": "Error",
+        "use": "Невалидные поля и error notes"
+      }
+    },
+    "radii": {
+      "control": {
+        "name": "Control",
+        "use": "Button, Input, Switch, Badge"
+      },
+      "card": {
+        "name": "Card",
+        "use": "Строки проектов и рамки DocsPreview — не хром доков"
+      },
+      "menu": {
+        "name": "Menu",
+        "use": "Menu, Modal, EmptyState icon well"
+      },
+      "pill": {
+        "name": "Pill",
+        "use": "shape=\"rounded\" / круглые кнопки"
+      }
+    },
+    "elevation": {
+      "title": "Подъём",
+      "hint": "Menu и Modal отрываются от страницы. Tooltip остаётся самым лёгким.",
+      "tooltip": {
+        "name": "Tooltip",
+        "hint": "6px · лёгкая тень"
+      },
+      "menu": {
+        "name": "Menu",
+        "hint": "12px · 8 / 30"
+      },
+      "modal": {
+        "name": "Modal",
+        "hint": "12px · более глубокий подъём"
+      }
+    }
+  }
+}

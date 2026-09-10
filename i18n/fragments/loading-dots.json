@@ -1,0 +1,40 @@
+{
+  "en": {
+    "title": "Loading Dots",
+    "description": "Indeterminate wait inside a line of copy. Buttons use their own loading prop instead.",
+    "sizes": "Sizes",
+    "sizesHint": "Named sizes are sm (4px), md (6px), and lg (8px). Default is md. A number is the dot diameter in pixels.",
+    "withText": "With text",
+    "withTextHint": "Default slot renders before the dots. Name the work that is still running.",
+    "loading": "Loading",
+    "saving": "Saving",
+    "deploying": "Deploying",
+    "color": "Color",
+    "colorHint": "Dots use currentColor. Change the wrapper text color to retint them.",
+    "bestPractices": "Best practices",
+    "bestPractice1": "Short waits inside a sentence: Saving, Building, Deploying. Layout placeholders → Skeleton. Known progress → Progress. Icon-sized waits → Spinner.",
+    "bestPractice2": "Do not drop dots into a Button label. Set {loading} on Button so the control stays the same size and remains focusable.",
+    "bestPractice3": "The trailing word names the work still in flight. {saved} plus dots is a contradiction.",
+    "bestPractice4": "The root already has {ariaLive}. Meaning lives in the slot text; do not add a second {ariaLabel} on the dots.",
+    "bestPractice5": "Pass a numeric {size} only when a named size misses the adjacent type. One animated indicator per row."
+  },
+  "ru": {
+    "title": "Loading Dots",
+    "description": "Неопределённое ожидание внутри строки текста. В Button используйте проп loading.",
+    "sizes": "Размеры",
+    "sizesHint": "Именованные размеры: sm (4px), md (6px) и lg (8px). По умолчанию — md. Число — диаметр точки в пикселях.",
+    "withText": "С текстом",
+    "withTextHint": "Default-слот рендерится перед точками. Назовите работу, которая ещё выполняется.",
+    "loading": "Загрузка",
+    "saving": "Сохранение",
+    "deploying": "Развёртывание",
+    "color": "Цвет",
+    "colorHint": "Точки используют currentColor. Меняйте text color обёртки, чтобы перекрасить их.",
+    "bestPractices": "Рекомендации",
+    "bestPractice1": "Короткие ожидания внутри фразы: Saving, Building, Deploying. Макет-заглушки → Skeleton. Известный прогресс → Progress. Ожидание размером с иконку → Spinner.",
+    "bestPractice2": "Не вставляйте точки в подпись Button. Задайте {loading} на Button, чтобы контрол сохранил размер и остался в фокусе.",
+    "bestPractice3": "Последнее слово называет работу в процессе. {saved} плюс точки — противоречие.",
+    "bestPractice4": "На root уже есть {ariaLive}. Смысл — в тексте слота; не добавляйте второй {ariaLabel} на точки.",
+    "bestPractice5": "Передавайте числовой {size} только когда именованный размер не совпадает с соседним текстом. Один анимированный индикатор на строку."
+  }
+}

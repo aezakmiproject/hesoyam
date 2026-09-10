@@ -1,0 +1,8 @@
+export { default as Modal } from './Modal.vue'
+export { default as ModalAction } from './ModalAction.vue'
+export { default as ModalActions } from './ModalActions.vue'
+export { default as ModalBody } from './ModalBody.vue'
+export { default as ModalHeader } from './ModalHeader.vue'
+export { default as ModalInset } from './ModalInset.vue'
+export { default as ModalSubtitle } from './ModalSubtitle.vue'
+export { default as ModalTitle } from './ModalTitle.vue'

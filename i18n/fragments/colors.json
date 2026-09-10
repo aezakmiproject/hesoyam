@@ -1,0 +1,80 @@
+{
+  "en": {
+    "title": "Colors",
+    "description": "High-contrast scales for a black canvas. Click a swatch to copy var(--ds-…).",
+    "howScaleWorks": "How the scale works",
+    "howScaleWorksHint": "Each hue uses the same 100–1000 ladder. Gray Alpha is for hairlines on both themes.",
+    "steps": {
+      "100": "Default component background",
+      "200": "Hover background",
+      "300": "Active background",
+      "400": "Default border",
+      "500": "Hover border",
+      "600": "Active border",
+      "700": "High-contrast fill (accents, badges)",
+      "800": "Hover high-contrast fill",
+      "900": "Secondary text and icons",
+      "1000": "Primary text and icons"
+    },
+    "backgrounds": {
+      "title": "Backgrounds",
+      "bg100": "Default page and control surface",
+      "bg200": "Secondary surface — use sparingly"
+    },
+    "copied": "Copied",
+    "scales": {
+      "gray": "Gray",
+      "grayAlpha": "Gray Alpha",
+      "blue": "Blue",
+      "red": "Red",
+      "amber": "Amber",
+      "green": "Green",
+      "teal": "Teal",
+      "purple": "Purple",
+      "pink": "Pink"
+    },
+    "semanticAliases": "Semantic aliases",
+    "semantic": {
+      "focus": "focus ring. Dark: #47a8ff"
+    }
+  },
+  "ru": {
+    "title": "Цвета",
+    "description": "Высококонтрастные шкалы для чёрного канваса. Нажмите на образец, чтобы скопировать var(--ds-…).",
+    "howScaleWorks": "Как устроена шкала",
+    "howScaleWorksHint": "У каждого оттенка одна и та же лестница 100–1000. Gray Alpha — для hairline-бордеров в обеих темах.",
+    "steps": {
+      "100": "Фон компонента по умолчанию",
+      "200": "Фон при наведении",
+      "300": "Фон в активном состоянии",
+      "400": "Бордер по умолчанию",
+      "500": "Бордер при наведении",
+      "600": "Бордер в активном состоянии",
+      "700": "Заливка высокого контраста (акценты, бейджи)",
+      "800": "Заливка высокого контраста при наведении",
+      "900": "Вторичный текст и иконки",
+      "1000": "Основной текст и иконки"
+    },
+    "backgrounds": {
+      "title": "Фоны",
+      "bg100": "Поверхность страницы и контролов по умолчанию",
+      "bg200": "Вторичная поверхность — используйте редко"
+    },
+    "copied": "Скопировано",
+    "scales": {
+      "gray": "Gray",
+      "grayAlpha": "Gray Alpha",
+      "blue": "Blue",
+      "red": "Red",
+      "amber": "Amber",
+      "green": "Green",
+      "teal": "Teal",
+      "purple": "Purple",
+      "pink": "Pink"
+    },
+    "semanticAliases": "Семантические алиасы",
+    "semantic": {
+      "focus": "кольцо фокуса. Тёмная тема: #47a8ff"
+    }
+  }
+}

@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { ChevronDown } from '@lucide/vue'
 import { inject } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { MULTI_SELECT_KEY } from './context'
 
 const props = defineProps<{
@@ -57,10 +56,8 @@ function onKeydown(event: KeyboardEvent) {
     <span class="min-w-0 truncate">
       <slot />
     </span>
-    <HugeiconsIcon
-      :icon="ArrowDown01Icon"
+    <ChevronDown
       :size="16"
-      color="currentColor"
       :stroke-width="1.75"
       :class="cn('shrink-0 text-[var(--ds-gray-900)] transition-transform', ctx.open.value && 'rotate-180')"
     />

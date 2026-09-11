@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { ArrowDown01Icon, ArrowUp01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
-import { cn } from '@/lib/utils'
+import { ChevronDown, ChevronUp } from '@lucide/vue'
+import { cn } from '../../lib/utils'
 
 defineOptions({ inheritAttrs: false })
 
@@ -38,13 +37,12 @@ function onTriggerClick(event: MouseEvent) {
       type="button"
       data-slot="show-more-trigger"
       :aria-expanded="!!expanded"
-      class="relative inline-flex h-8 items-center gap-1 rounded-md bg-[var(--ds-background-100)] px-2.5 text-[13px] font-medium text-[var(--ds-gray-900)] outline-none hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-ring/40"
+      class="relative inline-flex h-8 items-center gap-1 rounded-md bg-[var(--ds-background-100)] px-2.5 text-[13px] font-medium text-[var(--ds-gray-900)] outline-none hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40"
       v-bind="$attrs"
       @click="onTriggerClick"
     >
       <slot>{{ expanded ? 'Show Less' : 'Show More' }}</slot>
-      <HugeiconsIcon
-        :icon="expanded ? ArrowUp01Icon : ArrowDown01Icon"
+      <component :is="expanded ? ChevronUp : ChevronDown"
         :size="14"
       />
     </button>

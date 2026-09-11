@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { computed, provide } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { fieldsetKey, type FieldsetType } from './context'
 
 const props = withDefaults(defineProps<{

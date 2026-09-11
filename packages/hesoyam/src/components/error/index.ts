@@ -1,4 +1,4 @@
-export { default as Error, default as GeistError } from './GeistError.vue'
+export { default as Error, default as GeistError, default as HesoyamError } from './HesoyamError.vue'
 
 export type ErrorSize = 'small' | 'medium' | 'large'
 

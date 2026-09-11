@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 const props = defineProps<{
   disabled?: boolean
@@ -13,9 +13,10 @@ const props = defineProps<{
     data-slot="fieldset-content"
     :data-disabled="disabled ? '' : undefined"
     :aria-disabled="disabled || undefined"
+    :inert="disabled ? true : undefined"
     :class="cn(
       'flex flex-col gap-1.5 p-6',
-      disabled && 'pointer-events-none select-none opacity-50',
+      disabled && 'cursor-not-allowed select-none opacity-50',
       props.class,
     )"
   >

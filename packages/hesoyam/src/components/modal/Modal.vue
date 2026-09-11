@@ -7,7 +7,7 @@ import {
   DialogPortal,
   DialogRoot,
 } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { modalContextKey } from './context'
 
 export type ModalFocusTarget = HTMLElement | { $el?: unknown } | null

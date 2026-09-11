@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/lib/utils'
-import { CopyButton } from '@/components/ui/copy-button'
+import { cn } from '../../lib/utils'
+import { CopyButton } from '../copy-button'
+import { computed } from 'vue'
 
 export type SnippetType = 'default' | 'success' | 'error' | 'warning'
 
@@ -20,6 +21,7 @@ const props = withDefaults(defineProps<{
   text: '',
   prompt: true,
   type: 'default',
+  copied: undefined,
 })
 
 const emit = defineEmits<{
@@ -93,7 +95,7 @@ const typeClass = computed(() => {
     <div class="flex items-start pr-1 pt-0.5">
       <CopyButton
         :text-to-copy="clipboardText"
-        :copied="copied"
+        v-bind="copied === undefined ? {} : { copied }"
         label="Copy snippet"
         :disabled="isEmpty && !copyText"
         class="size-7"

@@ -1,5 +1,6 @@
 import type { VNode } from 'vue'
-import { readonly, shallowRef } from 'vue'
+import { h, readonly, shallowRef } from 'vue'
+import { isClient } from '../../lib/env'
 
 export type ToastType = 'message' | 'success' | 'warning' | 'error'
 export type ToastText = string | VNode | VNode[]
@@ -81,7 +82,7 @@ function push(payload: ToastPayload, type: ToastType) {
 }
 
 async function ensureToaster() {
-  if (!import.meta.client || hostMounted) return
+  if (!isClient || hostMounted) return
   if (document.querySelector('[data-slot="toaster"]')) {
     hostMounted = true
     return

@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { DropdownMenuItemEmits, DropdownMenuItemProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import { SquareLock02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { Lock } from '@lucide/vue'
 import { reactiveOmit } from '@vueuse/core'
 import { DropdownMenuItem, useForwardPropsEmits } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { menuItemClass } from '.'
 
 const props = defineProps<DropdownMenuItemProps & {
@@ -28,8 +27,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     <span class="min-w-0 flex-1 truncate">
       <slot />
     </span>
-    <HugeiconsIcon
-      :icon="SquareLock02Icon"
+    <Lock
       :size="14"
       class="ml-auto text-[var(--ds-gray-900)]"
     />

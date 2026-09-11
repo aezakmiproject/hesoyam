@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { FileType } from './context'
-import { DiamondIcon, File01Icon, FlashIcon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { Diamond, File as FileIcon, Zap } from '@lucide/vue'
 import { computed, inject } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { treeDepthKey } from './context'
 
 const props = defineProps<{
@@ -19,13 +18,13 @@ const depth = inject(treeDepthKey, 0)
 const typeMeta = computed(() => {
   switch (props.type) {
     case 'edge-function':
-      return { icon: FlashIcon, label: 'Edge', class: 'text-[var(--ds-teal-700)]' }
+      return { icon: Zap, label: 'Edge', class: 'text-[var(--ds-teal-700)]' }
     case 'lambda':
-      return { icon: File01Icon, label: 'λ', class: 'text-[var(--ds-amber-700)]' }
+      return { icon: FileIcon, label: 'λ', class: 'text-[var(--ds-amber-700)]' }
     case 'middleware':
-      return { icon: DiamondIcon, label: 'MW', class: 'text-[var(--ds-purple-700)]' }
+      return { icon: Diamond, label: 'MW', class: 'text-[var(--ds-purple-700)]' }
     default:
-      return { icon: File01Icon, label: null, class: 'text-[var(--ds-gray-700)]' }
+      return { icon: FileIcon, label: null, class: 'text-[var(--ds-gray-700)]' }
   }
 })
 </script>
@@ -46,8 +45,7 @@ const typeMeta = computed(() => {
       )"
       :style="{ paddingInlineStart: `${depth * 16 + 6}px` }"
     >
-      <HugeiconsIcon
-        :icon="typeMeta.icon"
+      <component :is="typeMeta.icon"
         :size="14"
         :class="cn('shrink-0', typeMeta.class)"
       />

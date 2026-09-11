@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
-import { cn } from '@/lib/utils'
+import { isDev } from '../../lib/env'
+import { cn } from '../../lib/utils'
+import { computed, onMounted, ref, useAttrs, useId, useSlots } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -41,7 +43,7 @@ const uncontrolled = ref(false)
 
 const isChecked = computed(() => props.checked ?? props.modelValue ?? uncontrolled.value)
 
-if (import.meta.dev) {
+if (isDev) {
   onMounted(() => {
     const labelled = Boolean(
       slots.default
@@ -55,7 +57,7 @@ if (import.meta.dev) {
 
 const trackClass = computed(() => cn(
   'relative inline-flex shrink-0 items-center rounded-full transition-colors',
-  'peer-focus-visible:ring-2 peer-focus-visible:ring-ring/40 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background',
+  'peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--ds-focus)]/40 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[var(--ds-background-100)]',
   props.size === 'large' && 'h-6 w-10',
   props.size === 'medium' && 'h-5 w-8',
   props.size === 'default' && 'h-4 w-7',

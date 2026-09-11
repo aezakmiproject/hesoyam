@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
-import type { ButtonVariant } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import type { ButtonVariant } from '../button'
+import { cn } from '../../lib/utils'
+import { Button } from '../button'
 
 const props = withDefaults(defineProps<{
   variant?: ButtonVariant

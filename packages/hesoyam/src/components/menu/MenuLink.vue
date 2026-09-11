@@ -3,7 +3,7 @@ import type { DropdownMenuItemEmits, DropdownMenuItemProps } from 'reka-ui'
 import type { Component, HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { DropdownMenuItem, useForwardProps } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { menuItemClass } from '.'
 
 const props = defineProps<Omit<DropdownMenuItemProps, 'as'> & {

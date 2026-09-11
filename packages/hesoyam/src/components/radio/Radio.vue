@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { radioGroupKey } from './context'
+import { computed, inject, useId } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -68,7 +69,7 @@ function onInputChange() {
     <span
       aria-hidden="true"
       :data-state="isChecked ? 'checked' : 'unchecked'"
-      class="pointer-events-none flex size-4 items-center justify-center rounded-full border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-ring/40 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background data-[state=checked]:border-[var(--ds-gray-1000)]"
+      class="pointer-events-none flex size-4 items-center justify-center rounded-full border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--ds-focus)]/40 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[var(--ds-background-100)] data-[state=checked]:border-[var(--ds-gray-1000)]"
     >
       <span
         :data-state="isChecked ? 'checked' : 'unchecked'"

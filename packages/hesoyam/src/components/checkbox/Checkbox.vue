@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { MinusSignIcon, Tick02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
-import { cn } from '@/lib/utils'
+import { Minus, Check } from '@lucide/vue'
+import { cn } from '../../lib/utils'
+import { computed, ref, useId, watch } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -92,20 +92,16 @@ function onInputChange(event: Event) {
       <span
         aria-hidden="true"
         :data-state="state"
-        class="pointer-events-none flex size-4 items-center justify-center rounded-[3px] border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] text-[var(--ds-background-100)] transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-ring/40 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background data-[state=checked]:border-[var(--ds-gray-1000)] data-[state=checked]:bg-[var(--ds-gray-1000)] data-[state=indeterminate]:border-[var(--ds-gray-1000)] data-[state=indeterminate]:bg-[var(--ds-gray-1000)]"
+        class="pointer-events-none flex size-4 items-center justify-center rounded-[3px] border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] text-[var(--ds-background-100)] transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--ds-focus)]/40 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-[var(--ds-background-100)] data-[state=checked]:border-[var(--ds-gray-1000)] data-[state=checked]:bg-[var(--ds-gray-1000)] data-[state=indeterminate]:border-[var(--ds-gray-1000)] data-[state=indeterminate]:bg-[var(--ds-gray-1000)]"
       >
-        <HugeiconsIcon
+        <Minus
           v-if="state === 'indeterminate'"
-          :icon="MinusSignIcon"
           :size="12"
-          color="currentColor"
           :stroke-width="2"
         />
-        <HugeiconsIcon
+        <Check
           v-else-if="state === 'checked'"
-          :icon="Tick02Icon"
           :size="12"
-          color="currentColor"
           :stroke-width="2"
         />
       </span>

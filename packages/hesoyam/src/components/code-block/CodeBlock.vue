@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
-import { cn } from '@/lib/utils'
-import { CopyButton } from '@/components/ui/copy-button'
+import { ChevronDown } from '@lucide/vue'
+import { isClient } from '../../lib/env'
+import { cn } from '../../lib/utils'
+import { CopyButton } from '../copy-button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { highlightLines, tokenClass } from './highlight'
+} from '../dropdown-menu'
+import { highlightLines } from './highlight'
+import { Comment, Fragment, Text, computed, onMounted, onUnmounted, ref, useSlots } from 'vue'
 
 export interface CodeBlockOption {
   label: string
@@ -45,17 +46,51 @@ const props = withDefaults(defineProps<{
 const slots = useSlots()
 const referencedLine = ref<number | null>(null)
 
+const VOID_TAGS = new Set([
+  'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input',
+  'link', 'meta', 'param', 'source', 'track', 'wbr',
+])
+
+function serializeAttrs(props: VNode['props']): string {
+  if (!props) return ''
+  return Object.entries(props)
+    .filter(([key]) => key !== 'key' && key !== 'ref')
+    .map(([key, value]) => {
+      if (value === false || value == null) return ''
+      const name = key === 'className' ? 'class' : key
+      if (value === true) return ` ${name}`
+      if (typeof value === 'string' || typeof value === 'number') return ` ${name}="${value}"`
+      return ''
+    })
+    .join('')
+}
+
+function childrenSource(node: VNode): string {
+  if (typeof node.children === 'string') return node.children
+  if (Array.isArray(node.children)) return readSlotText(node.children as VNode[])
+  if (node.children && typeof node.children === 'object' && 'default' in node.children) {
+    const def = (node.children as { default?: () => VNode[] }).default
+    return def ? readSlotText(def()) : ''
+  }
+  return ''
+}
+
+function vnodeToSource(node: VNode): string {
+  if (node.type === Comment) return ''
+  if (node.type === Text) return typeof node.children === 'string' ? node.children : ''
+  if (node.type === Fragment) return childrenSource(node)
+  if (typeof node.type === 'string') {
+    const attrs = serializeAttrs(node.props)
+    const inner = childrenSource(node)
+    if (VOID_TAGS.has(node.type.toLowerCase())) return `<${node.type}${attrs}>`
+    return `<${node.type}${attrs}>${inner}</${node.type}>`
+  }
+  return childrenSource(node)
+}
+
 function readSlotText(nodes: VNode[] | undefined): string {
   if (!nodes?.length) return ''
-  return nodes.map((node) => {
-    if (typeof node.children === 'string') return node.children
-    if (Array.isArray(node.children)) return readSlotText(node.children as VNode[])
-    if (node.children && typeof node.children === 'object' && 'default' in node.children) {
-      const def = (node.children as { default?: () => VNode[] }).default
-      return def ? readSlotText(def()) : ''
-    }
-    return ''
-  }).join('')
+  return nodes.map(vnodeToSource).join('')
 }
 
 const code = computed(() => readSlotText(slots.default?.()).replace(/\n$/, ''))
@@ -87,7 +122,7 @@ function lineHref(n: number) {
 
 function selectLine(n: number) {
   referencedLine.value = n
-  if (import.meta.client) {
+  if (isClient) {
     history.replaceState(null, '', lineHref(n))
   }
 }
@@ -99,7 +134,7 @@ function openV0() {
 }
 
 function syncHash() {
-  if (!import.meta.client) return
+  if (!isClient) return
   const match = location.hash.match(/^#L(\d+)$/)
   referencedLine.value = match ? Number(match[1]) : null
 }
@@ -147,7 +182,7 @@ onUnmounted(() => {
           :aria-pressed="tabs.value === option.value"
           :class="cn(
             'rounded-[5px] px-2 py-0.5 text-[12px] font-medium text-[var(--ds-gray-900)] outline-none transition-colors',
-            'hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-ring/40',
+            'hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40',
             tabs.value === option.value && 'bg-[var(--ds-background-100)] text-[var(--ds-gray-1000)] shadow-sm',
           )"
           @click="tabs.onChange(option.value)"
@@ -158,10 +193,10 @@ onUnmounted(() => {
 
       <DropdownMenu v-if="switcher && !tabs">
         <DropdownMenuTrigger
-          class="inline-flex h-7 items-center gap-1 rounded-md px-2 text-[12px] font-medium text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-ring/40"
+          class="inline-flex h-7 items-center gap-1 rounded-md px-2 text-[12px] font-medium text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40"
         >
           {{ switcherLabel }}
-          <HugeiconsIcon :icon="ArrowDown01Icon" :size="14" color="currentColor" :stroke-width="1.75" />
+          <ChevronDown :size="14" :stroke-width="1.75" />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" class="min-w-36">
           <DropdownMenuItem
@@ -177,7 +212,7 @@ onUnmounted(() => {
       <button
         v-if="v0"
         type="button"
-        class="inline-flex h-7 items-center rounded-md px-2 text-[12px] font-medium text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-ring/40"
+        class="inline-flex h-7 items-center rounded-md px-2 text-[12px] font-medium text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40"
         :aria-label="v0 === 'build' ? 'Open in v0 to build' : 'Open in v0'"
         @click="openV0"
       >
@@ -221,7 +256,7 @@ onUnmounted(() => {
             :class="addedSet.has(index + 1) ? 'text-[var(--ds-green-900)]' : 'text-[var(--ds-red-900)]'"
             aria-hidden="true"
           >{{ addedSet.has(index + 1) ? '+' : '−' }}</span>
-          <span class="min-w-0 whitespace-pre"><span v-for="(token, tokenIndex) in tokens" :key="tokenIndex" :class="tokenClass(token.type)">{{ token.value }}</span></span>
+          <span class="min-w-0 whitespace-pre"><span v-for="(token, tokenIndex) in tokens" :key="tokenIndex" :style="token.color ? { color: token.color } : undefined">{{ token.value }}</span></span>
         </div>
       </code></pre>
     </div>

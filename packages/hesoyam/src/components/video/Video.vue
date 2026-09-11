@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Maximize04Icon, PauseIcon, PlayIcon, VolumeHighIcon, VolumeMute02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
-import { cn } from '@/lib/utils'
+import { Maximize2, Pause, Play, Volume2, VolumeX } from '@lucide/vue'
+import { cn } from '../../lib/utils'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
 const props = withDefaults(defineProps<{
   src: string
@@ -157,7 +157,7 @@ watch(resolvedSrc, async (src) => {
       class="absolute inset-0 z-10 m-auto size-12 rounded-full bg-black/55 text-white outline-none ring-1 ring-white/15 backdrop-blur-sm hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white/50"
       @click="togglePlay"
     >
-      <HugeiconsIcon :icon="PlayIcon" :size="20" color="currentColor" :stroke-width="1.75" class="ml-0.5" />
+      <Play :size="20" :stroke-width="1.75" class="ml-0.5" />
     </button>
 
     <div
@@ -173,10 +173,8 @@ watch(resolvedSrc, async (src) => {
         class="inline-flex size-7 items-center justify-center rounded-md outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40"
         @click="togglePlay"
       >
-        <HugeiconsIcon
-          :icon="playing ? PauseIcon : PlayIcon"
+        <component :is="playing ? Pause : Play"
           :size="16"
-          color="currentColor"
           :stroke-width="1.75"
         />
       </button>
@@ -206,10 +204,8 @@ watch(resolvedSrc, async (src) => {
         class="inline-flex size-7 items-center justify-center rounded-md outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40"
         @click="toggleMute"
       >
-        <HugeiconsIcon
-          :icon="isMuted ? VolumeMute02Icon : VolumeHighIcon"
+        <component :is="isMuted ? VolumeX : Volume2"
           :size="16"
-          color="currentColor"
           :stroke-width="1.75"
         />
       </button>
@@ -220,7 +216,7 @@ watch(resolvedSrc, async (src) => {
         class="inline-flex size-7 items-center justify-center rounded-md outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40"
         @click="toggleFullscreen"
       >
-        <HugeiconsIcon :icon="Maximize04Icon" :size="16" color="currentColor" :stroke-width="1.75" />
+        <Maximize2 :size="16" :stroke-width="1.75" />
       </button>
     </div>
   </div>

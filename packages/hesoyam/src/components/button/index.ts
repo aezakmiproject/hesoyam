@@ -12,7 +12,7 @@ export const buttonVariants = cva(
     'transition-[color,background-color,border-color,box-shadow,transform] duration-150',
     'outline-none focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]',
     'active:not-aria-[haspopup]:translate-y-px',
-    'disabled:pointer-events-none disabled:cursor-not-allowed',
+    'disabled:cursor-not-allowed aria-disabled:cursor-not-allowed',
     '[&_svg]:pointer-events-none [&_svg]:shrink-0',
   ].join(' '),
   {

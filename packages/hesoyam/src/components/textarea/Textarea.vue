@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import type { TextareaSize } from '.'
 import { useVModel } from '@vueuse/core'
 import { computed, useId } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { textareaVariants } from '.'
 
 defineOptions({

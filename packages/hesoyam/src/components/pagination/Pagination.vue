@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
-import { cn } from '@/lib/utils'
+import { ChevronLeft, ChevronRight } from '@lucide/vue'
+import { cn } from '../../lib/utils'
 
 const props = defineProps<{
   previous?: { title: string, href: string }
@@ -27,7 +26,7 @@ const props = defineProps<{
       )"
     >
       <span class="flex items-center gap-1 text-[13px] text-[var(--ds-gray-900)] transition-colors group-hover/prev:text-[var(--ds-gray-1000)]">
-        <HugeiconsIcon :icon="ArrowLeft01Icon" :size="14" class="shrink-0" />
+        <ChevronLeft :size="14" class="shrink-0" />
         Previous
       </span>
       <span class="mt-1 block truncate text-[14px] font-medium text-[var(--ds-gray-1000)]">
@@ -48,7 +47,7 @@ const props = defineProps<{
     >
       <span class="flex items-center justify-end gap-1 text-[13px] text-[var(--ds-gray-900)] transition-colors group-hover/next:text-[var(--ds-gray-1000)]">
         Next
-        <HugeiconsIcon :icon="ArrowRight01Icon" :size="14" class="shrink-0" />
+        <ChevronRight :size="14" class="shrink-0" />
       </span>
       <span class="mt-1 block truncate text-[14px] font-medium text-[var(--ds-gray-1000)]">
         {{ next.title }}

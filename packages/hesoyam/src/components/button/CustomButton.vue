@@ -2,7 +2,7 @@
 import type { HTMLAttributes, VNode } from 'vue'
 import type { ButtonShape, ButtonSize, CustomButtonColors } from '.'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import Button from './Button.vue'
 
 const props = defineProps<{

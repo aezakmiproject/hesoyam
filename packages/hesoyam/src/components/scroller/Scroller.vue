@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import {
-  ArrowDown01Icon,
-  ArrowLeft01Icon,
-  ArrowRight01Icon,
-  ArrowUp01Icon,
-} from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from '@lucide/vue'
 import { useEventListener, useResizeObserver } from '@vueuse/core'
 import { computed, nextTick, onMounted, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 export type ScrollerOverflow = 'x' | 'y' | 'both'
 
@@ -97,10 +91,10 @@ const overflowClass = computed(() => {
 })
 
 const prevIcon = computed(() => (
-  props.overflow === 'x' ? ArrowLeft01Icon : ArrowUp01Icon
+  props.overflow === 'x' ? ChevronLeft : ChevronUp
 ))
 const nextIcon = computed(() => (
-  props.overflow === 'x' ? ArrowRight01Icon : ArrowDown01Icon
+  props.overflow === 'x' ? ChevronRight : ChevronDown
 ))
 const prevLabel = computed(() => (
   props.overflow === 'x' ? 'Scroll left' : 'Scroll up'
@@ -134,7 +128,7 @@ useResizeObserver(scrollRef, updateEdges)
       )"
       @click="scrollByDirection(-1)"
     >
-      <HugeiconsIcon :icon="prevIcon" :size="16" />
+      <component :is="prevIcon" :size="16" />
     </button>
     <button
       v-if="withButtons && canEnd"
@@ -146,7 +140,7 @@ useResizeObserver(scrollRef, updateEdges)
       )"
       @click="scrollByDirection(1)"
     >
-      <HugeiconsIcon :icon="nextIcon" :size="16" />
+      <component :is="nextIcon" :size="16" />
     </button>
 
     <div

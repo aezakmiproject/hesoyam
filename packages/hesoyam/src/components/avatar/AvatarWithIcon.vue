@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
 import { computed, isVNode } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import Avatar from './Avatar.vue'
 
 const props = withDefaults(defineProps<{

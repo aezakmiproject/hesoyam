@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
-import type { ButtonVariants } from '@/components/ui/button'
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import type { ButtonVariants } from '../button'
+import { ChevronDown } from '@lucide/vue'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { cn } from '../../lib/utils'
+import { Button } from '../button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '../dropdown-menu'
 
 export type SplitButtonSize = 'small' | 'medium' | 'large'
 export type SplitButtonVariant = 'default' | 'secondary'
@@ -113,10 +112,8 @@ function onPrimaryClick(event: MouseEvent) {
           :aria-label="menuButtonLabel"
           class="-ml-px rounded-l-none"
         >
-          <HugeiconsIcon
-            :icon="ArrowDown01Icon"
+          <ChevronDown
             :size="16"
-            color="currentColor"
             :stroke-width="1.75"
           />
         </Button>

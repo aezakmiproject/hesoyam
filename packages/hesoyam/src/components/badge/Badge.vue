@@ -4,7 +4,7 @@ import type { HTMLAttributes, VNode } from 'vue'
 import type { BadgeVariants } from '.'
 import { Primitive } from 'reka-ui'
 import { computed, isVNode } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { badgeVariants } from '.'
 
 interface Props extends PrimitiveProps {

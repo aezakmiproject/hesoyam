@@ -10,7 +10,7 @@ export const inputVariants = cva(
     'transition-[color,background-color,border-color,box-shadow] duration-150',
     'focus-within:border-[var(--ds-focus)] focus-within:ring-2 focus-within:ring-[var(--ds-focus)]/30',
     'data-[invalid]:border-[var(--ds-red-700)] data-[invalid]:focus-within:ring-[var(--ds-red-700)]/30',
-    'data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:bg-[var(--ds-gray-100)] data-[disabled]:opacity-60',
+    'data-[disabled]:cursor-not-allowed data-[disabled]:bg-[var(--ds-gray-100)] data-[disabled]:opacity-60',
   ].join(' '),
   {
     variants: {

@@ -1,21 +1,15 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { IconArray } from '@hugeicons/vue'
-import { HugeiconsIcon } from '@hugeicons/vue'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
-import { isIconData, toRender } from './render'
+import { cn } from '../../lib/utils'
+import { toRender } from './render'
 
 const props = defineProps<{
   icon?: unknown
   class?: HTMLAttributes['class']
 }>()
 
-const iconData = computed(() => isIconData(props.icon) ? props.icon as IconArray : null)
-const iconComponent = computed(() => {
-  if (props.icon == null || iconData.value) return undefined
-  return toRender(props.icon)
-})
+const iconComponent = computed(() => toRender(props.icon))
 </script>
 
 <template>
@@ -27,12 +21,7 @@ const iconComponent = computed(() => {
     )"
   >
     <slot>
-      <HugeiconsIcon
-        v-if="iconData"
-        :icon="iconData"
-        :size="32"
-      />
-      <component :is="iconComponent" v-else-if="iconComponent" />
+      <component :is="iconComponent" v-if="iconComponent" />
     </slot>
   </div>
 </template>

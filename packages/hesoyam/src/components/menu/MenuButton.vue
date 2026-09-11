@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { ButtonShape, ButtonSize, ButtonVariant } from '@/components/ui/button'
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import type { ButtonShape, ButtonSize, ButtonVariant } from '../button'
+import { ChevronDown } from '@lucide/vue'
 import { DropdownMenuTrigger } from 'reka-ui'
 import { computed } from 'vue'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Button } from '../button'
+import { cn } from '../../lib/utils'
 
 defineOptions({
   inheritAttrs: false,
@@ -72,8 +71,7 @@ const htmlType = computed(() => {
     >
       <slot />
       <template v-if="showChevron" #suffix>
-        <HugeiconsIcon
-          :icon="ArrowDown01Icon"
+        <ChevronDown
           :size="14"
           class="text-[var(--ds-gray-900)]"
         />

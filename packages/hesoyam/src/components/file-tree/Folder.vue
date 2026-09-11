@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Folder01Icon, FolderOpenIcon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { Folder as FolderIcon, FolderOpen } from '@lucide/vue'
 import { computed, inject, provide, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { treeDepthKey } from './context'
 
 const props = withDefaults(defineProps<{
@@ -18,7 +17,7 @@ const depth = inject(treeDepthKey, 0)
 provide(treeDepthKey, depth + 1)
 
 const open = ref(props.defaultOpen)
-const icon = computed(() => (open.value ? FolderOpenIcon : Folder01Icon))
+const icon = computed(() => (open.value ? FolderOpen : FolderIcon))
 
 function toggle() {
   open.value = !open.value
@@ -42,8 +41,7 @@ function toggle() {
       :style="{ paddingInlineStart: `${depth * 16 + 6}px` }"
       @click="toggle"
     >
-      <HugeiconsIcon
-        :icon="icon"
+      <component :is="icon"
         :size="14"
         class="shrink-0 text-[var(--ds-amber-700)]"
       />

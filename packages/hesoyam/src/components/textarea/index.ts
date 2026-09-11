@@ -10,7 +10,7 @@ export const textareaVariants = cva(
     'text-[var(--ds-gray-1000)] placeholder:text-[var(--ds-gray-900)]',
     'transition-[color,background-color,border-color,box-shadow] duration-150',
     'outline-none focus-visible:border-[var(--ds-focus)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/30',
-    'disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--ds-gray-100)] disabled:opacity-60',
+    'disabled:cursor-not-allowed disabled:bg-[var(--ds-gray-100)] disabled:opacity-60',
     'read-only:bg-[var(--ds-gray-100)]',
     'aria-invalid:border-[var(--ds-red-700)] aria-invalid:focus-visible:ring-[var(--ds-red-700)]/30',
   ].join(' '),

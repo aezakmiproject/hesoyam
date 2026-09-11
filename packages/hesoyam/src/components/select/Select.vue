@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { ChevronDown } from '@lucide/vue'
 import { useVModel } from '@vueuse/core'
 import { computed, useAttrs, useId, useSlots, watch } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 export type SelectSize = 'small' | 'medium' | 'large'
 
@@ -162,10 +161,8 @@ function onNativeChange(event: Event) {
             <template v-else>{{ suffix }}</template>
           </slot>
         </span>
-        <HugeiconsIcon
-          :icon="ArrowDown01Icon"
+        <ChevronDown
           :size="iconSize"
-          color="currentColor"
           :stroke-width="1.75"
         />
       </span>

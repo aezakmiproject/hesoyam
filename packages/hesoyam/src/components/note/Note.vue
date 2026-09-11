@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { IconArray } from '@hugeicons/vue'
+import type { Component, HTMLAttributes } from 'vue'
 import type { NoteSize, NoteVariant } from './variants'
-import { Alert02Icon, CancelCircleIcon, CheckmarkCircle02Icon, InformationCircleIcon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { CircleCheck, CircleX, Info, TriangleAlert, type LucideIcon } from '@lucide/vue'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { noteVariants } from './variants'
 
 const props = withDefaults(defineProps<{
@@ -13,7 +11,7 @@ const props = withDefaults(defineProps<{
   size?: NoteSize
   fill?: boolean
   disabled?: boolean
-  icon?: unknown
+  icon?: Component | null
   class?: HTMLAttributes['class']
 }>(), {
   variant: 'default',
@@ -22,24 +20,19 @@ const props = withDefaults(defineProps<{
   disabled: false,
 })
 
-const defaultIcons: Record<NoteVariant, IconArray> = {
-  default: InformationCircleIcon,
-  success: CheckmarkCircle02Icon,
-  error: CancelCircleIcon,
-  warning: Alert02Icon,
-  secondary: InformationCircleIcon,
-  violet: InformationCircleIcon,
-  cyan: InformationCircleIcon,
+const defaultIcons: Record<NoteVariant, LucideIcon> = {
+  default: Info,
+  success: CircleCheck,
+  error: CircleX,
+  warning: TriangleAlert,
+  secondary: Info,
+  violet: Info,
+  cyan: Info,
 }
 
 const iconSize = computed(() => props.size === 'small' ? 14 : 16)
 const hideIcon = computed(() => props.icon === null)
-const customIconData = computed(() => Array.isArray(props.icon) ? props.icon as IconArray : null)
-const customIconComponent = computed(() => {
-  if (props.icon == null || customIconData.value) return undefined
-  if (typeof props.icon === 'object' && props.icon !== null && 'setup' in props.icon) return props.icon
-  return { render: () => props.icon }
-})
+const resolvedIcon = computed(() => props.icon ?? defaultIcons[props.variant])
 </script>
 
 <template>
@@ -50,6 +43,8 @@ const customIconComponent = computed(() => {
     :data-fill="fill ? 'true' : 'false'"
     :data-disabled="disabled ? '' : undefined"
     role="note"
+    :aria-disabled="disabled || undefined"
+    :inert="disabled ? true : undefined"
     :class="cn(noteVariants({ variant, size, fill, disabled }), props.class)"
   >
     <span
@@ -58,16 +53,10 @@ const customIconComponent = computed(() => {
       class="mt-0.5 inline-flex shrink-0 text-[var(--note-icon)]"
     >
       <slot name="icon">
-        <HugeiconsIcon
-          v-if="customIconData"
-          :icon="customIconData"
+        <component
+          :is="resolvedIcon"
           :size="iconSize"
-        />
-        <component :is="customIconComponent" v-else-if="customIconComponent" />
-        <HugeiconsIcon
-          v-else
-          :icon="defaultIcons[variant]"
-          :size="iconSize"
+          :stroke-width="1.75"
         />
       </slot>
     </span>

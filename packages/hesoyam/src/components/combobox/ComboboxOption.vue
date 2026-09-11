@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Tick02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { Check } from '@lucide/vue'
 import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { COMBOBOX_KEY } from './context'
 
 const props = defineProps<{
@@ -95,11 +94,9 @@ function onSelect() {
       </slot>
     </span>
 
-    <HugeiconsIcon
+    <Check
       v-if="selected"
-      :icon="Tick02Icon"
       :size="14"
-      color="currentColor"
       :stroke-width="1.75"
       class="ml-auto shrink-0"
     />

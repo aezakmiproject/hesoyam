@@ -1,148 +1,204 @@
+import type { HighlighterCore, ThemeRegistration } from 'shiki/core'
+import { createHighlighterCoreSync } from 'shiki/core'
+import { createJavaScriptRegexEngine } from 'shiki/engine/javascript'
+import langBash from '@shikijs/langs/bash'
+import langJsx from '@shikijs/langs/jsx'
+import langLua from '@shikijs/langs/lua'
+import langMarkdown from '@shikijs/langs/markdown'
+import langTsx from '@shikijs/langs/tsx'
+import langVue from '@shikijs/langs/vue'
+import langYaml from '@shikijs/langs/yaml'
+
 export interface Token {
-  type: 'text' | 'comment' | 'string' | 'keyword' | 'number' | 'function'
   value: string
+  color?: string
 }
 
-const KEYWORDS: Record<string, string[]> = {
-  js: ['await', 'async', 'break', 'case', 'catch', 'class', 'const', 'continue', 'debugger', 'default', 'delete', 'do', 'else', 'export', 'extends', 'false', 'finally', 'for', 'from', 'function', 'if', 'import', 'in', 'instanceof', 'let', 'new', 'null', 'of', 'return', 'static', 'super', 'switch', 'this', 'throw', 'true', 'try', 'typeof', 'undefined', 'var', 'void', 'while', 'with', 'yield'],
-  ts: ['as', 'implements', 'infer', 'interface', 'keyof', 'namespace', 'never', 'readonly', 'satisfies', 'type', 'unique', 'unknown'],
-  lua: ['and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function', 'goto', 'if', 'in', 'local', 'nil', 'not', 'or', 'repeat', 'return', 'then', 'true', 'until', 'while'],
-  bash: ['alias', 'break', 'case', 'cd', 'continue', 'do', 'done', 'echo', 'elif', 'else', 'esac', 'export', 'fi', 'for', 'function', 'if', 'in', 'local', 'npm', 'npx', 'pnpm', 'return', 'then', 'until', 'while', 'yarn'],
+const THEME_NAME = 'hesoyam'
+
+const hesoyamTheme: ThemeRegistration = {
+  name: THEME_NAME,
+  type: 'dark',
+  fg: 'var(--ds-gray-1000)',
+  bg: 'var(--ds-background-100)',
+  settings: [
+    { settings: { foreground: 'var(--ds-gray-1000)' } },
+    {
+      scope: ['comment', 'punctuation.definition.comment', 'string.comment', 'comment.block'],
+      settings: { foreground: 'var(--ds-syntax-comment)' },
+    },
+    {
+      scope: ['string', 'string.quoted', 'string.template', 'string.interpolated', 'string.regexp'],
+      settings: { foreground: 'var(--ds-syntax-string)' },
+    },
+    {
+      scope: [
+        'constant.numeric',
+        'constant.language',
+        'constant.character',
+        'constant.other',
+        'variable.other.constant',
+        'variable.language',
+        'support.constant',
+      ],
+      settings: { foreground: 'var(--ds-syntax-number)' },
+    },
+    {
+      scope: ['keyword', 'storage', 'storage.type', 'storage.modifier'],
+      settings: { foreground: 'var(--ds-syntax-keyword)' },
+    },
+    {
+      scope: [
+        'keyword.operator',
+        'keyword.operator.assignment',
+        'keyword.operator.comparison',
+        'keyword.operator.arithmetic',
+        'punctuation.separator.key-value',
+      ],
+      settings: { foreground: 'var(--ds-gray-1000)' },
+    },
+    {
+      scope: ['entity.name.tag', 'support.class.component', 'punctuation.definition.tag'],
+      settings: { foreground: 'var(--ds-syntax-keyword)' },
+    },
+    {
+      scope: ['entity.other.attribute-name'],
+      settings: { foreground: 'var(--ds-syntax-function)' },
+    },
+    {
+      scope: ['entity.name.function', 'support.function', 'meta.function-call'],
+      settings: { foreground: 'var(--ds-syntax-function)' },
+    },
+    {
+      scope: [
+        'variable.other.readwrite.alias',
+        'variable.other.object.alias',
+        'meta.import variable.other.readwrite',
+      ],
+      settings: { foreground: 'var(--ds-syntax-function)' },
+    },
+    {
+      scope: [
+        'entity.name.type',
+        'entity.name.class',
+        'entity.other.inherited-class',
+        'support.type',
+        'support.class',
+      ],
+      settings: { foreground: 'var(--ds-syntax-number)' },
+    },
+    {
+      scope: [
+        'punctuation.definition.interpolation',
+        'punctuation.definition.template-expression',
+      ],
+      settings: { foreground: 'var(--ds-syntax-keyword)' },
+    },
+    {
+      scope: [
+        'meta.object-literal.key',
+        'support.type.property-name',
+        'variable.other.property',
+        'meta.property-name',
+      ],
+      settings: { foreground: 'var(--ds-syntax-function)' },
+    },
+  ],
 }
 
-function langKey(language?: string) {
-  const value = (language ?? '').toLowerCase()
-  if (value === 'javascript' || value === 'js' || value === 'jsx') return 'js'
-  if (value === 'typescript' || value === 'ts' || value === 'tsx' || value === 'next') return 'ts'
-  if (value === 'lua') return 'lua'
-  if (value === 'bash' || value === 'sh' || value === 'shell' || value === 'zsh') return 'bash'
-  if (value === 'json') return 'json'
-  return value
+const LANG_ALIASES: Record<string, string> = {
+  next: 'tsx',
+  javascriptreact: 'jsx',
+  typescriptreact: 'tsx',
+  ts: 'typescript',
+  js: 'javascript',
+  mjs: 'javascript',
+  cjs: 'javascript',
+  mts: 'typescript',
+  cts: 'typescript',
+  md: 'markdown',
+  yml: 'yaml',
+  sh: 'bash',
+  shell: 'bash',
+  shellscript: 'bash',
 }
 
-function keywordsFor(language?: string) {
-  const key = langKey(language)
-  if (key === 'ts') return new Set([...KEYWORDS.js, ...KEYWORDS.ts])
-  if (key === 'js' || key === 'lua' || key === 'bash') return new Set(KEYWORDS[key])
-  return new Set<string>()
+const VUE_SFC_RE = /^\s*<(?:script|template|style)\b/i
+const SCRIPT_LEAD_RE = /^\s*(?:import|export|const|let|var|function|class|type|interface|enum)\b/
+const JSX_RE = /return\s*\(?\s*<|<[A-Z][\w]*|<(?:div|span|p|h[1-6]|ul|ol|li|section|button|a|img|input|form|table|thead|tbody|tr|td|pre|code)\b/
+
+let highlighter: HighlighterCore | null | undefined
+
+function getHighlighter(): HighlighterCore | null {
+  if (highlighter !== undefined) return highlighter
+  try {
+    highlighter = createHighlighterCoreSync({
+      engine: createJavaScriptRegexEngine({ forgiving: true }),
+      themes: [hesoyamTheme],
+      langs: [langVue, langTsx, langJsx, langBash, langLua, langYaml, langMarkdown].flat(),
+    })
+  }
+  catch {
+    highlighter = null
+  }
+  return highlighter
 }
 
-function push(tokens: Token[], type: Token['type'], value: string) {
-  if (!value) return
-  const last = tokens[tokens.length - 1]
-  if (last && last.type === type) last.value += value
-  else tokens.push({ type, value })
+function plainLines(code: string): Token[][] {
+  return code.replace(/\n$/, '').split('\n').map(line => (
+    [{ value: line || ' ' }]
+  ))
 }
 
-export function tokenizeLine(line: string, language?: string, inBlockComment = false): { tokens: Token[], inBlockComment: boolean } {
-  const tokens: Token[] = []
-  const keywords = keywordsFor(language)
-  const key = langKey(language)
-  let i = 0
-  let block = inBlockComment
+function pickLoaded(candidates: string[], loaded: string[]): string | undefined {
+  return candidates.find(name => loaded.includes(name))
+}
 
-  const lineComment = key === 'lua' ? '--' : key === 'bash' ? '#' : '//'
+function resolveLang(language: string | undefined, loaded: string[], code: string): string | undefined {
+  const value = (language ?? '').toLowerCase().trim()
+  if (!value || value === 'text' || value === 'txt' || value === 'plaintext') return undefined
+  let mapped = LANG_ALIASES[value] ?? value
 
-  while (i < line.length) {
-    if (block) {
-      const end = line.indexOf('*/', i)
-      if (end === -1) {
-        push(tokens, 'comment', line.slice(i))
-        return { tokens, inBlockComment: true }
-      }
-      push(tokens, 'comment', line.slice(i, end + 2))
-      i = end + 2
-      block = false
-      continue
-    }
-
-    if (key !== 'json' && key !== 'bash' && key !== 'lua' && line.startsWith('/*', i)) {
-      const end = line.indexOf('*/', i + 2)
-      if (end === -1) {
-        push(tokens, 'comment', line.slice(i))
-        return { tokens, inBlockComment: true }
-      }
-      push(tokens, 'comment', line.slice(i, end + 2))
-      i = end + 2
-      continue
-    }
-
-    if (line.startsWith(lineComment, i)) {
-      push(tokens, 'comment', line.slice(i))
-      break
-    }
-
-    const char = line[i]
-
-    if (char === '"' || char === '\'' || char === '`') {
-      let j = i + 1
-      while (j < line.length) {
-        if (line[j] === '\\') {
-          j += 2
-          continue
-        }
-        if (line[j] === char) {
-          j += 1
-          break
-        }
-        j += 1
-      }
-      push(tokens, 'string', line.slice(i, j))
-      i = j
-      continue
-    }
-
-    if (/[0-9]/.test(char) && (i === 0 || /[^\w$]/.test(line[i - 1] ?? ''))) {
-      let j = i + 1
-      while (j < line.length && /[\w.xob]/.test(line[j]!)) j += 1
-      push(tokens, 'number', line.slice(i, j))
-      i = j
-      continue
-    }
-
-    if (/[A-Za-z_$]/.test(char)) {
-      let j = i + 1
-      while (j < line.length && /[\w$]/.test(line[j]!)) j += 1
-      const word = line.slice(i, j)
-      const nextNonSpace = line.slice(j).match(/\s*/)?.[0].length ?? 0
-      const after = line[j + nextNonSpace]
-      if (keywords.has(word)) push(tokens, 'keyword', word)
-      else if (after === '(') push(tokens, 'function', word)
-      else push(tokens, 'text', word)
-      i = j
-      continue
-    }
-
-    push(tokens, 'text', char)
-    i += 1
+  // Vue SFC grammar only highlights nested markup inside <template>.
+  // Docs snippets are usually template fragments — html/tsx handle those.
+  if (mapped === 'vue' && !VUE_SFC_RE.test(code)) {
+    if (SCRIPT_LEAD_RE.test(code)) mapped = pickLoaded(['tsx', 'typescript', 'javascript'], loaded) ?? mapped
+    else mapped = pickLoaded(['html', 'html-derivative'], loaded) ?? mapped
   }
 
-  return { tokens, inBlockComment: block }
+  if ((mapped === 'ts' || mapped === 'typescript') && JSX_RE.test(code)) {
+    mapped = pickLoaded(['tsx'], loaded) ?? mapped
+  }
+
+  if ((mapped === 'js' || mapped === 'javascript') && JSX_RE.test(code)) {
+    mapped = pickLoaded(['jsx'], loaded) ?? mapped
+  }
+
+  return loaded.includes(mapped) ? mapped : undefined
 }
 
 export function highlightLines(code: string, language?: string): Token[][] {
-  const lines = code.replace(/\n$/, '').split('\n')
-  let block = false
-  return lines.map((line) => {
-    const result = tokenizeLine(line, language, block)
-    block = result.inBlockComment
-    return result.tokens.length ? result.tokens : [{ type: 'text', value: ' ' }]
-  })
-}
+  const source = code.replace(/\n$/, '')
+  const instance = getHighlighter()
+  if (!instance) return plainLines(source)
 
-export function tokenClass(type: Token['type']) {
-  switch (type) {
-    case 'comment':
-      return 'text-[var(--ds-syntax-comment)]'
-    case 'string':
-      return 'text-[var(--ds-syntax-string)]'
-    case 'keyword':
-      return 'text-[var(--ds-syntax-keyword)]'
-    case 'number':
-      return 'text-[var(--ds-syntax-number)]'
-    case 'function':
-      return 'text-[var(--ds-syntax-function)]'
-    default:
-      return 'text-[var(--ds-gray-1000)]'
+  const lang = resolveLang(language, instance.getLoadedLanguages(), source)
+  if (!lang) return plainLines(source)
+
+  try {
+    const result = instance.codeToTokens(source, {
+      lang,
+      theme: THEME_NAME,
+    })
+    return result.tokens.map((line) => {
+      if (!line.length) return [{ value: ' ' }]
+      return line.map(token => ({
+        value: token.content,
+        color: token.color,
+      }))
+    })
+  }
+  catch {
+    return plainLines(source)
   }
 }

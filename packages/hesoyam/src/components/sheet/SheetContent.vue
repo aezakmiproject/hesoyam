@@ -2,8 +2,7 @@
 import type { DialogContentEmits, DialogContentProps } from 'reka-ui'
 
 import type { HTMLAttributes } from 'vue'
-import { Cancel01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { X } from '@lucide/vue'
 import { reactiveOmit } from '@vueuse/core'
 import {
   DialogClose,
@@ -11,8 +10,8 @@ import {
   DialogPortal,
   useForwardPropsEmits,
 } from 'reka-ui'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { cn } from '../../lib/utils'
+import { Button } from '../button'
 import SheetOverlay from './SheetOverlay.vue'
 
 interface SheetContentProps extends DialogContentProps {
@@ -64,7 +63,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
         as-child
       >
         <Button variant="ghost" class="absolute top-4 right-4" size="icon-sm" aria-label="Close">
-          <HugeiconsIcon :icon="Cancel01Icon" :size="16" />
+          <X :size="16" />
           <span class="sr-only">Close</span>
         </Button>
       </DialogClose>

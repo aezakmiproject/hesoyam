@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
-import type { InputSize } from '@/components/ui/input'
-import { Cancel01Icon, SearchIcon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import type { InputSize } from '../input'
+import { X, Search } from '@lucide/vue'
 import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
-import { Input } from '@/components/ui/input'
-import { Kbd } from '@/components/ui/keyboard-input'
-import { cn } from '@/lib/utils'
+import { Input } from '../input'
+import { Kbd } from '../keyboard-input'
+import { cn } from '../../lib/utils'
 
 defineOptions({
   inheritAttrs: false,
@@ -66,9 +65,8 @@ function onKeydown(event: KeyboardEvent) {
       <slot name="prefix">
         <template v-if="typeof prefix === 'string'">{{ prefix }}</template>
         <component :is="prefix" v-else-if="prefix" />
-        <HugeiconsIcon
+        <Search
           v-else
-          :icon="SearchIcon"
           :size="iconSize"
           class="text-[var(--ds-gray-900)]"
         />
@@ -100,7 +98,7 @@ function onKeydown(event: KeyboardEvent) {
           class="inline-flex size-5 items-center justify-center rounded-[4px] text-[var(--ds-gray-900)] hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)]"
           @click="clear"
         >
-          <HugeiconsIcon :icon="Cancel01Icon" :size="iconSize" />
+          <X :size="iconSize" />
         </button>
       </span>
     </template>

@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import { computed, inject, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { COMBOBOX_KEY } from './context'
 
 const props = defineProps<{

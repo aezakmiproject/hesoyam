@@ -4,7 +4,7 @@ import type { HTMLAttributes } from 'vue'
 import type { TooltipType } from '.'
 import { reactiveOmit } from '@vueuse/core'
 import { TooltipArrow, TooltipContent, TooltipPortal, useForwardPropsEmits } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { tooltipArrowVariants, tooltipContentVariants } from '.'
 
 defineOptions({

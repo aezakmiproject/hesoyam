@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { toRender } from './render'
 
 const props = withDefaults(defineProps<{
@@ -26,7 +26,7 @@ const rightComponent = computed(() => toRender(props.right))
     :type="as === 'button' ? 'button' : undefined"
     :class="cn(
       'flex w-full items-center gap-3 py-3 text-left',
-      as === 'button' && 'hover:bg-[var(--ds-gray-100)] focus-visible:ring-ring/40 rounded-md outline-none focus-visible:ring-2',
+      as === 'button' && 'hover:bg-[var(--ds-gray-100)] focus-visible:ring-[var(--ds-focus)]/40 rounded-md outline-none focus-visible:ring-2',
       props.class,
     )"
   >

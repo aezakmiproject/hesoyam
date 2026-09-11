@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import type { AvatarMember } from '.'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { resolveAvatarSize } from '.'
 import Avatar from './Avatar.vue'
 import AvatarGroupCount from './AvatarGroupCount.vue'

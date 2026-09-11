@@ -8,8 +8,8 @@ import {
   ProgressRoot,
 } from 'reka-ui'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { cn } from '../../lib/utils'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../tooltip'
 
 const TYPE_COLORS: Record<ProgressType, string> = {
   success: 'var(--ds-green-700)',

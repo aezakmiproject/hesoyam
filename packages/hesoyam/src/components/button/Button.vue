@@ -4,7 +4,7 @@ import type { HTMLAttributes, VNode } from 'vue'
 import type { ButtonShape, ButtonSize, ButtonVariant } from '.'
 import { Primitive } from 'reka-ui'
 import { computed, useSlots } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { buttonVariants } from '.'
 
 const VISUAL_TYPES = new Set([
@@ -74,6 +74,13 @@ const resolvedAs = computed(() => {
 
 const hasPrefix = computed(() => Boolean(props.prefix || slots.prefix))
 const hasSuffix = computed(() => Boolean(props.suffix || slots.suffix))
+
+function onActivate(event: Event) {
+  if (props.disabled || props.loading) {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+}
 </script>
 
 <template>
@@ -88,9 +95,11 @@ const hasSuffix = computed(() => Boolean(props.suffix || slots.suffix))
     :as-child="asChild"
     :href="href"
     :type="resolvedAs === 'button' ? htmlType : undefined"
-    :disabled="disabled || undefined"
+    :disabled="resolvedAs === 'a' ? undefined : (disabled || undefined)"
     :aria-busy="loading || undefined"
-    :aria-disabled="loading && !disabled ? true : undefined"
+    :aria-disabled="(disabled && resolvedAs === 'a') || (loading && !disabled) ? true : undefined"
+    :tabindex="disabled && resolvedAs === 'a' ? -1 : undefined"
+    @click="onActivate"
     :class="cn(
       buttonVariants({ variant: resolvedVariant, size, shape: resolvedShape }),
       shadow && 'shadow-[0_2px_8px_rgba(0,0,0,0.24)]',

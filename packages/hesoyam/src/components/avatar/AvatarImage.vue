@@ -3,7 +3,7 @@ import type { AvatarImageProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { AvatarImage } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 const props = defineProps<AvatarImageProps & { class?: HTMLAttributes['class'] }>()
 const delegatedProps = reactiveOmit(props, 'class')

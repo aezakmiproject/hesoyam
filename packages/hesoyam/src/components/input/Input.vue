@@ -3,8 +3,8 @@ import type { HTMLAttributes, VNode } from 'vue'
 import type { InputSize } from '.'
 import { useVModel } from '@vueuse/core'
 import { computed, useAttrs, useId, useSlots } from 'vue'
-import { cn } from '@/lib/utils'
-import { Label } from '@/components/ui/label'
+import { cn } from '../../lib/utils'
+import { Label } from '../label'
 import { inputVariants } from '.'
 
 defineOptions({

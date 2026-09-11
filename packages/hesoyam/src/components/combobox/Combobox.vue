@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import type { ComboboxContext, ComboboxOptionApi, ComboboxSize } from './context'
 import { useVModel } from '@vueuse/core'
 import { computed, provide, ref, useAttrs, useId, watch } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { COMBOBOX_KEY } from './context'
 
 defineOptions({

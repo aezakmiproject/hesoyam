@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { ToastItem } from './useToasts'
-import { Alert02Icon, Cancel01Icon, CancelCircleIcon, CheckmarkCircle02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { TriangleAlert, X, CircleX, CircleCheck } from '@lucide/vue'
 import { dismiss } from './useToasts'
+import { computed } from 'vue'
 
 const props = defineProps<{
   toast: ToastItem
@@ -11,11 +11,11 @@ const props = defineProps<{
 const icon = computed(() => {
   switch (props.toast.type) {
     case 'success':
-      return { data: CheckmarkCircle02Icon, class: 'text-[var(--ds-green-900)]' }
+      return { data: CircleCheck, class: 'text-[var(--ds-green-900)]' }
     case 'warning':
-      return { data: Alert02Icon, class: 'text-[var(--ds-amber-900)]' }
+      return { data: TriangleAlert, class: 'text-[var(--ds-amber-900)]' }
     case 'error':
-      return { data: CancelCircleIcon, class: 'text-[var(--ds-red-900)]' }
+      return { data: CircleX, class: 'text-[var(--ds-red-900)]' }
     default:
       return null
   }
@@ -48,11 +48,9 @@ const isStringText = computed(() => typeof props.toast.text === 'string')
         : 'animate-in fade-in-0 slide-in-from-bottom-2 duration-200',
     ]"
   >
-    <HugeiconsIcon
+    <component :is="icon.data"
       v-if="icon"
-      :icon="icon.data"
       :size="16"
-      color="currentColor"
       :stroke-width="1.75"
       :class="['mt-0.5 shrink-0', icon.class]"
     />
@@ -65,7 +63,7 @@ const isStringText = computed(() => typeof props.toast.text === 'string')
     <button
       v-if="actionLabel"
       type="button"
-      class="mt-px shrink-0 rounded-md border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] px-2 py-1 text-[12px] font-medium text-[var(--ds-gray-1000)] outline-none hover:bg-[var(--ds-gray-200)] focus-visible:ring-2 focus-visible:ring-ring/40"
+      class="mt-px shrink-0 rounded-md border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] px-2 py-1 text-[12px] font-medium text-[var(--ds-gray-1000)] outline-none hover:bg-[var(--ds-gray-200)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40"
       @click="runAction"
     >
       {{ actionLabel }}
@@ -74,10 +72,10 @@ const isStringText = computed(() => typeof props.toast.text === 'string')
     <button
       type="button"
       aria-label="Dismiss"
-      class="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-md text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-ring/40"
+      class="mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-md text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40"
       @click="dismiss(toast.id)"
     >
-      <HugeiconsIcon :icon="Cancel01Icon" :size="14" color="currentColor" :stroke-width="1.75" />
+      <X :size="14" :stroke-width="1.75" />
     </button>
   </div>
 </template>

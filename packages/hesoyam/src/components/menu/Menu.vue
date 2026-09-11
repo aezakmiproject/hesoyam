@@ -9,7 +9,7 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { computed, inject, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { menuContentClass, menuPositionKey, parseMenuPosition } from '.'
 
 defineOptions({

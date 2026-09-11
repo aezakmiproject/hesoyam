@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { Component, VNode } from 'vue'
 import type { TabItem } from '.'
-import { computed, isVNode, ref } from 'vue'
-import { cn } from '@/lib/utils'
-import { Tooltip } from '@/components/ui/tooltip'
+import { useResizeObserver } from '@vueuse/core'
+import { computed, isVNode, nextTick, onMounted, ref, watch } from 'vue'
+import { cn } from '../../lib/utils'
+import { Tooltip } from '../tooltip'
 
 const props = withDefaults(defineProps<{
   selected?: string
@@ -24,11 +25,47 @@ const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>()
 
+const rootRef = ref<HTMLElement | null>(null)
 const tabRefs = ref<HTMLButtonElement[]>([])
+const indicatorReady = ref(false)
+const indicator = ref({ x: 0, y: 0, width: 0, height: 0 })
 
 const selectedValue = computed(() => {
   return props.selected ?? props.modelValue ?? props.tabs[0]?.value ?? ''
 })
+
+const indicatorStyle = computed(() => ({
+  width: `${indicator.value.width}px`,
+  height: `${indicator.value.height}px`,
+  transform: `translate3d(${indicator.value.x}px, ${indicator.value.y}px, 0)`,
+}))
+
+function updateIndicator() {
+  const root = rootRef.value
+  const index = props.tabs.findIndex(tab => tab.value === selectedValue.value)
+  const tab = index === -1 ? undefined : tabRefs.value[index]
+  if (!root || !tab) {
+    indicator.value = { x: 0, y: 0, width: 0, height: 0 }
+    return
+  }
+
+  const rootRect = root.getBoundingClientRect()
+  const tabRect = tab.getBoundingClientRect()
+  const x = tabRect.left - rootRect.left + root.scrollLeft
+  const y = tabRect.top - rootRect.top + root.scrollTop
+
+  if (props.variant === 'secondary') {
+    indicator.value = { x, y, width: tabRect.width, height: tabRect.height }
+    return
+  }
+
+  indicator.value = {
+    x,
+    y: tabRect.bottom - rootRect.top - 2,
+    width: tabRect.width,
+    height: 2,
+  }
+}
 
 const enabledTabs = computed(() =>
   props.tabs.filter(tab => !tab.disabled && !props.disabled),
@@ -100,10 +137,29 @@ function setTabRef(el: unknown, index: number) {
   if (node)
     tabRefs.value[index] = node
 }
+
+watch(
+  [selectedValue, () => props.variant, () => props.tabs],
+  async () => {
+    await nextTick()
+    updateIndicator()
+  },
+  { deep: true, flush: 'post' },
+)
+
+onMounted(() => {
+  updateIndicator()
+  requestAnimationFrame(() => {
+    indicatorReady.value = true
+  })
+})
+
+useResizeObserver(rootRef, updateIndicator)
 </script>
 
 <template>
   <div
+    ref="rootRef"
     role="tablist"
     :aria-label="ariaLabel"
     :aria-disabled="disabled || undefined"
@@ -113,13 +169,25 @@ function setTabRef(el: unknown, index: number) {
       'relative flex items-center',
       variant === 'default' && 'gap-0 border-b border-[var(--ds-gray-alpha-400)]',
       variant === 'secondary' && 'w-fit gap-0.5 rounded-[6px] bg-[var(--ds-gray-100)] p-[3px]',
-      disabled && 'pointer-events-none opacity-50',
+      disabled && 'cursor-not-allowed opacity-50',
       props.class,
     )"
   >
+    <div
+      aria-hidden="true"
+      data-slot="tabs-indicator"
+      :class="cn(
+        'pointer-events-none absolute top-0 left-0 z-0',
+        indicator.width === 0 && 'invisible',
+        indicatorReady && 'transition-all duration-200 ease-out motion-reduce:transition-none',
+        variant === 'default' && 'bg-[var(--ds-gray-1000)]',
+        variant === 'secondary' && 'rounded-[5px] bg-[var(--ds-background-100)] shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]',
+      )"
+      :style="indicatorStyle"
+    />
     <template v-for="(tab, index) in tabs" :key="tab.value">
       <Tooltip :text="tab.tooltip" :disabled="!tab.tooltip">
-        <span class="inline-flex">
+        <span class="relative z-10 inline-flex">
           <button
             :ref="(el) => setTabRef(el, index)"
             type="button"
@@ -131,18 +199,18 @@ function setTabRef(el: unknown, index: number) {
             data-slot="tab"
             :data-selected="selectedValue === tab.value ? '' : undefined"
             :class="cn(
-              'relative inline-flex h-8 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap text-[13px] leading-none outline-none transition-colors select-none',
+              'relative z-10 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap text-[13px] leading-none outline-none transition-colors select-none',
               'focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]',
-              'disabled:pointer-events-none disabled:opacity-50',
+              'disabled:cursor-not-allowed disabled:opacity-50',
               variant === 'default' && cn(
                 '-mb-px border-b-2 border-transparent px-3 text-[var(--ds-gray-900)]',
                 'hover:text-[var(--ds-gray-1000)]',
-                selectedValue === tab.value && 'border-[var(--ds-gray-1000)] font-medium text-[var(--ds-gray-1000)]',
+                selectedValue === tab.value && 'font-medium text-[var(--ds-gray-1000)]',
               ),
               variant === 'secondary' && cn(
                 'rounded-[5px] px-2.5 text-[var(--ds-gray-900)]',
                 'hover:text-[var(--ds-gray-1000)]',
-                selectedValue === tab.value && 'bg-[var(--ds-background-100)] font-medium text-[var(--ds-gray-1000)] shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]',
+                selectedValue === tab.value && 'font-medium text-[var(--ds-gray-1000)]',
               ),
             )"
             @click="select(tab.value)"

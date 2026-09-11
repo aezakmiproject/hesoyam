@@ -7,8 +7,8 @@ import {
   ContextMenuPortal,
   useForwardPropsEmits,
 } from 'reka-ui'
-import { menuContentClass } from '@/components/ui/menu'
-import { cn } from '@/lib/utils'
+import { menuContentClass } from '../menu'
+import { cn } from '../../lib/utils'
 
 defineOptions({
   inheritAttrs: false,

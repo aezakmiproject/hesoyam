@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { ChevronDown } from '@lucide/vue'
 import { computed, inject, useSlots } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '../dropdown-menu'
 import { breadcrumbContextKey } from './context'
 
 const props = defineProps<{
@@ -28,7 +27,7 @@ const itemClass = computed(() => cn(
   props.active
     ? 'font-medium text-[var(--ds-gray-1000)]'
     : 'text-[var(--ds-gray-900)]',
-  props.disabled && 'pointer-events-none opacity-50',
+  props.disabled && 'cursor-not-allowed opacity-50',
   isMenu.value && 'h-8 rounded-[6px] px-2 hover:bg-[var(--ds-gray-100)] hover:text-[var(--ds-gray-1000)]',
   isMenu.value && props.active && 'bg-[var(--ds-gray-100)]',
   props.class,
@@ -57,7 +56,7 @@ const itemClass = computed(() => cn(
           :class="cn(itemClass, 'outline-none focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]')"
         >
           <span class="truncate"><slot /></span>
-          <HugeiconsIcon :icon="ArrowDown01Icon" :size="12" class="ml-1 shrink-0" />
+          <ChevronDown :size="12" class="ml-1 shrink-0" />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
@@ -79,9 +78,8 @@ const itemClass = computed(() => cn(
       )"
     >
       <span class="truncate"><slot /></span>
-      <HugeiconsIcon
+      <ChevronDown
         v-if="isMenu"
-        :icon="ArrowDown01Icon"
         :size="12"
         class="ml-1 shrink-0"
       />

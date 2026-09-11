@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { SwitchSize } from './context'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { switchKey } from './context'
+import { computed, provide, ref, useId } from 'vue'
 
 const props = withDefaults(defineProps<{
   name?: string

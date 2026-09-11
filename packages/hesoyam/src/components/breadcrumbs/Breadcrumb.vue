@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { BreadcrumbType } from './context'
 import { computed, provide } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { breadcrumbContextKey } from './context'
 
 const props = withDefaults(defineProps<{

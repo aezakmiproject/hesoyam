@@ -1,0 +1,260 @@
+/**
+ * Hesoyam design tokens.
+ *
+ * Import this from a Tailwind CSS v4 entry stylesheet, after `@import "tailwindcss"`:
+ *
+ *   @import "tailwindcss";
+ *   @import "@aezakmiproject/hesoyam/theme.css";
+ *
+ * The `@source` rules below let Tailwind scan the shipped components, which are
+ * distributed as source and would otherwise be skipped inside node_modules.
+ */
+
+@import "tw-animate-css";
+
+@source "../components/**/*.vue";
+@source "../components/**/*.ts";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme static {
+  --font-sans: 'Geologica', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Geologica', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-weight-normal: 300;
+}
+
+@theme {
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+:root {
+  --ds-background-100: #ffffff;
+  --ds-background-200: #fafafa;
+  --ds-icon-tile-macos-fill:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(180deg, #f5f5f7 0%, #d1d1d6 100%);
+  --ds-gray-100: #f2f2f2;
+  --ds-gray-200: #ebebeb;
+  --ds-gray-300: #e6e6e6;
+  --ds-gray-400: #e0e0e0;
+  --ds-gray-500: #c9c9c9;
+  --ds-gray-600: #8f8f8f;
+  --ds-gray-700: #7d7d7d;
+  --ds-gray-800: #666666;
+  --ds-gray-900: #444444;
+  --ds-gray-1000: #171717;
+  --ds-gray-alpha-100: #0000000a;
+  --ds-gray-alpha-200: #0000000f;
+  --ds-gray-alpha-300: #00000017;
+  --ds-gray-alpha-400: #00000024;
+  --ds-gray-alpha-500: #0000003d;
+  --ds-blue-100: #eaf4ff;
+  --ds-blue-200: #dcebff;
+  --ds-blue-300: #c9e0ff;
+  --ds-blue-400: #b5d4ff;
+  --ds-blue-700: #0070f3;
+  --ds-blue-900: #0068d6;
+  --ds-blue-1000: #0025ad;
+  --ds-red-100: #ffeaea;
+  --ds-red-200: #ffd6d6;
+  --ds-red-400: #f7c1c1;
+  --ds-red-700: #e5484d;
+  --ds-red-900: #d93036;
+  --ds-red-1000: #8b1e21;
+  --ds-amber-100: #fff4d5;
+  --ds-amber-200: #ffe8b0;
+  --ds-amber-400: #ffd36e;
+  --ds-amber-700: #ffb224;
+  --ds-amber-900: #b26205;
+  --ds-amber-1000: #4e2009;
+  --ds-green-100: #e5f5e9;
+  --ds-green-200: #d4edda;
+  --ds-green-400: #9ad8a8;
+  --ds-green-700: #46a758;
+  --ds-green-900: #218358;
+  --ds-green-1000: #1a3d24;
+  --ds-teal-100: #defffb;
+  --ds-teal-200: #c9faf3;
+  --ds-teal-400: #7ee0d2;
+  --ds-teal-700: #12a594;
+  --ds-teal-900: #0f7b70;
+  --ds-teal-1000: #003f34;
+  --ds-purple-100: #faf0ff;
+  --ds-purple-200: #f2d9ff;
+  --ds-purple-400: #e0b8ff;
+  --ds-purple-700: #8e4ec6;
+  --ds-purple-900: #7d00cc;
+  --ds-purple-1000: #2f004e;
+  --ds-pink-100: #ffe8f6;
+  --ds-pink-200: #ffd3e8;
+  --ds-pink-300: #ffc2dc;
+  --ds-pink-400: #ffadca;
+  --ds-pink-500: #f97ea7;
+  --ds-pink-600: #f3538a;
+  --ds-pink-700: #e93d82;
+  --ds-pink-800: #e4106e;
+  --ds-pink-900: #c41562;
+  --ds-pink-1000: #460523;
+  --ds-success: var(--ds-green-700);
+  --ds-error: var(--ds-red-700);
+  --ds-warning: var(--ds-amber-700);
+  --ds-highlight-pink: var(--ds-pink-700);
+  --ds-syntax-comment: #8f8f8f;
+  --ds-syntax-keyword: #7d00cc;
+  --ds-syntax-string: #1a7f37;
+  --ds-syntax-number: #0550ae;
+  --ds-syntax-function: #8250df;
+  --ds-focus: #006efe;
+}
+
+.dark {
+  --ds-background-100: #000000;
+  --ds-background-200: #000000;
+  --ds-icon-tile-macos-fill: linear-gradient(135deg, #1E1E1E 0%, #141313 100%);
+  --ds-gray-100: #1a1a1a;
+  --ds-gray-200: #1f1f1f;
+  --ds-gray-300: #292929;
+  --ds-gray-400: #2e2e2e;
+  --ds-gray-500: #454545;
+  --ds-gray-600: #878787;
+  --ds-gray-700: #8f8f8f;
+  --ds-gray-800: #7d7d7d;
+  --ds-gray-900: #a0a0a0;
+  --ds-gray-1000: #ededed;
+  --ds-gray-alpha-100: #ffffff12;
+  --ds-gray-alpha-200: #ffffff17;
+  --ds-gray-alpha-300: #ffffff21;
+  --ds-gray-alpha-400: #ffffff24;
+  --ds-gray-alpha-500: #ffffff3d;
+  --ds-blue-100: #0d1b2e;
+  --ds-blue-200: #10253d;
+  --ds-blue-300: #0f3058;
+  --ds-blue-400: #1a3a5c;
+  --ds-blue-700: #0070f3;
+  --ds-blue-900: #52a8ff;
+  --ds-blue-1000: #82c0ff;
+  --ds-red-100: #2a1214;
+  --ds-red-200: #3d1619;
+  --ds-red-400: #4d1f24;
+  --ds-red-700: #e5484d;
+  --ds-red-900: #ff6369;
+  --ds-red-1000: #ff898e;
+  --ds-amber-100: #27180a;
+  --ds-amber-200: #331a00;
+  --ds-amber-400: #4d350c;
+  --ds-amber-700: #ffb224;
+  --ds-amber-900: #ffbd31;
+  --ds-amber-1000: #ffca46;
+  --ds-green-100: #0b2212;
+  --ds-green-200: #0f2d1a;
+  --ds-green-400: #1a3d28;
+  --ds-green-700: #46a758;
+  --ds-green-900: #62c073;
+  --ds-green-1000: #6ece7f;
+  --ds-teal-100: #041f1a;
+  --ds-teal-200: #062824;
+  --ds-teal-400: #0c4a42;
+  --ds-teal-700: #12a594;
+  --ds-teal-900: #0d9b8a;
+  --ds-teal-1000: #cbfff5;
+  --ds-purple-100: #211528;
+  --ds-purple-200: #2a1836;
+  --ds-purple-400: #4c2a69;
+  --ds-purple-700: #8e4ec6;
+  --ds-purple-900: #c472fb;
+  --ds-purple-1000: #fbecff;
+  --ds-pink-100: #28151d;
+  --ds-pink-200: #351520;
+  --ds-pink-300: #4a1830;
+  --ds-pink-400: #5d0c34;
+  --ds-pink-500: #76063f;
+  --ds-pink-600: #ba0056;
+  --ds-pink-700: #e93d82;
+  --ds-pink-800: #e7006d;
+  --ds-pink-900: #ff4d8d;
+  --ds-pink-1000: #ffe9f4;
+  --ds-success: var(--ds-green-700);
+  --ds-error: var(--ds-red-700);
+  --ds-warning: var(--ds-amber-700);
+  --ds-highlight-pink: var(--ds-pink-700);
+  --ds-syntax-comment: #6b6b6b;
+  --ds-syntax-keyword: #c586c0;
+  --ds-syntax-string: #7dcea0;
+  --ds-syntax-number: #79b8ff;
+  --ds-syntax-function: #9cdcfe;
+  --ds-focus: #47a8ff;
+}
+
+:disabled,
+[aria-disabled="true"],
+[data-disabled] {
+  cursor: not-allowed;
+}
+
+:disabled *,
+[aria-disabled="true"] *,
+[data-disabled] * {
+  cursor: not-allowed;
+}
+
+.ds-icon-tile {
+  background-image: var(--icon-tile-fill);
+  color: #fff;
+}
+
+.ds-icon-tile[data-theme-sync] {
+  background-image: var(--ds-icon-tile-macos-fill);
+  color: var(--icon-tile-source);
+}
+
+.ds-icon-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background:
+    linear-gradient(313.09deg, rgba(255, 255, 255, 0) 49.94%, rgba(255, 255, 255, 0.6) 100%),
+    linear-gradient(132.96deg, rgba(255, 255, 255, 0) 50.06%, rgba(255, 255, 255, 0.6) 100%);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+
+.dark .ds-icon-tile[data-theme-sync]::after {
+  background:
+    linear-gradient(313.09deg, rgba(255, 255, 255, 0) 49.94%, rgba(255, 255, 255, 0.2) 100%),
+    linear-gradient(132.96deg, rgba(255, 255, 255, 0) 50.06%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+@keyframes ds-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes ds-spinner-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ds-loading-dots {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-skeleton-animated,
+  .ds-spinner-animated,
+  .ds-loading-dot {
+    animation: none !important;
+  }
+}

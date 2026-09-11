@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { isVNode } from 'vue'
-import { cn } from '@/lib/utils'
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
+import { cn } from '../../lib/utils'
+import { DropdownMenuItem } from '../dropdown-menu'
 
 export interface SplitButtonMenuItemProps {
   onClick?: (event: MouseEvent) => void

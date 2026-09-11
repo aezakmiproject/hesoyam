@@ -1,8 +1,9 @@
 import { readonly, ref } from 'vue'
+import { isClient } from '../../lib/env'
 
 export type Theme = 'light' | 'dark' | 'system'
 
-const STORAGE_KEY = 'geist-theme'
+const STORAGE_KEY = 'hesoyam-theme'
 
 const theme = ref<Theme>('system')
 const resolvedTheme = ref<'light' | 'dark'>('dark')
@@ -27,7 +28,7 @@ function onSystemChange() {
 }
 
 export function initTheme() {
-  if (!import.meta.client || initialized) return
+  if (!isClient || initialized) return
   initialized = true
 
   const stored = localStorage.getItem(STORAGE_KEY)
@@ -46,14 +47,14 @@ export function initTheme() {
 
 export function setTheme(next: Theme) {
   theme.value = next
-  if (import.meta.client) {
+  if (isClient) {
     localStorage.setItem(STORAGE_KEY, next)
     applyTheme(next)
   }
 }
 
 export function useTheme() {
-  if (import.meta.client) initTheme()
+  if (isClient) initTheme()
 
   return {
     theme: readonly(theme),

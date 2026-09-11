@@ -1,0 +1,89 @@
+{
+  "name": "@aezakmiproject/hesoyam",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Hesoyam design system — Vue 3 components distributed as Tailwind CSS v4 source, for Vue and Nuxt",
+  "license": "MIT",
+  "author": "Aezakmi Project",
+  "homepage": "https://github.com/aezakmiproject/hesoyam#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aezakmiproject/hesoyam.git",
+    "directory": "packages/hesoyam"
+  },
+  "bugs": {
+    "url": "https://github.com/aezakmiproject/hesoyam/issues"
+  },
+  "keywords": [
+    "vue",
+    "nuxt",
+    "design-system",
+    "components",
+    "ui",
+    "tailwindcss",
+    "reka-ui",
+    "hesoyam"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./theme.css": "./src/styles/theme.css",
+    "./nuxt": {
+      "types": "./src/nuxt.ts",
+      "import": "./src/nuxt.ts"
+    },
+    "./resolver": {
+      "types": "./src/resolver.d.ts",
+      "import": "./src/resolver.js"
+    },
+    "./components/*": {
+      "types": "./src/components/*/index.ts",
+      "import": "./src/components/*/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "!src/components/HESOYAM.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.13.0 || ^4.0.0",
+    "@shikijs/langs": "^4.4.3",
+    "@vueuse/core": "^14.4.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "shiki": "^4.4.3",
+    "tailwind-merge": "^3.6.0",
+    "tw-animate-css": "^1.4.0"
+  },
+  "peerDependencies": {
+    "@lucide/vue": "^1.0.0",
+    "reka-ui": "^2.10.0",
+    "tailwindcss": "^4.0.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@lucide/vue": "^1.44.0",
+    "reka-ui": "^2.10.4",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0",
+    "vue": "^3.5.42",
+    "vue-tsc": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

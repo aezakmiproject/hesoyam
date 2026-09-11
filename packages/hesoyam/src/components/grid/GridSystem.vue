@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { computed, provide, ref } from 'vue'
 import { useResizeObserver } from '@vueuse/core'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import {
   gridSystemKey,
   useViewportBreakpoint,

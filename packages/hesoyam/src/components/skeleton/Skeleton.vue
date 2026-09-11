@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CSSProperties, HTMLAttributes } from 'vue'
 import { computed, useSlots } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 const props = withDefaults(defineProps<{
   class?: HTMLAttributes['class']

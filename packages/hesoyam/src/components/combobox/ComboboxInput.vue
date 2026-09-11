@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { ArrowDown01Icon, Cancel01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { ChevronDown, X } from '@lucide/vue'
 import { computed, inject } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { COMBOBOX_KEY } from './context'
 
 const props = defineProps<{
@@ -115,17 +114,13 @@ function clear(event: MouseEvent) {
         class="pointer-events-auto flex size-5 items-center justify-center rounded-[4px] outline-none hover:text-[var(--ds-gray-1000)] focus-visible:ring-1 focus-visible:ring-[var(--ds-gray-1000)]"
         @mousedown="clear"
       >
-        <HugeiconsIcon
-          :icon="Cancel01Icon"
+        <X
           :size="iconSize"
-          color="currentColor"
           :stroke-width="1.75"
         />
       </button>
-      <HugeiconsIcon
-        :icon="ArrowDown01Icon"
+      <ChevronDown
         :size="iconSize"
-        color="currentColor"
         :stroke-width="1.75"
         :class="cn('transition-transform', ctx.open.value && 'rotate-180')"
       />

@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import type { MultiSelectAlign, MultiSelectContext, MultiSelectFocusTarget, MultiSelectRowApi } from './context'
 import { onClickOutside } from '@vueuse/core'
 import { computed, nextTick, provide, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { MULTI_SELECT_KEY } from './context'
 
 const props = defineProps<{

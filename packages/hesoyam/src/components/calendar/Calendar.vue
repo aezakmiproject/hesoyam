@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { CalendarPreset, DateValue, RangeValue } from './dates'
-import { ArrowLeft01Icon, ArrowRight01Icon, Calendar03Icon, Cancel01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, X } from '@lucide/vue'
 import { onClickOutside } from '@vueuse/core'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import {
   COMMON_TIMEZONES,
   addDays,
@@ -394,7 +393,7 @@ function onTriggerKeydown(event: KeyboardEvent) {
         @click="toggleOpen"
         @keydown="onTriggerKeydown"
       >
-        <HugeiconsIcon :icon="Calendar03Icon" :size="isSmall ? 14 : 16" class="shrink-0 text-[var(--ds-gray-900)]" />
+        <CalendarIcon :size="isSmall ? 14 : 16" class="shrink-0 text-[var(--ds-gray-900)]" />
         <span class="max-w-[220px] truncate">{{ triggerLabel }}</span>
       </button>
       <button
@@ -404,7 +403,7 @@ function onTriggerKeydown(event: KeyboardEvent) {
         class="mr-1 rounded-[4px] p-0.5 text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]"
         @click="clear"
       >
-        <HugeiconsIcon :icon="Cancel01Icon" :size="12" />
+        <X :size="12" />
       </button>
     </div>
 
@@ -463,7 +462,7 @@ function onTriggerKeydown(event: KeyboardEvent) {
             )"
             @click="shiftMonth(-1)"
           >
-            <HugeiconsIcon :icon="ArrowLeft01Icon" :size="14" />
+            <ChevronLeft :size="14" />
           </button>
           <div class="text-[13px] font-medium text-[var(--ds-gray-1000)]">
             {{ formatMonthYear(visibleMonth) }}
@@ -477,7 +476,7 @@ function onTriggerKeydown(event: KeyboardEvent) {
             )"
             @click="shiftMonth(1)"
           >
-            <HugeiconsIcon :icon="ArrowRight01Icon" :size="14" />
+            <ChevronRight :size="14" />
           </button>
         </div>
 
@@ -518,7 +517,7 @@ function onTriggerKeydown(event: KeyboardEvent) {
               'hover:bg-[var(--ds-gray-200)]',
               (isRangeStart(day) || isRangeEnd(day)) && 'hover:bg-[var(--ds-gray-1000)]',
               'focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]',
-              'disabled:pointer-events-none disabled:opacity-40',
+              'disabled:cursor-not-allowed disabled:opacity-40',
             )"
             @click="selectDay(day)"
             @mouseenter="hoverDay = day"

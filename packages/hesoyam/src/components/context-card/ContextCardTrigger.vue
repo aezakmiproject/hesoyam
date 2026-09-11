@@ -3,7 +3,7 @@ import type { AsTag } from 'reka-ui'
 import type { Component, HTMLAttributes } from 'vue'
 import { HoverCardRoot, HoverCardTrigger, Primitive } from 'reka-ui'
 import { computed, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import ContextCardContent from './ContextCardContent.vue'
 
 defineOptions({ inheritAttrs: false })

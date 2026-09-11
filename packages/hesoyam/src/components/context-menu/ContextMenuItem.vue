@@ -4,8 +4,8 @@ import type { Component, HTMLAttributes } from 'vue'
 import { reactiveOmit } from '@vueuse/core'
 import { ContextMenuItem, useForwardProps } from 'reka-ui'
 import { computed } from 'vue'
-import { menuItemClass } from '@/components/ui/menu'
-import { cn } from '@/lib/utils'
+import { menuItemClass } from '../menu'
+import { cn } from '../../lib/utils'
 
 const props = defineProps<ContextMenuItemProps & {
   class?: HTMLAttributes['class']

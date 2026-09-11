@@ -1,0 +1,13 @@
+{
+  "name": "hesoyam-workspace",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "dev": "pnpm --filter hesoyam-docs dev",
+    "build": "pnpm --filter hesoyam-docs build",
+    "generate": "pnpm --filter hesoyam-docs generate",
+    "preview": "pnpm --filter hesoyam-docs preview",
+    "typecheck": "pnpm --filter hesoyam-docs typecheck"
+  }
+}

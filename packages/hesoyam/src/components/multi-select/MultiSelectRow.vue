@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Tick02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { Check } from '@lucide/vue'
 import { computed, inject, onBeforeUnmount, onMounted, ref, useId } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { MULTI_SELECT_KEY } from './context'
 
 const props = withDefaults(defineProps<{
@@ -118,11 +117,9 @@ onBeforeUnmount(() => {
       @keydown.enter.prevent="toggle"
       @keydown.space.prevent="toggle"
     >
-      <HugeiconsIcon
+      <Check
         v-if="checked"
-        :icon="Tick02Icon"
         :size="12"
-        color="currentColor"
         :stroke-width="2"
       />
     </button>

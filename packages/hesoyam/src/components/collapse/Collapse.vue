@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { ChevronDown } from '@lucide/vue'
 import { computed, inject, onBeforeUnmount, onMounted, ref, useId } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { collapseGroupKey } from './context'
 
 const props = withDefaults(defineProps<{
@@ -76,7 +75,7 @@ function onToggle() {
       :aria-controls="panelId"
       :class="cn(
         'flex w-full items-center justify-between gap-3 text-left text-[var(--ds-gray-1000)] outline-none',
-        'focus-visible:ring-ring/40 focus-visible:ring-2',
+        'focus-visible:ring-[var(--ds-focus)]/40 focus-visible:ring-2',
         size === 'small' ? 'py-2 text-[13px] font-medium' : 'py-3 text-sm font-medium',
       )"
       @click="onToggle"
@@ -84,8 +83,7 @@ function onToggle() {
       <span class="min-w-0">
         <slot name="title">{{ title }}</slot>
       </span>
-      <HugeiconsIcon
-        :icon="ArrowDown01Icon"
+      <ChevronDown
         :size="size === 'small' ? 14 : 16"
         class="shrink-0 text-[var(--ds-gray-900)] transition-transform duration-200"
         :class="open && 'rotate-180'"

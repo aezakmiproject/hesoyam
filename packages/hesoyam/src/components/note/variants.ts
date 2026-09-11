@@ -23,7 +23,7 @@ export const noteVariants = cva(
         false: 'bg-transparent',
       },
       disabled: {
-        true: 'pointer-events-none opacity-50',
+        true: 'cursor-not-allowed opacity-50',
         false: '',
       },
     },

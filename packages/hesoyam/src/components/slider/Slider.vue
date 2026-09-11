@@ -6,7 +6,8 @@ import {
   SliderThumb,
   SliderTrack,
 } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
+import { computed, ref, useId } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -98,7 +99,7 @@ function onInputAt(index: number, raw: string) {
   setValue(next)
 }
 
-const inputClass = 'h-8 w-14 shrink-0 rounded-md border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] px-2 text-center text-[13px] tabular-nums text-[var(--ds-gray-1000)] outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40 disabled:cursor-not-allowed disabled:opacity-50'
+const inputClass = 'h-8 w-14 shrink-0 rounded-md border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] px-2 text-center text-[13px] tabular-nums text-[var(--ds-gray-1000)] outline-none focus-visible:border-[var(--ds-focus)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40 disabled:cursor-not-allowed disabled:opacity-50'
 </script>
 
 <template>
@@ -168,7 +169,7 @@ const inputClass = 'h-8 w-14 shrink-0 rounded-md border border-[var(--ds-gray-al
           v-for="(_, index) in thumbs"
           :key="index"
           data-slot="slider-thumb"
-          class="block size-4 rounded-full border border-[var(--ds-gray-1000)] bg-[var(--ds-gray-1000)] shadow-sm transition-colors focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none disabled:pointer-events-none"
+          class="block size-4 rounded-full border border-[var(--ds-gray-1000)] bg-[var(--ds-gray-1000)] shadow-sm transition-colors focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ds-background-100)] focus-visible:outline-none disabled:cursor-not-allowed"
         />
       </SliderRoot>
       <input

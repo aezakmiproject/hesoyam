@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Toast from './Toast.vue'
 import { toasts } from './useToasts'
+import { computed } from 'vue'
 
 const items = computed(() => toasts.value)
 </script>

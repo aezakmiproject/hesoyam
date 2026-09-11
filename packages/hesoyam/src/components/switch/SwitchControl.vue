@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
 import type { SwitchSize } from './context'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { switchKey } from './context'
+import { computed, inject, onMounted, useId, useSlots } from 'vue'
 
 defineOptions({ inheritAttrs: false })
 
@@ -67,7 +68,7 @@ function onInputChange() {
       isChecked
         ? 'bg-[var(--ds-background-100)] text-[var(--ds-gray-1000)] shadow-sm'
         : 'text-[var(--ds-gray-900)]',
-      'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring/40',
+      'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[var(--ds-focus)]/40',
       isDisabled ? 'cursor-not-allowed' : 'cursor-pointer',
       props.class,
     )"

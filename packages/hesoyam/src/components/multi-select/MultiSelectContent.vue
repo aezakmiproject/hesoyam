@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue'
 import type { MultiSelectAlign } from './context'
 import { useEventListener } from '@vueuse/core'
 import { computed, inject, nextTick, onMounted, ref, watch } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { MULTI_SELECT_KEY } from './context'
 
 const props = withDefaults(defineProps<{

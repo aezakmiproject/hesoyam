@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { AvatarVariants } from '.'
-import { UserIcon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import { User } from '@lucide/vue'
 import { AvatarRoot } from 'reka-ui'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { avatarVariants, resolveAvatarSize, vercelAvatarSrc } from '.'
 import AvatarFallback from './AvatarFallback.vue'
 import AvatarImage from './AvatarImage.vue'
@@ -78,9 +77,8 @@ const iconSize = computed(() => Math.max(12, Math.round(numericSize.value * 0.45
           class="font-medium uppercase text-[var(--ds-gray-1000)]"
           :style="{ fontSize: `${letterSize}px` }"
         >{{ letter }}</span>
-        <HugeiconsIcon
+        <User
           v-else
-          :icon="UserIcon"
           :size="iconSize"
           class="text-[var(--ds-gray-900)]"
         />

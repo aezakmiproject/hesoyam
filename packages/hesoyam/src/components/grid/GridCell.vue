@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { resolveResponsive, toGridLine, useGridSystem, type Responsive } from './utils'
 
 const props = defineProps<{
@@ -23,6 +23,14 @@ const gridRow = computed(() => {
     return undefined
   return toGridLine(resolveResponsive(props.row, system.breakpoint.value, 1))
 })
+const padding = computed(() => {
+  const bp = system.breakpoint.value
+  if (bp === 'lg')
+    return '48px'
+  if (bp === 'md')
+    return '40px'
+  return '24px'
+})
 </script>
 
 <template>
@@ -30,7 +38,7 @@ const gridRow = computed(() => {
     data-slot="grid-cell"
     :data-solid="solid ? '' : undefined"
     :class="cn(
-      'relative z-[1] flex min-h-0 min-w-0 items-center justify-center p-4 text-[13px] text-[var(--ds-gray-1000)]',
+      'relative z-[2] flex min-w-0 flex-col items-stretch justify-center text-center text-[13px] text-[var(--ds-gray-1000)]',
       solid && 'bg-[var(--ds-background-100)]',
       system.debug.value && 'outline outline-1 outline-[var(--ds-blue-700)]/30',
       props.class,
@@ -38,6 +46,9 @@ const gridRow = computed(() => {
     :style="{
       gridColumn,
       gridRow,
+      padding,
+      marginRight: 'var(--guide-width, 1px)',
+      marginBottom: 'var(--guide-width, 1px)',
     }"
   >
     <slot />

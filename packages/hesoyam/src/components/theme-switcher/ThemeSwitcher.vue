@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { Theme } from './useTheme'
-import { ComputerIcon, Moon02Icon, Sun03Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/vue'
-import { cn } from '@/lib/utils'
+import { Monitor, Moon, Sun } from '@lucide/vue'
+import { cn } from '../../lib/utils'
 import { useTheme } from './useTheme'
+import { computed } from 'vue'
 
 const props = defineProps<{
   small?: boolean
@@ -15,10 +15,10 @@ const props = defineProps<{
 
 const { theme, setTheme } = useTheme()
 
-const options: { value: Theme, label: string, icon: typeof Sun03Icon }[] = [
-  { value: 'light', label: 'Light', icon: Sun03Icon },
-  { value: 'system', label: 'System', icon: ComputerIcon },
-  { value: 'dark', label: 'Dark', icon: Moon02Icon },
+const options: { value: Theme, label: string, icon: typeof Sun }[] = [
+  { value: 'light', label: 'Light', icon: Sun },
+  { value: 'system', label: 'System', icon: Monitor },
+  { value: 'dark', label: 'Dark', icon: Moon },
 ]
 
 const selectedIndex = computed(() => {
@@ -43,9 +43,11 @@ function select(next: Theme) {
     data-slot="theme-switcher"
     :data-small="small ? '' : undefined"
     :data-disabled="isDisabled ? '' : undefined"
+    :aria-disabled="isDisabled || undefined"
+    :inert="isDisabled ? true : undefined"
     :class="cn(
       'relative inline-flex items-stretch rounded-lg border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-gray-100)] p-0.5',
-      isDisabled && 'pointer-events-none opacity-50',
+      isDisabled && 'cursor-not-allowed opacity-50',
       props.class,
     )"
   >
@@ -74,10 +76,8 @@ function select(next: Theme) {
       )"
       @click="select(option.value)"
     >
-      <HugeiconsIcon
-        :icon="option.icon"
+      <component :is="option.icon"
         :size="small ? 14 : 16"
-        color="currentColor"
         :stroke-width="1.75"
       />
       <span>{{ option.label }}</span>

@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import type { CollapseGroupContext } from './context'
 import { computed, provide, ref } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { collapseGroupKey } from './context'
 
 const props = defineProps<{

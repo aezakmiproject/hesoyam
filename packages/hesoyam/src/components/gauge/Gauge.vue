@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 
 export type GaugeSize = 'tiny' | 'small' | 'medium' | 'large'
 export type GaugeArcPriority = 'primary' | 'equal'

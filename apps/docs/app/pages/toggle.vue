@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SquareLock02Icon, SquareUnlock02Icon } from '@hugeicons/core-free-icons'
-import { Toggle } from '@/components/ui/toggle'
+import { Toggle } from '@aezakmiproject/hesoyam'
+import { Lock, LockOpen } from '@lucide/vue'
 
 const firewall = ref(false)
 const protection = ref(true)
@@ -18,10 +18,10 @@ const disabledCode = `<Toggle disabled aria-label="Password Protection"></Toggle
 
 const colorCode = `<Toggle v-model="customColor" color="amber">
   <template #icon-unchecked>
-    <Icon :icon="SquareUnlock02Icon" :size="8" />
+    <Icon :icon="LockOpen" :size="8" />
   </template>
   <template #icon-checked>
-    <Icon :icon="SquareLock02Icon" :size="8" />
+    <Icon :icon="Lock" :size="8" />
   </template>
 </Toggle>`
 
@@ -73,10 +73,10 @@ const labelCode = `<Toggle v-model="firewall">Password Protection</Toggle>
             :aria-label="$t('pages.toggle.ariaMaintenanceWindow')"
           >
             <template #icon-unchecked>
-              <Icon :icon="SquareUnlock02Icon" :size="8" />
+              <Icon :icon="LockOpen" :size="8" />
             </template>
             <template #icon-checked>
-              <Icon :icon="SquareLock02Icon" :size="8" />
+              <Icon :icon="Lock" :size="8" />
             </template>
           </Toggle>
           <Toggle
@@ -85,10 +85,10 @@ const labelCode = `<Toggle v-model="firewall">Password Protection</Toggle>
             :aria-label="$t('pages.toggle.ariaKillSwitch')"
           >
             <template #icon-unchecked>
-              <Icon :icon="SquareUnlock02Icon" :size="8" />
+              <Icon :icon="LockOpen" :size="8" />
             </template>
             <template #icon-checked>
-              <Icon :icon="SquareLock02Icon" :size="8" />
+              <Icon :icon="Lock" :size="8" />
             </template>
           </Toggle>
           <Toggle
@@ -98,10 +98,10 @@ const labelCode = `<Toggle v-model="firewall">Password Protection</Toggle>
             :aria-label="$t('pages.toggle.ariaMaintenanceWindow')"
           >
             <template #icon-unchecked>
-              <Icon :icon="SquareUnlock02Icon" :size="12" />
+              <Icon :icon="LockOpen" :size="12" />
             </template>
             <template #icon-checked>
-              <Icon :icon="SquareLock02Icon" :size="12" />
+              <Icon :icon="Lock" :size="12" />
             </template>
           </Toggle>
         </div>

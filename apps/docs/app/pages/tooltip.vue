@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Kbd } from '@/components/ui/keyboard-input'
-import { Tooltip } from '@/components/ui/tooltip'
+import { Badge, Button, Kbd, Tooltip } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

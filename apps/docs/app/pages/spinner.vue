@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Spinner } from '@/components/ui/spinner'
+import { Spinner } from '@aezakmiproject/hesoyam'
 
 const sizes = ['sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'] as const
 

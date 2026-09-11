@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Button, Skeleton } from '@aezakmiproject/hesoyam'
 
 const widthCode = '<Skeleton :width="160" />'
 const boxHeightCode = '<Skeleton :width="160" :box-height="42" />'

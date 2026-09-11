@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ArrowUp01Icon, Globe02Icon } from '@hugeicons/core-free-icons'
-import { Select } from '@/components/ui/select'
+import { Select } from '@aezakmiproject/hesoyam'
+import { ArrowUp, Globe } from '@lucide/vue'
 
 const fruit = ref('')
 const fruitDefault = ref('banana')
@@ -46,37 +46,37 @@ const fruitDefault = ref('banana')
     <DocsSection :title="$t('pages.select.prefixAndSuffix')">
       <DocsPreview :code="`<Select placeholder='Region' size='small' aria-label='Region'>
   <template #prefix>
-    <Icon :icon='Globe02Icon' :size='14' />
+    <Icon :icon='Globe' :size='14' />
   </template>
   <option value='sfo'>San Francisco</option>
 </Select>`">
         <div class="grid w-full max-w-xl gap-3 sm:grid-cols-3">
           <Select :placeholder="$t('pages.select.placeholderRegion')" size="small" :aria-label="$t('pages.select.ariaSmallRegion')">
             <template #prefix>
-              <Icon :icon="Globe02Icon" :size="14" />
+              <Icon :icon="Globe" :size="14" />
             </template>
             <template #suffix>
-              <Icon :icon="ArrowUp01Icon" :size="14" />
+              <Icon :icon="ArrowUp" :size="14" />
             </template>
             <option value="sfo">{{ $t('pages.select.regionSanFrancisco') }}</option>
             <option value="iad">{{ $t('pages.select.regionWashington') }}</option>
           </Select>
           <Select :placeholder="$t('pages.select.placeholderRegion')" size="medium" :aria-label="$t('pages.select.ariaMediumRegion')">
             <template #prefix>
-              <Icon :icon="Globe02Icon" :size="16" />
+              <Icon :icon="Globe" :size="16" />
             </template>
             <template #suffix>
-              <Icon :icon="ArrowUp01Icon" :size="16" />
+              <Icon :icon="ArrowUp" :size="16" />
             </template>
             <option value="sfo">{{ $t('pages.select.regionSanFrancisco') }}</option>
             <option value="iad">{{ $t('pages.select.regionWashington') }}</option>
           </Select>
           <Select :placeholder="$t('pages.select.placeholderRegion')" size="large" :aria-label="$t('pages.select.ariaLargeRegion')">
             <template #prefix>
-              <Icon :icon="Globe02Icon" :size="18" />
+              <Icon :icon="Globe" :size="18" />
             </template>
             <template #suffix>
-              <Icon :icon="ArrowUp01Icon" :size="18" />
+              <Icon :icon="ArrowUp" :size="18" />
             </template>
             <option value="sfo">{{ $t('pages.select.regionSanFrancisco') }}</option>
             <option value="iad">{{ $t('pages.select.regionWashington') }}</option>

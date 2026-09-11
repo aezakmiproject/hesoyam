@@ -1,17 +1,5 @@
 <script setup lang="ts">
-import {
-  DisabledWall,
-  ErrorText,
-  Fieldset,
-  FieldsetContent,
-  FieldsetFooter,
-  FieldsetFooterAction,
-  FieldsetFooterActions,
-  FieldsetFooterStatus,
-  FieldsetSubtitle,
-  FieldsetTitle,
-  WarningText,
-} from '@/components/ui/fieldset'
+import { DisabledWall, ErrorText, Fieldset, FieldsetContent, FieldsetFooter, FieldsetFooterAction, FieldsetFooterActions, FieldsetFooterStatus, FieldsetSubtitle, FieldsetTitle, WarningText } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Fieldset>
   <FieldsetContent>

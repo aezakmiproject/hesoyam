@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SparklesIcon } from '@hugeicons/core-free-icons'
-import { SearchInput } from '@/components/ui/search-input'
+import { SearchInput } from '@aezakmiproject/hesoyam'
+import { Sparkles } from '@lucide/vue'
 
 const query = ref('')
 const cmdkQuery = ref('')
@@ -108,7 +108,7 @@ const prefixQuery = ref('')
     <DocsSection :title="$t('pages.search-input.customPrefix')" :description="$t('pages.search-input.customPrefixHint')">
       <DocsPreview :code="`<SearchInput v-model='prefixQuery' aria-label='Ask' placeholder='Ask the assistant…'>
   <template #prefix>
-    <Icon :icon='SparklesIcon' :size='16' />
+    <Icon :icon='Sparkles' :size='16' />
   </template>
 </SearchInput>`">
         <SearchInput
@@ -118,7 +118,7 @@ const prefixQuery = ref('')
           :placeholder="$t('pages.search-input.placeholderAskAssistant')"
         >
           <template #prefix>
-            <Icon :icon="SparklesIcon" :size="16" />
+            <Icon :icon="Sparkles" :size="16" />
           </template>
         </SearchInput>
       </DocsPreview>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Banner } from '@/components/ui/banner'
+import { Banner } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Banner :button="{ href: '/', content: 'Read more' }" class="p-4">
   <b>Big News</b> – New components finally available

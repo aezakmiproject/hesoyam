@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { GridViewIcon, ListViewIcon } from '@hugeicons/core-free-icons'
-import { Switch, SwitchControl } from '@/components/ui/switch'
-import { Tooltip } from '@/components/ui/tooltip'
+import { Switch, SwitchControl, Tooltip } from '@aezakmiproject/hesoyam'
+import { LayoutGrid, List } from '@lucide/vue'
 
 const view = ref('source')
 
@@ -36,12 +35,12 @@ const disabledCode = `<Switch name="view-disabled" disabled>
 const iconCode = `<Switch name="layout" size="small">
   <SwitchControl default-checked label="Grid" value="grid">
     <template #icon>
-      <Icon :icon="GridViewIcon" :size="14" />
+      <Icon :icon="LayoutGrid" :size="14" />
     </template>
   </SwitchControl>
   <SwitchControl label="List" value="list">
     <template #icon>
-      <Icon :icon="ListViewIcon" :size="14" />
+      <Icon :icon="List" :size="14" />
     </template>
   </SwitchControl>
 </Switch>`
@@ -50,14 +49,14 @@ const tooltipCode = `<Switch name="layout-tip" size="large">
   <Tooltip text="Grid" class="flex-1">
     <SwitchControl default-checked label="Grid" value="grid">
       <template #icon>
-        <Icon :icon="GridViewIcon" :size="16" />
+        <Icon :icon="LayoutGrid" :size="16" />
       </template>
     </SwitchControl>
   </Tooltip>
   <Tooltip text="List" class="flex-1">
     <SwitchControl label="List" value="list">
       <template #icon>
-        <Icon :icon="ListViewIcon" :size="16" />
+        <Icon :icon="List" :size="16" />
       </template>
     </SwitchControl>
   </Tooltip>
@@ -150,12 +149,12 @@ const controlledCode = `<Switch v-model="view" name="view-controlled">
           >
             <SwitchControl default-checked :label="$t('pages.switch.previewGrid')" value="grid">
               <template #icon>
-                <Icon :icon="GridViewIcon" :size="size === 'small' ? 14 : 16" />
+                <Icon :icon="LayoutGrid" :size="size === 'small' ? 14 : 16" />
               </template>
             </SwitchControl>
             <SwitchControl :label="$t('pages.switch.previewList')" value="list">
               <template #icon>
-                <Icon :icon="ListViewIcon" :size="size === 'small' ? 14 : 16" />
+                <Icon :icon="List" :size="size === 'small' ? 14 : 16" />
               </template>
             </SwitchControl>
           </Switch>
@@ -169,14 +168,14 @@ const controlledCode = `<Switch v-model="view" name="view-controlled">
           <Tooltip :text="$t('pages.switch.previewGrid')" class="flex-1">
             <SwitchControl default-checked :label="$t('pages.switch.previewGrid')" value="grid">
               <template #icon>
-                <Icon :icon="GridViewIcon" :size="16" />
+                <Icon :icon="LayoutGrid" :size="16" />
               </template>
             </SwitchControl>
           </Tooltip>
           <Tooltip :text="$t('pages.switch.previewList')" class="flex-1">
             <SwitchControl :label="$t('pages.switch.previewList')" value="list">
               <template #icon>
-                <Icon :icon="ListViewIcon" :size="16" />
+                <Icon :icon="List" :size="16" />
               </template>
             </SwitchControl>
           </Tooltip>

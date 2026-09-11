@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LoadingDots } from '@/components/ui/loading-dots'
+import { LoadingDots } from '@aezakmiproject/hesoyam'
 
 const sizesCode = `<LoadingDots size="sm" />
 <LoadingDots size="md" />

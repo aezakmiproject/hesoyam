@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import type { IconArray } from '@hugeicons/vue'
-import { HugeiconsIcon } from '@hugeicons/vue'
+import type { Component } from 'vue'
 
 withDefaults(defineProps<{
-  icon: IconArray
+  icon: Component
   size?: number
+  strokeWidth?: number
 }>(), {
   size: 16,
+  strokeWidth: 1.75,
 })
 </script>
 
 <template>
-  <HugeiconsIcon
-    :icon="icon"
+  <component
+    :is="icon"
     :size="size"
-    color="currentColor"
-    :stroke-width="1.75"
+    :stroke-width="strokeWidth"
   />
 </template>

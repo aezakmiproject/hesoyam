@@ -1,12 +1,6 @@
 <script setup lang="ts">
-import { Settings02Icon } from '@hugeicons/core-free-icons'
-import { Button } from '@/components/ui/button'
-import {
-  Note,
-  NoteAction,
-  NoteContent,
-  NoteLabel,
-} from '@/components/ui/note'
+import { Button, Note, NoteAction, NoteContent, NoteLabel } from '@aezakmiproject/hesoyam'
+import { Settings } from '@lucide/vue'
 
 const { t } = useI18n()
 
@@ -47,7 +41,7 @@ const actionCode = `<Note>
   </NoteAction>
 </Note>`
 
-const iconCode = `<Note :icon="Settings02Icon">Open project settings to change the region.</Note>
+const iconCode = `<Note :icon="Settings">Open project settings to change the region.</Note>
 <Note :icon="null">No icon. Use this in a packed sidebar row.</Note>`
 
 const disabledCode = `<Note disabled fill>This hint is not available on the current plan.</Note>`
@@ -151,7 +145,7 @@ const disabledCode = `<Note disabled fill>This hint is not available on the curr
     <DocsSection :title="$t('pages.note.icon')" :description="$t('pages.note.iconHint')">
       <DocsPreview :code="iconCode">
         <div class="flex w-full max-w-xl flex-col gap-3">
-          <Note :icon="Settings02Icon">
+          <Note :icon="Settings">
             {{ $t('pages.note.previewOpenSettings') }}
           </Note>
           <Note :icon="null">

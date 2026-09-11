@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Kbd } from '@/components/ui/keyboard-input'
+import { Kbd } from '@aezakmiproject/hesoyam'
 
 const modifiersCode = `<Kbd meta />
 <Kbd shift />

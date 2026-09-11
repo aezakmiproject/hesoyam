@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { CalendarPreset, DateValue, RangeValue } from '@/components/ui/calendar'
-import { Calendar } from '@/components/ui/calendar'
+import type { CalendarPreset, DateValue, RangeValue } from '@aezakmiproject/hesoyam'
+import { Calendar } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

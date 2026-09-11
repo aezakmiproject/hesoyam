@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Collapse, CollapseGroup } from '@/components/ui/collapse'
+import { Collapse, CollapseGroup } from '@aezakmiproject/hesoyam'
 
 const controlledOpen = ref(true)
 

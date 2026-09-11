@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Breadcrumb, BreadcrumbItem } from '@/components/ui/breadcrumbs'
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
+import { Breadcrumb, BreadcrumbItem, DropdownMenuItem } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Breadcrumb type="text">
   <BreadcrumbItem href="/">Home</BreadcrumbItem>

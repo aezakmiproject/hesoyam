@@ -49,7 +49,7 @@ ALL user-visible English:
 
 In script: `const { t } = useI18n()`.
 
-vue-i18n treats `@` as linked messages. Escape literals: `{'@hugeicons/vue'}`.
+vue-i18n treats `@` as linked messages. Escape literals: `{'@aezakmiproject/hesoyam'}`.
 
 Brand name is **Hesoyam**. Russian: technical, concise, same register as existing `i18n/locales/ru.json`. Keep component names (Button, Avatar) in Latin. Translate descriptions and demo verbs.
 

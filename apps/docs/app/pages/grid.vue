@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Grid, GridCell, GridCross, GridSystem } from '@/components/ui/grid'
+import { Grid, GridCell, GridCross, GridSystem } from '@aezakmiproject/hesoyam'
 
 const emptyCode = `<GridSystem :guide-width="1" unstable_use-container>
   <Grid :columns="5" :rows="2" height="preserve-aspect-ratio" />
@@ -181,7 +181,7 @@ const debugCode = `<GridSystem debug :guide-width="1" unstable_use-container>
 
     <DocsSection :title="$t('pages.grid.hiddenGuides')" :description="$t('pages.grid.hiddenGuidesHint')">
       <DocsPreview :code="hideCode">
-        <div class="flex flex-col gap-6">
+        <div class="flex w-full flex-col gap-6">
           <GridSystem unstable_use-container>
             <Grid
               :columns="12"

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Radio, RadioGroup, RadioGroupItem, useRadio } from '@/components/ui/radio'
+import { Button, Radio, RadioGroup, RadioGroupItem, useRadio } from '@aezakmiproject/hesoyam'
 
 const plan = ref('hobby')
 const itemDisabled = ref('hobby')

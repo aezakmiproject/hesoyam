@@ -1,7 +1,6 @@
 <script setup lang="ts">
+import { Button, Toast, useToasts } from '@aezakmiproject/hesoyam'
 import { h } from 'vue'
-import { Button } from '@/components/ui/button'
-import { Toast, useToasts } from '@/components/ui/toast'
 
 const { t } = useI18n()
 const { message, success, warning, error } = useToasts()

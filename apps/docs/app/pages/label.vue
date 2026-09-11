@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Input, Label } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Label value="This is a label" />`
 

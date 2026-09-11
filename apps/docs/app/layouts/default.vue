@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Menu, MenuButton, MenuContainer, MenuLink, MenuSection } from '@/components/ui/menu'
-import { SearchInput } from '@/components/ui/search-input'
+import { IconTile, Menu, MenuButton, MenuContainer, MenuLink, MenuSection, SearchInput } from '@aezakmiproject/hesoyam'
+import DocsPagination from '~/components/docs/DocsPagination.vue'
 import { geistNav } from '~/utils/geist-docs'
 
 const { t } = useI18n()
@@ -56,7 +56,10 @@ useHead({
                     :key="item.href"
                     :href="item.href"
                   >
-                    {{ item.title }}
+                    <span class="inline-flex min-w-0 items-center gap-2">
+                      <IconTile :icon="item.icon" :variant="item.variant" theme-sync />
+                      <span class="truncate">{{ item.title }}</span>
+                    </span>
                   </MenuLink>
                 </MenuSection>
               </Menu>
@@ -79,6 +82,7 @@ useHead({
         <div class="[&>.space-y-12]:space-y-0 [&_ul]:text-[16px] [&_ul]:leading-6">
           <slot />
         </div>
+        <DocsPagination />
       </main>
     </div>
   </div>

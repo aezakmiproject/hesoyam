@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Video } from '@/components/ui/video'
+import { Video } from '@aezakmiproject/hesoyam'
 
 const src = 'https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4'
 const defaultCode = `<Video src="${src}" :width="480" :height="270" :lazy="false" />`

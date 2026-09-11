@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ShowMore } from '@/components/ui/show-more'
+import { ShowMore } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

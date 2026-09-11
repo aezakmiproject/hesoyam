@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Slider } from '@/components/ui/slider'
+import { Slider } from '@aezakmiproject/hesoyam'
 
 const volume = ref([40])
 const unlabeled = ref([50])

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { Analytics01Icon, Folder01Icon, Search01Icon } from '@hugeicons/core-free-icons'
-import { Button, ButtonLink } from '@/components/ui/button'
-import { EmptyState, EmptyStateIcon } from '@/components/ui/empty-state'
+import { Button, ButtonLink, EmptyState, EmptyStateIcon } from '@aezakmiproject/hesoyam'
+import { ChartNoAxesColumn, Folder, Search } from '@lucide/vue'
 
 const blankCode = `<EmptyState
   title="No Deployments"
@@ -9,7 +8,7 @@ const blankCode = `<EmptyState
 >
   <template #icon>
     <EmptyStateIcon>
-      <Icon :icon="Analytics01Icon" :size="32" />
+      <Icon :icon="ChartNoAxesColumn" :size="32" />
     </EmptyStateIcon>
   </template>
 </EmptyState>`
@@ -20,7 +19,7 @@ const infoCode = `<EmptyState
 >
   <template #icon>
     <EmptyStateIcon>
-      <Icon :icon="Folder01Icon" :size="32" />
+      <Icon :icon="Folder" :size="32" />
     </EmptyStateIcon>
   </template>
   <Button size="small">Create Project</Button>
@@ -35,7 +34,7 @@ const filterCode = `<EmptyState
 >
   <template #icon>
     <EmptyStateIcon>
-      <Icon :icon="Search01Icon" :size="32" />
+      <Icon :icon="Search" :size="32" />
     </EmptyStateIcon>
   </template>
   <Button size="small" variant="secondary">Clear Filter</Button>
@@ -44,7 +43,7 @@ const filterCode = `<EmptyState
 const slotsCode = `<EmptyState>
   <template #icon>
     <EmptyStateIcon>
-      <Icon :icon="Folder01Icon" :size="32" />
+      <Icon :icon="Folder" :size="32" />
     </EmptyStateIcon>
   </template>
   <template #title>No Team Members</template>
@@ -70,7 +69,7 @@ const slotsCode = `<EmptyState>
         >
           <template #icon>
             <EmptyStateIcon>
-              <Icon :icon="Analytics01Icon" :size="32" />
+              <Icon :icon="ChartNoAxesColumn" :size="32" />
             </EmptyStateIcon>
           </template>
         </EmptyState>
@@ -85,7 +84,7 @@ const slotsCode = `<EmptyState>
         >
           <template #icon>
             <EmptyStateIcon>
-              <Icon :icon="Folder01Icon" :size="32" />
+              <Icon :icon="Folder" :size="32" />
             </EmptyStateIcon>
           </template>
           <Button size="small">
@@ -106,7 +105,7 @@ const slotsCode = `<EmptyState>
         >
           <template #icon>
             <EmptyStateIcon>
-              <Icon :icon="Search01Icon" :size="32" />
+              <Icon :icon="Search" :size="32" />
             </EmptyStateIcon>
           </template>
           <Button size="small" variant="secondary">
@@ -121,7 +120,7 @@ const slotsCode = `<EmptyState>
         <EmptyState>
           <template #icon>
             <EmptyStateIcon>
-              <Icon :icon="Folder01Icon" :size="32" />
+              <Icon :icon="Folder" :size="32" />
             </EmptyStateIcon>
           </template>
           <template #title>

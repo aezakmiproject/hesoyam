@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { Avatar } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Entity, EntityContent, EntityList } from '@/components/ui/entity'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Avatar, Button, Checkbox, Entity, EntityContent, EntityList, Skeleton } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

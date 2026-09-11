@@ -1,26 +1,85 @@
 <script setup lang="ts">
+import { CodeBlock } from '@aezakmiproject/hesoyam'
 import {
-  Add01Icon,
-  Copy01Icon,
-  File01Icon,
-  Globe02Icon,
-  Notification03Icon,
-  Search01Icon,
-  Settings02Icon,
-  Share01Icon,
-} from '@hugeicons/core-free-icons'
-import { Snippet } from '@/components/ui/snippet'
+  Bell,
+  Bookmark,
+  Calendar,
+  Camera,
+  Cloud,
+  Code,
+  Copy,
+  Database,
+  Download,
+  Eye,
+  File,
+  Folder,
+  Globe,
+  Heart,
+  Home,
+  Link,
+  Lock,
+  Mail,
+  MessageCircle,
+  Plus,
+  Search,
+  Settings,
+  Share,
+  Star,
+  Terminal,
+  Trash2,
+  Upload,
+  User,
+  Zap,
+} from '@lucide/vue'
 
-const iconRow = [
-  Search01Icon,
-  Add01Icon,
-  Copy01Icon,
-  Settings02Icon,
-  Globe02Icon,
-  Notification03Icon,
-  Share01Icon,
-  File01Icon,
+const iconPool = [
+  Search,
+  Plus,
+  Copy,
+  Settings,
+  Globe,
+  Bell,
+  Share,
+  File,
+  Trash2,
+  Star,
+  User,
+  Mail,
+  Folder,
+  Link,
+  Code,
+  Calendar,
+  Heart,
+  Lock,
+  Eye,
+  Download,
+  Upload,
+  Zap,
+  Home,
+  MessageCircle,
+  Bookmark,
+  Camera,
+  Cloud,
+  Database,
+  Terminal,
 ]
+
+const iconRow = iconPool.slice(0, 15)
+const shown = shallowRef(iconRow.slice())
+
+function takeNext(index: number) {
+  const occupied = new Set(shown.value)
+  const candidates = iconPool.filter(icon => !occupied.has(icon))
+  const current = shown.value[index]!
+  if (!candidates.length)
+    return current
+
+  const next = candidates[Math.floor(Math.random() * candidates.length)]!
+  const nextShown = shown.value.slice()
+  nextShown[index] = next
+  shown.value = nextShown
+  return next
+}
 
 const hues = [
   '--ds-gray-600',
@@ -31,6 +90,8 @@ const hues = [
   '--ds-green-700',
   '--ds-teal-700',
 ]
+
+const importCode = `import { Button } from '@aezakmiproject/hesoyam'`
 </script>
 
 <template>
@@ -61,11 +122,12 @@ const hues = [
       </DocsCell>
 
       <DocsCell href="/icons">
-        <div class="mb-10 grid h-28 grid-cols-4 content-center gap-x-8 gap-y-5 text-[var(--ds-gray-900)]">
-          <Icon
+        <div class="mb-10 grid h-28 grid-cols-[repeat(5,auto)] content-between justify-between text-[var(--ds-gray-900)]">
+          <DocsIconSwap
             v-for="(icon, index) in iconRow"
             :key="index"
-            :icon="icon"
+            :initial="icon"
+            :take-next="() => takeNext(index)"
             :size="18"
           />
         </div>
@@ -106,14 +168,7 @@ const hues = [
     </DocsCells>
 
     <DocsSection :title="$t('geist.index.import')" :description="$t('geist.index.importDescription')">
-      <Snippet
-        :prompt="false"
-        :text="[
-          `import { Button } from '@/components/ui/button'`,
-          `import { SearchInput } from '@/components/ui/search-input'`,
-          `import { Menu, MenuButton, MenuContainer, MenuItem } from '@/components/ui/menu'`,
-        ]"
-      />
+      <CodeBlock language="ts">{{ importCode }}</CodeBlock>
     </DocsSection>
 
     <DocsSection :title="$t('geist.index.rules')">
@@ -152,9 +207,8 @@ const hues = [
         </li>
         <li>
           <i18n-t keypath="geist.index.rulesIcons" tag="span">
-            <template #icons><code class="font-mono">@hugeicons/core-free-icons</code></template>
+            <template #icons><code class="font-mono">@lucide/vue</code></template>
             <template #icon><code class="font-mono">&lt;Icon&gt;</code></template>
-            <template #vue><code class="font-mono">@hugeicons/vue</code></template>
           </i18n-t>
         </li>
         <li>

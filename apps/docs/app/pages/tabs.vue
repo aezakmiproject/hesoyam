@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { GitBranchIcon, GithubIcon, GitlabIcon } from '@hugeicons/core-free-icons'
+import { Tabs, TooltipProvider } from '@aezakmiproject/hesoyam'
+import { GitBranch, GitCommit, GitMerge } from '@lucide/vue'
 import { h } from 'vue'
 import Icon from '@/components/Icon.vue'
-import { Tabs } from '@/components/ui/tabs'
-import { TooltipProvider } from '@/components/ui/tooltip'
 
 const { t } = useI18n()
 
@@ -27,9 +26,9 @@ const lockedTabs = computed(() => [
 ])
 
 const gitTabs = computed(() => [
-  { title: t('pages.tabs.github'), value: 'github', icon: h(Icon, { icon: GithubIcon, size: 16 }) },
-  { title: t('pages.tabs.gitlab'), value: 'gitlab', icon: h(Icon, { icon: GitlabIcon, size: 16 }) },
-  { title: t('pages.tabs.branch'), value: 'branch', icon: h(Icon, { icon: GitBranchIcon, size: 16 }) },
+  { title: t('pages.tabs.github'), value: 'github', icon: h(Icon, { icon: GitCommit, size: 16 }) },
+  { title: t('pages.tabs.gitlab'), value: 'gitlab', icon: h(Icon, { icon: GitMerge, size: 16 }) },
+  { title: t('pages.tabs.branch'), value: 'branch', icon: h(Icon, { icon: GitBranch, size: 16 }) },
 ])
 
 const secondaryTabs = computed(() => [
@@ -80,12 +79,12 @@ const lockedCode = `<Tabs
 
 const iconCode = `import { h } from 'vue'
 import Icon from '@/components/Icon.vue'
-import { GithubIcon } from '@hugeicons/core-free-icons'
+import { GitCommit } from '@lucide/vue'
 
 <Tabs
   v-model="git"
   :tabs="[
-    { title: 'GitHub', value: 'github', icon: h(Icon, { icon: GithubIcon, size: 16 }) },
+    { title: 'GitHub', value: 'github', icon: h(Icon, { icon: GitCommit, size: 16 }) },
   ]"
 />`
 

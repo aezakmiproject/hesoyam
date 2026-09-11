@@ -1,9 +1,9 @@
 {
   "en": {
     "title": "Icons",
-    "description": "Hugeicons for this port. Import icon data from {core} and render with {icon} or {hugeiconsIcon}.",
+    "description": "Lucide for this port. Import named icons from {core} and render with {icon}.",
     "import": "Import",
-    "importCallout": "Never import icon arrays from {vue}. That package only exports the renderer. Wrong imports break HMR and SSR.",
+    "importCallout": "Use {icon} in product UI so size and stroke stay consistent.",
     "sizes": "Sizes",
     "sizesHint": "Match the control. 14px on h-8, 12px on meta rows, 32px only inside EmptyStateIcon.",
     "inButton": "In a button",
@@ -12,9 +12,9 @@
   },
   "ru": {
     "title": "Иконки",
-    "description": "Hugeicons для этого порта. Данные — из {core}, рендер — через {icon} или {hugeiconsIcon}.",
+    "description": "Lucide для этого порта. Именованные иконки — из {core}, рендер — через {icon}.",
     "import": "Импорт",
-    "importCallout": "Никогда не импортируйте массивы иконок из {vue}. Пакет экспортирует только рендерер. Неверный импорт ломает HMR и SSR.",
+    "importCallout": "В продуктовом UI используйте {icon}, чтобы размер и stroke оставались одинаковыми.",
     "sizes": "Размеры",
     "sizesHint": "Подгоняйте под контрол. 14px на h-8, 12px в meta-строках, 32px только внутри EmptyStateIcon.",
     "inButton": "В кнопке",

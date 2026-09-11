@@ -1,75 +1,33 @@
-# Nuxt Minimal Starter
+# Hesoyam docs
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+The documentation site for [`@aezakmiproject/hesoyam`](../../packages/hesoyam),
+and the package's first consumer: it installs the package through the pnpm
+workspace and renders every component from the same entry points that published
+consumers use.
 
-## Setup
-
-Make sure to install dependencies:
+Run these from the repository root so pnpm resolves the workspace:
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
+pnpm dev        # http://localhost:3000
 pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+pnpm typecheck
 ```
 
-Locally preview production build:
+## Layout
+
+| Path | Description |
+| --- | --- |
+| `app/pages/<slug>.vue` | One page per component, see [`PAGE_SPEC.md`](app/components/docs/PAGE_SPEC.md) |
+| `app/components/docs/` | Page chrome: `DocsSection`, `DocsPreview`, `DocsCells` |
+| `app/components/ui/` | `Card` and `Sidebar`, the shadcn surfaces Hesoyam does not publish |
+| `i18n/fragments/<slug>.json` | Page copy in English and Russian |
+
+Page copy is authored in `i18n/fragments/` and merged into `i18n/locales/`:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+node scripts/merge-i18n-fragments.mjs
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+The Hesoyam theme is not imported in `app/assets/css/main.css`. The Nuxt module
+injects it, which keeps the docs site honest about the zero-config setup path.

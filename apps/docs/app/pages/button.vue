@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ArrowLeft01Icon, ArrowRight01Icon, ArrowUp01Icon } from '@hugeicons/core-free-icons'
-import { Button, ButtonLink, CustomButton } from '@/components/ui/button'
+import { Button, ButtonLink, CustomButton } from '@aezakmiproject/hesoyam'
+import { ArrowLeft, ArrowRight, ArrowUp } from '@lucide/vue'
 
 const variants = ['default', 'secondary', 'tertiary', 'error', 'warning'] as const
 const sizes = ['small', 'medium', 'large'] as const
@@ -17,12 +17,12 @@ const variantsCode = `<Button variant="default">Upload</Button>
 <Button variant="warning">Upload</Button>`
 
 const shapesCode = `<Button shape="square" size="small" svg-only aria-label="Upload">
-  <Icon :icon="ArrowUp01Icon" :size="14" />
+  <Icon :icon="ArrowUp" :size="14" />
 </Button>`
 
 const prefixCode = `<Button size="small">
   <template #prefix>
-    <Icon :icon="ArrowLeft01Icon" :size="14" />
+    <Icon :icon="ArrowLeft" :size="14" />
   </template>
   Upload
 </Button>`
@@ -90,7 +90,7 @@ const customCode = `<CustomButton
             svg-only
             :aria-label="$t('pages.button.upload')"
           >
-            <Icon :icon="ArrowUp01Icon" :size="size === 'tiny' ? 12 : 14" />
+            <Icon :icon="ArrowUp" :size="size === 'tiny' ? 12 : 14" />
           </Button>
           <Button
             v-for="size in iconSizes"
@@ -100,7 +100,7 @@ const customCode = `<CustomButton
             svg-only
             :aria-label="$t('pages.button.upload')"
           >
-            <Icon :icon="ArrowUp01Icon" :size="size === 'tiny' ? 12 : 14" />
+            <Icon :icon="ArrowUp" :size="size === 'tiny' ? 12 : 14" />
           </Button>
         </div>
       </DocsPreview>
@@ -111,14 +111,14 @@ const customCode = `<CustomButton
         <div class="flex flex-wrap items-center gap-3">
           <Button size="small">
             <template #prefix>
-              <Icon :icon="ArrowLeft01Icon" :size="14" />
+              <Icon :icon="ArrowLeft" :size="14" />
             </template>
             {{ $t('pages.button.upload') }}
           </Button>
           <Button size="small">
             {{ $t('pages.button.upload') }}
             <template #suffix>
-              <Icon :icon="ArrowRight01Icon" :size="14" />
+              <Icon :icon="ArrowRight" :size="14" />
             </template>
           </Button>
         </div>

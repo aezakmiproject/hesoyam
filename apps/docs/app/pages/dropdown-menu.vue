@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@aezakmiproject/hesoyam'
 
 const demoCode = `<DropdownMenu>
   <DropdownMenuTrigger as-child>

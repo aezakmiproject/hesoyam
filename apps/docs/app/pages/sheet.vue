@@ -1,15 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+import { Button, Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@aezakmiproject/hesoyam'
 
 const sides = ['top', 'right', 'bottom', 'left'] as const
 </script>

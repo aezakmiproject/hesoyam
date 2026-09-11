@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Scroller } from '@/components/ui/scroller'
+import { Scroller } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

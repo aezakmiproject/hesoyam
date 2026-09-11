@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CodeBlock } from '@/components/ui/code-block'
+import { CodeBlock } from '@aezakmiproject/hesoyam'
 
 defineProps<{
   code?: string

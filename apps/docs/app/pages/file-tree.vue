@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { File, Folder, Tree } from '@/components/ui/file-tree'
+import { File, Folder, Tree } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Tree>
   <Folder name=".vercel" default-open>

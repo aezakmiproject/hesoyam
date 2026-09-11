@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CopyButton } from '@/components/ui/copy-button'
+import { Button, CopyButton } from '@aezakmiproject/hesoyam'
 
 const pinned = ref(false)
 
@@ -72,13 +72,9 @@ const preview = {
             :copied="pinned"
             @copy="pinned = true"
           />
-          <button
-            type="button"
-            class="text-[13px] text-[var(--ds-gray-900)] underline decoration-[var(--ds-gray-alpha-400)] underline-offset-2 outline-none hover:text-[var(--ds-gray-1000)]"
-            @click="pinned = false"
-          >
+          <Button size="small" variant="secondary" @click="pinned = false">
             {{ $t('pages.copy-button.previewReset') }}
-          </button>
+          </Button>
         </div>
       </DocsPreview>
     </DocsSection>

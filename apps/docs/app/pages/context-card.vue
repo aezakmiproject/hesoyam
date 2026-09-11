@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { ContextCardTrigger } from '@/components/ui/context-card'
+import { Button, ContextCardTrigger } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

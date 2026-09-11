@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { GeistError } from '@/components/ui/error'
+import { HesoyamError } from '@aezakmiproject/hesoyam'
 
 const sizes = ['small', 'medium', 'large'] as const
 
-const defaultCode = `<GeistError>This email address is already in use.</GeistError>`
+const defaultCode = `<HesoyamError>This email address is already in use.</HesoyamError>`
 
-const labelCode = `<GeistError label="Email Error">
+const labelCode = `<HesoyamError label="Email Error">
   This email address is already in use.
-</GeistError>`
+</HesoyamError>`
 
-const noLabelCode = `<GeistError :label="false">
+const noLabelCode = `<HesoyamError :label="false">
   This email address is already in use.
-</GeistError>`
+</HesoyamError>`
 
-const sizesCode = `<GeistError size="small">This email is in use.</GeistError>
-<GeistError size="medium">This email is in use.</GeistError>
-<GeistError size="large">This email is in use.</GeistError>`
+const sizesCode = `<HesoyamError size="small">This email is in use.</HesoyamError>
+<HesoyamError size="medium">This email is in use.</HesoyamError>
+<HesoyamError size="large">This email is in use.</HesoyamError>`
 
-const objectCode = `<GeistError
+const objectCode = `<HesoyamError
   :error="{
     message: 'The request failed.',
     action: 'Contact Us',
@@ -35,45 +35,45 @@ const objectCode = `<GeistError
 
     <DocsSection :title="$t('pages.error.default')" :description="$t('pages.error.defaultHint')">
       <DocsPreview :code="defaultCode">
-        <GeistError>
+        <HesoyamError>
           {{ $t('pages.error.previewEmailInUse') }}
-        </GeistError>
+        </HesoyamError>
       </DocsPreview>
     </DocsSection>
 
     <DocsSection :title="$t('pages.error.customLabel')">
       <DocsPreview :code="labelCode">
-        <GeistError :label="$t('pages.error.previewEmailError')">
+        <HesoyamError :label="$t('pages.error.previewEmailError')">
           {{ $t('pages.error.previewEmailInUse') }}
-        </GeistError>
+        </HesoyamError>
       </DocsPreview>
     </DocsSection>
 
     <DocsSection :title="$t('pages.error.noLabel')" :description="$t('pages.error.noLabelHint')">
       <DocsPreview :code="noLabelCode">
-        <GeistError :label="false">
+        <HesoyamError :label="false">
           {{ $t('pages.error.previewEmailInUse') }}
-        </GeistError>
+        </HesoyamError>
       </DocsPreview>
     </DocsSection>
 
     <DocsSection :title="$t('pages.error.sizes')" :description="$t('pages.error.sizesHint')">
       <DocsPreview :code="sizesCode">
         <div class="flex flex-col gap-3">
-          <GeistError
+          <HesoyamError
             v-for="size in sizes"
             :key="size"
             :size="size"
           >
             {{ $t('pages.error.previewEmailInUseShort') }}
-          </GeistError>
+          </HesoyamError>
         </div>
       </DocsPreview>
     </DocsSection>
 
     <DocsSection :title="$t('pages.error.errorObject')" :description="$t('pages.error.errorObjectHint')">
       <DocsPreview :code="objectCode">
-        <GeistError
+        <HesoyamError
           :error="{
             message: $t('pages.error.previewRequestFailed'),
             action: $t('pages.error.previewContactUs'),
@@ -87,7 +87,7 @@ const objectCode = `<GeistError
       <ul class="max-w-2xl list-disc space-y-2 pl-5 text-[13px] leading-5 text-[var(--ds-gray-900)]">
         <li>
           <i18n-t keypath="pages.error.bestPractice1" tag="span">
-            <template #geistError><code class="font-mono">GeistError</code></template>
+            <template #hesoyamError><code class="font-mono">HesoyamError</code></template>
           </i18n-t>
         </li>
         <li>{{ $t('pages.error.bestPractice2') }}</li>
@@ -106,6 +106,7 @@ const objectCode = `<GeistError
           <i18n-t keypath="pages.error.bestPractice5" tag="span">
             <template #error><code class="font-mono">Error</code></template>
             <template #geistError><code class="font-mono">GeistError</code></template>
+            <template #hesoyamError><code class="font-mono">HesoyamError</code></template>
           </i18n-t>
         </li>
         <li>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CheckmarkCircle02Icon } from '@hugeicons/core-free-icons'
-import { Menu, MenuButton, MenuContainer, MenuItem } from '@/components/ui/menu'
+import { Menu, MenuButton, MenuContainer, MenuItem } from '@aezakmiproject/hesoyam'
+import { CircleCheck } from '@lucide/vue'
 
 const { locale, locales, setLocale, t } = useI18n()
 
@@ -34,7 +34,7 @@ async function selectLocale(code: string) {
       >
         {{ item.name }}
         <template v-if="item.code === locale" #suffix>
-          <Icon :icon="CheckmarkCircle02Icon" :size="14" />
+          <Icon :icon="CircleCheck" :size="14" />
         </template>
       </MenuItem>
     </Menu>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Progress } from '@/components/ui/progress'
+import { Progress } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

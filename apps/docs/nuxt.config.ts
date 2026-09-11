@@ -15,7 +15,10 @@ export default defineNuxtConfig({
     ],
   },
 
-  modules: ['@nuxt/fonts', 'shadcn-nuxt', '@nuxtjs/i18n'],
+  // '@aezakmiproject/hesoyam/nuxt' is the published design system module; the
+  // shadcn module only serves the leftover Card and Sidebar surfaces that
+  // Hesoyam does not ship.
+  modules: ['@aezakmiproject/hesoyam/nuxt', '@nuxt/fonts', 'shadcn-nuxt', '@nuxtjs/i18n'],
   fonts: {
     families: [
       { name: 'Geologica', weights: ['100 900'], styles: ['normal'] },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Home01Icon, Settings02Icon } from '@hugeicons/core-free-icons'
+import { Home, Settings } from '@lucide/vue'
 import {
   Sidebar,
   SidebarContent,
@@ -63,13 +63,13 @@ const partsCode = `<SidebarProvider class="min-h-0 h-[240px] max-w-sm overflow-h
                   <SidebarMenu>
                     <SidebarMenuItem>
                       <SidebarMenuButton>
-                        <Icon :icon="Home01Icon" :size="14" />
+                        <Icon :icon="Home" :size="14" />
                         <span>{{ $t('pages.sidebar.previewOverview') }}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem>
                       <SidebarMenuButton>
-                        <Icon :icon="Settings02Icon" :size="14" />
+                        <Icon :icon="Settings" :size="14" />
                         <span>{{ $t('pages.sidebar.previewSettings') }}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>

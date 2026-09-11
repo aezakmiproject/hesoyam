@@ -1,17 +1,6 @@
 <script setup lang="ts">
-import { ArrowLeft01Icon } from '@hugeicons/core-free-icons'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import {
-  Modal,
-  ModalAction,
-  ModalActions,
-  ModalBody,
-  ModalHeader,
-  ModalInset,
-  ModalSubtitle,
-  ModalTitle,
-} from '@/components/ui/modal'
+import { Button, Input, Modal, ModalAction, ModalActions, ModalBody, ModalHeader, ModalInset, ModalSubtitle, ModalTitle } from '@aezakmiproject/hesoyam'
+import { ArrowLeft } from '@lucide/vue'
 
 const { t } = useI18n()
 
@@ -252,7 +241,7 @@ const focusCode = `<Modal v-model:active="open" :initial-focus-ref="submitAction
               </ModalAction>
               <ModalAction variant="secondary">
                 <template #prefix>
-                  <Icon :icon="ArrowLeft01Icon" :size="14" />
+                  <Icon :icon="ArrowLeft" :size="14" />
                 </template>
                 {{ $t('pages.modal.previous') }}
               </ModalAction>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ThemeSwitcher, useTheme } from '@/components/ui/theme-switcher'
+import { CodeBlock, ThemeSwitcher, useTheme } from '@aezakmiproject/hesoyam'
 
 const { theme, resolvedTheme } = useTheme()
 
@@ -8,9 +8,7 @@ const smallCode = '<ThemeSwitcher small />'
 const disabledCode = '<ThemeSwitcher disabled />'
 const forcedCode = `<ThemeSwitcher forced-theme="dark" />
 <ThemeSwitcher forced-theme="light" />`
-const hookCode = `import { ThemeSwitcher, useTheme } from '@/components/ui/theme-switcher'
-
-const { theme, resolvedTheme, setTheme } = useTheme()
+const hookCode = `const { theme, resolvedTheme, setTheme } = useTheme()
 
 setTheme('dark')`
 </script>
@@ -97,33 +95,32 @@ setTheme('dark')`
           </template>
         </i18n-t>
       </template>
-      <DocsPreview :code="hookCode">
-        <p class="max-w-xl text-[13px] leading-5 text-[var(--ds-gray-900)]">
-          <i18n-t keypath="pages.theme-switcher.useThemeBody" tag="span">
-            <template #initTheme>
-              <code class="font-mono">initTheme</code>
-            </template>
-            <template #localStorage>
-              <code class="font-mono">localStorage</code>
-            </template>
-            <template #storageKey>
-              <code class="font-mono">geist-theme</code>
-            </template>
-            <template #darkClass>
-              <code class="font-mono">.dark</code>
-            </template>
-            <template #documentElement>
-              <code class="font-mono">documentElement</code>
-            </template>
-            <template #system>
-              <code class="font-mono">system</code>
-            </template>
-            <template #prefersColorScheme>
-              <code class="font-mono">prefers-color-scheme</code>
-            </template>
-          </i18n-t>
-        </p>
-      </DocsPreview>
+      <p class="max-w-xl text-[13px] leading-5 text-[var(--ds-gray-900)]">
+        <i18n-t keypath="pages.theme-switcher.useThemeBody" tag="span">
+          <template #initTheme>
+            <code class="font-mono">initTheme</code>
+          </template>
+          <template #localStorage>
+            <code class="font-mono">localStorage</code>
+          </template>
+          <template #storageKey>
+            <code class="font-mono">geist-theme</code>
+          </template>
+          <template #darkClass>
+            <code class="font-mono">.dark</code>
+          </template>
+          <template #documentElement>
+            <code class="font-mono">documentElement</code>
+          </template>
+          <template #system>
+            <code class="font-mono">system</code>
+          </template>
+          <template #prefersColorScheme>
+            <code class="font-mono">prefers-color-scheme</code>
+          </template>
+        </i18n-t>
+      </p>
+      <CodeBlock language="ts" class="mt-3">{{ hookCode }}</CodeBlock>
     </DocsSection>
 
     <DocsSection :title="$t('pages.theme-switcher.bestPractices')">

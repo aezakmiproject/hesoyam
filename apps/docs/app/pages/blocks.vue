@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { CodeBlock } from '@aezakmiproject/hesoyam'
+
 const { t } = useI18n()
 
 const doItems = computed(() => [
@@ -14,6 +16,17 @@ const dontItems = computed(() => [
   t('pages.blocks.dontItem3'),
   t('pages.blocks.dontItem4', { main: '<main>' }),
 ])
+
+const usageCode = `<DocsPageHeader title="Grid" description="Display elements in a grid layout." />
+
+<DocsCells>
+  <DocsCell href="/colors">…</DocsCell>
+  <DocsCell href="/icons">…</DocsCell>
+</DocsCells>
+
+<DocsSection title="Default">
+  <DocsPreview :code="snippet">…</DocsPreview>
+</DocsSection>`
 </script>
 
 <template>
@@ -107,18 +120,7 @@ const dontItems = computed(() => [
           </template>
         </i18n-t>
       </DocsCallout>
-      <div class="mt-6 overflow-hidden border border-[var(--ds-gray-alpha-400)]">
-        <pre class="overflow-x-auto p-5 font-mono text-[13px] leading-6 text-[var(--ds-gray-1000)]"><code>&lt;DocsPageHeader title="Grid" description="Display elements in a grid layout." /&gt;
-
-&lt;DocsCells&gt;
-  &lt;DocsCell href="/colors"&gt;…&lt;/DocsCell&gt;
-  &lt;DocsCell href="/icons"&gt;…&lt;/DocsCell&gt;
-&lt;/DocsCells&gt;
-
-&lt;DocsSection title="Default"&gt;
-  &lt;DocsPreview :code="snippet"&gt;…&lt;/DocsPreview&gt;
-&lt;/DocsSection&gt;</code></pre>
-      </div>
+      <CodeBlock language="vue" class="mt-6">{{ usageCode }}</CodeBlock>
     </DocsSection>
 
     <DocsSection :title="$t('pages.blocks.do')">

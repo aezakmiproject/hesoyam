@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Note } from '@/components/ui/note'
+import { Note } from '@aezakmiproject/hesoyam'
 
 defineProps<{
   variant?: 'default' | 'secondary' | 'warning'

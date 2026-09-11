@@ -4,10 +4,10 @@ const { t } = useI18n()
 const samples = computed(() => [
   { name: t('pages.typography.samplePageTitle'), className: 'text-[32px] leading-9 font-semibold tracking-tight', size: '32 / 36', weight: '600' },
   { name: t('pages.typography.sampleSection'), className: 'text-[18px] leading-6 font-medium', size: '18 / 24', weight: '500' },
-  { name: t('pages.typography.sampleBody'), className: 'text-[14px] leading-6', size: '14 / 24', weight: '400' },
+  { name: t('pages.typography.sampleBody'), className: 'text-[14px] leading-6', size: '14 / 24', weight: '300' },
   { name: t('pages.typography.sampleControl'), className: 'text-[13px] leading-5 font-medium', size: '13 / 20', weight: '500' },
-  { name: t('pages.typography.sampleSecondary'), className: 'text-[13px] leading-5 text-[var(--ds-gray-900)]', size: '13 / 20', weight: '400' },
-  { name: t('pages.typography.sampleMeta'), className: 'text-[12px] leading-4 text-[var(--ds-gray-900)]', size: '12 / 16', weight: '400' },
+  { name: t('pages.typography.sampleSecondary'), className: 'text-[13px] leading-5 text-[var(--ds-gray-900)]', size: '13 / 20', weight: '300' },
+  { name: t('pages.typography.sampleMeta'), className: 'text-[12px] leading-4 text-[var(--ds-gray-900)]', size: '12 / 16', weight: '300' },
 ])
 </script>
 

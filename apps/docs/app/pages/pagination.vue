@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Pagination } from '@/components/ui/pagination'
+import { Pagination } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Pagination
   :previous="{ title: 'Modal', href: '/modal' }"

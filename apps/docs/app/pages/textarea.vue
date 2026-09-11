@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Textarea } from '@/components/ui/textarea'
+import { Textarea } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

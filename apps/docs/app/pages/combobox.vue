@@ -1,12 +1,6 @@
 <script setup lang="ts">
-import { CloudIcon, GithubIcon, SourceCodeIcon } from '@hugeicons/core-free-icons'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxList,
-  ComboboxOption,
-} from '@/components/ui/combobox'
-import { Label } from '@/components/ui/label'
+import { Combobox, ComboboxInput, ComboboxList, ComboboxOption, Label } from '@aezakmiproject/hesoyam'
+import { Cloud, GitCommit, Code } from '@lucide/vue'
 
 const { t } = useI18n()
 
@@ -82,7 +76,7 @@ const preview = {
 </Combobox>`,
   affix: `<ComboboxOption value="nuxt">
   <template #prefix>
-    <Icon :icon="SourceCodeIcon" :size="14" />
+    <Icon :icon="Code" :size="14" />
   </template>
   Nuxt
 </ComboboxOption>`,
@@ -270,7 +264,7 @@ const preview = {
                 :value="item.value"
               >
                 <template #prefix>
-                  <Icon :icon="SourceCodeIcon" :size="14" />
+                  <Icon :icon="Code" :size="14" />
                 </template>
                 {{ item.label }}
               </ComboboxOption>
@@ -282,13 +276,13 @@ const preview = {
               <ComboboxOption value="github">
                 {{ $t('pages.combobox.github') }}
                 <template #suffix>
-                  <Icon :icon="GithubIcon" :size="14" />
+                  <Icon :icon="GitCommit" :size="14" />
                 </template>
               </ComboboxOption>
               <ComboboxOption value="cloud">
                 {{ $t('pages.combobox.objectStorage') }}
                 <template #suffix>
-                  <Icon :icon="CloudIcon" :size="14" />
+                  <Icon :icon="Cloud" :size="14" />
                 </template>
               </ComboboxOption>
             </ComboboxList>

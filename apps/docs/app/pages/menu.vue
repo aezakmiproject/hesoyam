@@ -1,15 +1,6 @@
 <script setup lang="ts">
-import { Copy01Icon, Delete02Icon, Settings02Icon } from '@hugeicons/core-free-icons'
-import {
-  Menu,
-  MenuButton,
-  MenuContainer,
-  MenuDivider,
-  MenuItem,
-  MenuItemLocked,
-  MenuLink,
-  MenuSection,
-} from '@/components/ui/menu'
+import { Menu, MenuButton, MenuContainer, MenuDivider, MenuItem, MenuItemLocked, MenuLink, MenuSection } from '@aezakmiproject/hesoyam'
+import { Copy, Trash2, Settings } from '@lucide/vue'
 
 const positions = ['bottom-start', 'bottom-end', 'top-start'] as const
 
@@ -26,7 +17,7 @@ const defaultCode = `<MenuContainer>
 
 const prefixCode = `<MenuItem>
   <template #prefix>
-    <Icon :icon="Copy01Icon" :size="14" />
+    <Icon :icon="Copy" :size="14" />
   </template>
   Duplicate
 </MenuItem>`
@@ -92,13 +83,13 @@ const unstyledCode = `<MenuButton type="unstyled" class="inline-flex h-8 items-c
           <Menu :width="200">
             <MenuItem>
               <template #prefix>
-                <Icon :icon="Copy01Icon" :size="14" />
+                <Icon :icon="Copy" :size="14" />
               </template>
               {{ $t('pages.menu.duplicate') }}
             </MenuItem>
             <MenuItem>
               <template #prefix>
-                <Icon :icon="Settings02Icon" :size="14" />
+                <Icon :icon="Settings" :size="14" />
               </template>
               {{ $t('pages.menu.settings') }}
               <template #suffix>
@@ -108,7 +99,7 @@ const unstyledCode = `<MenuButton type="unstyled" class="inline-flex h-8 items-c
             <MenuDivider />
             <MenuItem type="error">
               <template #prefix>
-                <Icon :icon="Delete02Icon" :size="14" />
+                <Icon :icon="Trash2" :size="14" />
               </template>
               {{ $t('pages.menu.delete') }}
             </MenuItem>
@@ -219,7 +210,7 @@ const unstyledCode = `<MenuButton type="unstyled" class="inline-flex h-8 items-c
             class="inline-flex h-8 items-center gap-2 rounded-[6px] px-2 text-[13px] text-[var(--ds-gray-1000)] hover:bg-[var(--ds-gray-100)]"
           >
             {{ $t('pages.menu.abramovich') }}
-            <Icon :icon="Settings02Icon" :size="14" />
+            <Icon :icon="Settings" :size="14" />
           </MenuButton>
           <Menu :width="200">
             <MenuSection :title="$t('pages.menu.teams')">

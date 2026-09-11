@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from '@aezakmiproject/hesoyam'
 
 const option = ref(false)
 const emails = ref(true)

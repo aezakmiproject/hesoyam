@@ -1,16 +1,5 @@
 <script setup lang="ts">
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableCol,
-  TableColgroup,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRoot,
-  TableRow,
-} from '@/components/ui/table'
+import { Table, TableBody, TableCell, TableCol, TableColgroup, TableFooter, TableHead, TableHeader, TableRoot, TableRow } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

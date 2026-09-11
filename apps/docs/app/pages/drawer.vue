@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Drawer, DrawerTitle } from '@/components/ui/drawer'
+import { Button, Drawer, DrawerTitle } from '@aezakmiproject/hesoyam'
 
 const open = ref(false)
 const heightOpen = ref(false)

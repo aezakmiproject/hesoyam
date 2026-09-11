@@ -48,6 +48,7 @@ export const geistNav: GeistNavGroup[] = [
       { title: 'File Tree', href: '/file-tree' },
       { title: 'Gauge', href: '/gauge' },
       { title: 'Grid', href: '/grid' },
+      { title: 'Icon Tile', href: '/icon-tile' },
       { title: 'Input', href: '/input' },
       { title: 'Keyboard Input', href: '/keyboard-input' },
       { title: 'Label', href: '/label' },

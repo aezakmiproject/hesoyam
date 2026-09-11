@@ -1,7 +1,7 @@
 {
   "en": {
     "title": "Error",
-    "description": "Inline failure copy. Exported as GeistError so it does not collide with the built-in Error constructor.",
+    "description": "Inline failure copy. Exported as HesoyamError so it does not collide with the built-in Error constructor.",
     "default": "Default",
     "defaultHint": "Default label is Error. The default slot is the message. role=\"alert\" is already on the root.",
     "previewEmailInUse": "This email address is already in use.",
@@ -17,16 +17,16 @@
     "previewRequestFailed": "The request failed.",
     "previewContactUs": "Contact Us",
     "bestPractices": "Best practices",
-    "bestPractice1": "{geistError} is a line of copy next to a field or under a section, not a full-page boundary. Toasts cover transient save failures. Input's own error state covers a single invalid field.",
+    "bestPractice1": "{hesoyamError} is a line of copy next to a field or under a section, not a full-page boundary. Toasts cover transient save failures. Input's own error state covers a single invalid field.",
     "bestPractice2": "Say what happened, then what to do. Skip \"Oops\", \"Unfortunately\", and \"Unable to\". User-state errors use Couldn't; system errors use Failed to.",
     "bestPractice3": "Name the resource ({example}), not Something Went Wrong. Pair platform failures with a stable request or deployment id the user can copy.",
     "bestPractice4": "{labelFalse} when a nearby Label already identifies the field. A custom {label} is for a named subsystem (Email Error, Billing Error).",
-    "bestPractice5": "The folder also exports {error} as an alias of {geistError}. New pages should import {geistError}.",
+    "bestPractice5": "The folder also exports {error} and the legacy {geistError} name as aliases of {hesoyamError}. New pages should import {hesoyamError}.",
     "bestPractice6": "When the message appears after a failed request, wrap it in {ariaLive}. The component already sets {roleAlert}."
   },
   "ru": {
     "title": "Error",
-    "description": "Инлайн-текст об ошибке. Экспортируется как GeistError, чтобы не пересекаться со встроенным конструктором Error.",
+    "description": "Инлайн-текст об ошибке. Экспортируется как HesoyamError, чтобы не пересекаться со встроенным конструктором Error.",
     "default": "Default",
     "defaultHint": "Подпись по умолчанию — Error. Слот по умолчанию — сообщение. role=\"alert\" уже на корневом элементе.",
     "previewEmailInUse": "Этот email уже используется.",
@@ -42,11 +42,11 @@
     "previewRequestFailed": "Запрос не выполнен.",
     "previewContactUs": "Связаться с нами",
     "bestPractices": "Рекомендации",
-    "bestPractice1": "{geistError} — строка текста рядом с полем или под секцией, не граница всей страницы. Toast закрывают кратковременные сбои сохранения. Собственное состояние ошибки Input — для одного невалидного поля.",
+    "bestPractice1": "{hesoyamError} — строка текста рядом с полем или под секцией, не граница всей страницы. Toast закрывают кратковременные сбои сохранения. Собственное состояние ошибки Input — для одного невалидного поля.",
     "bestPractice2": "Сначала что случилось, потом что делать. Без «Oops», «Unfortunately» и «Unable to». Ошибки состояния пользователя — Couldn't; системные — Failed to.",
     "bestPractice3": "Называйте ресурс ({example}), а не Something Went Wrong. При сбоях платформы добавляйте стабильный id запроса или деплоя, который пользователь может скопировать.",
     "bestPractice4": "{labelFalse}, когда соседний Label уже идентифицирует поле. Свой {label} — для именованной подсистемы (Email Error, Billing Error).",
-    "bestPractice5": "Папка также экспортирует {error} как алиас {geistError}. На новых страницах импортируйте {geistError}.",
+    "bestPractice5": "Папка также экспортирует {error} и legacy-имя {geistError} как алиасы {hesoyamError}. На новых страницах импортируйте {hesoyamError}.",
     "bestPractice6": "Когда сообщение появляется после неудачного запроса, оберните его в {ariaLive}. Компонент уже задаёт {roleAlert}."
   }
 }

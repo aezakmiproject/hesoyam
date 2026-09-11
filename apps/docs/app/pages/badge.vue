@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Shield01Icon } from '@hugeicons/core-free-icons'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@aezakmiproject/hesoyam'
+import { Shield } from '@lucide/vue'
 
 const colors = ['gray', 'blue', 'purple', 'amber', 'red', 'pink', 'green', 'teal'] as const
 const sizes = ['sm', 'md', 'lg'] as const
@@ -18,7 +18,7 @@ const sizesCode = `<Badge size="sm">Small</Badge>
 
 const iconCode = `<Badge variant="gray" size="md">
   <template #icon>
-    <Icon :icon="Shield01Icon" :size="12" />
+    <Icon :icon="Shield" :size="12" />
   </template>
   gray
 </Badge>`
@@ -26,7 +26,7 @@ const iconCode = `<Badge variant="gray" size="md">
 const pillCode = `<Badge variant="pill" size="sm" as="a" href="#badge-pill">Label</Badge>
 <Badge variant="pill" size="md" as="a" href="#badge-pill">
   <template #icon>
-    <Icon :icon="Shield01Icon" :size="12" />
+    <Icon :icon="Shield" :size="12" />
   </template>
   Label
 </Badge>`
@@ -84,13 +84,13 @@ const pillCode = `<Badge variant="pill" size="sm" as="a" href="#badge-pill">Labe
               :size="size"
             >
               <template #icon>
-                <Icon :icon="Shield01Icon" :size="size === 'sm' ? 10 : 12" />
+                <Icon :icon="Shield" :size="size === 'sm' ? 10 : 12" />
               </template>
               {{ color }}
             </Badge>
             <Badge :variant="color" contrast="low" size="md">
               <template #icon>
-                <Icon :icon="Shield01Icon" :size="12" />
+                <Icon :icon="Shield" :size="12" />
               </template>
               {{ color }}
             </Badge>
@@ -127,7 +127,7 @@ const pillCode = `<Badge variant="pill" size="sm" as="a" href="#badge-pill">Labe
               href="#badge-pill"
             >
               <template #icon>
-                <Icon :icon="Shield01Icon" :size="size === 'sm' ? 10 : 12" />
+                <Icon :icon="Shield" :size="size === 'sm' ? 10 : 12" />
               </template>
               {{ $t('pages.badge.pillLabel') }}
             </Badge>

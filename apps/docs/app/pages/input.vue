@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ArrowUp01Icon } from '@hugeicons/core-free-icons'
-import { Input } from '@/components/ui/input'
+import { Input } from '@aezakmiproject/hesoyam'
+import { ArrowUp } from '@lucide/vue'
 
 const sizesCode = `<Input size="small" placeholder="Small" />
 <Input placeholder="Default" />
@@ -8,7 +8,7 @@ const sizesCode = `<Input size="small" placeholder="Small" />
 
 const affixCode = `<Input placeholder="Default">
   <template #prefix>
-    <Icon :icon="ArrowUp01Icon" :size="14" />
+    <Icon :icon="ArrowUp" :size="14" />
   </template>
 </Input>
 
@@ -22,7 +22,7 @@ const affixCode = `<Input placeholder="Default">
   placeholder="docs"
 >
   <template #suffix>
-    <Icon :icon="ArrowUp01Icon" :size="14" />
+    <Icon :icon="ArrowUp" :size="14" />
   </template>
 </Input>`
 
@@ -76,12 +76,12 @@ const roundedCode = `<Input
         <div class="flex w-full max-w-md flex-col gap-6">
           <Input :placeholder="$t('pages.input.defaultPlaceholder')" :aria-label="$t('pages.input.ariaPrefixIcon')">
             <template #prefix>
-              <Icon :icon="ArrowUp01Icon" :size="14" />
+              <Icon :icon="ArrowUp" :size="14" />
             </template>
           </Input>
           <Input :placeholder="$t('pages.input.defaultPlaceholder')" :aria-label="$t('pages.input.ariaSuffixIcon')">
             <template #suffix>
-              <Icon :icon="ArrowUp01Icon" :size="14" />
+              <Icon :icon="ArrowUp" :size="14" />
             </template>
           </Input>
           <Input
@@ -97,10 +97,10 @@ const roundedCode = `<Input
             :aria-label="$t('pages.input.ariaUnstyledAddons')"
           >
             <template #prefix>
-              <Icon :icon="ArrowUp01Icon" :size="14" />
+              <Icon :icon="ArrowUp" :size="14" />
             </template>
             <template #suffix>
-              <Icon :icon="ArrowUp01Icon" :size="14" />
+              <Icon :icon="ArrowUp" :size="14" />
             </template>
           </Input>
           <Input
@@ -111,7 +111,7 @@ const roundedCode = `<Input
             :aria-label="$t('pages.input.ariaRepoPath')"
           >
             <template #suffix>
-              <Icon :icon="ArrowUp01Icon" :size="14" />
+              <Icon :icon="ArrowUp" :size="14" />
             </template>
           </Input>
         </div>
@@ -144,7 +144,7 @@ const roundedCode = `<Input
             :aria-label="$t('pages.input.ariaDisabledPrefixIcon')"
           >
             <template #prefix>
-              <Icon :icon="ArrowUp01Icon" :size="14" />
+              <Icon :icon="ArrowUp" :size="14" />
             </template>
           </Input>
         </div>

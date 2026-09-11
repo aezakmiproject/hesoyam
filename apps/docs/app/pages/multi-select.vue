@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import {
-  MultiSelect,
-  MultiSelectContent,
-  MultiSelectRow,
-  MultiSelectTrigger,
-} from '@/components/ui/multi-select'
+import { MultiSelect, MultiSelectContent, MultiSelectRow, MultiSelectTrigger } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 

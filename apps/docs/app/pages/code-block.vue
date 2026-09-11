@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { CodeBlockSwitcher } from '@/components/ui/code-block'
-import { CodeBlock } from '@/components/ui/code-block'
+import type { CodeBlockSwitcher } from '@aezakmiproject/hesoyam'
+import { CodeBlock } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `export function formatBytes(bytes: number) {
   if (bytes === 0) return '0 B'
@@ -46,11 +46,17 @@ const samples: Record<string, { filename: string, language: string, code: string
     code: defaultCode,
   },
   vue: {
-    filename: 'format-bytes.ts',
-    language: 'ts',
-    code: `import { formatBytes } from './format-bytes'
+    filename: 'FormatBytes.vue',
+    language: 'vue',
+    code: `<script setup lang="ts">
+import { formatBytes } from './format-bytes'
 
 const props = defineProps<{ bytes: number }>()
+</${'script'}>
+
+<template>
+  <span>{{ formatBytes(props.bytes) }}</span>
+</template>
 `,
   },
   bash: {
@@ -93,7 +99,7 @@ export function formatBytes(bytes: number) {
 </CodeBlock>`,
   highlight: `<CodeBlock
   filename="TokenRow.tsx"
-  language="ts"
+  language="tsx"
   :highlighted-lines-numbers="[1, 4]"
 >
   …
@@ -168,7 +174,7 @@ export function formatBytes(bytes: number) {
         <div class="w-full">
           <CodeBlock
             filename="TokenRow.tsx"
-            language="ts"
+            language="tsx"
             :highlighted-lines-numbers="[1, 4]"
             :aria-label="$t('pages.code-block.ariaTokenRow')"
           >{{ highlightCode }}</CodeBlock>
@@ -268,10 +274,12 @@ export function formatBytes(bytes: number) {
           <i18n-t keypath="pages.code-block.bestPractice2" tag="span">
             <template #language><code class="font-mono">language</code></template>
             <template #syntax><code class="font-mono">syntax</code></template>
+            <template #vue><code class="font-mono">vue</code></template>
             <template #ts><code class="font-mono">ts</code></template>
             <template #js><code class="font-mono">js</code></template>
             <template #tsx><code class="font-mono">tsx</code></template>
-            <template #next><code class="font-mono">next</code></template>
+            <template #html><code class="font-mono">html</code></template>
+            <template #css><code class="font-mono">css</code></template>
             <template #lua><code class="font-mono">lua</code></template>
             <template #bash><code class="font-mono">bash</code></template>
             <template #json><code class="font-mono">json</code></template>

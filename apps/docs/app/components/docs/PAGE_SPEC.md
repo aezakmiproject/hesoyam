@@ -1,4 +1,4 @@
-# Geist docs page spec
+# Hesoyam docs page spec
 
 Write one Vue page per assigned component at `app/pages/<slug>.vue`.
 
@@ -7,27 +7,30 @@ Page chrome follows `/blocks`: full-width hairlines, not a column of rounded car
 
 ## Must
 
-- Live demos of the **Vue** component from `app/components/ui/<name>/`. Read the real props/slots before writing.
+- Live demos of the **Vue** component from `packages/hesoyam/src/components/<name>/`. Read the real props/slots before writing.
 - Use `DocsPageHeader`, `DocsSection`, `DocsPreview`, `DocsCallout` (optional). Page-level tiles use `DocsCells` / `DocsCell`.
-- Explicitly import the documented component from `@/components/ui/<name>`.
-- Icons: `@hugeicons/core-free-icons` + `<Icon :icon="…" :size="14" />`. Never import icon data from `@hugeicons/vue`.
-- Geist API in examples (`size="small"`, `variant="secondary"`). Mention shadcn aliases only if the file still has them.
+- Explicitly import the documented component from `@aezakmiproject/hesoyam`.
+- Icons: named exports from `@lucide/vue` + `<Icon :icon="…" :size="14" />`.
+- Hesoyam API in examples (`size="small"`, `variant="secondary"`). Mention shadcn aliases only if the file still has them.
 - Sections: intro, every important variant/size/state, then **Best practices** in your own words.
 - You may read `https://vercel.com/geist/<slug>.md` for section ideas. Do **not** paste their prose or React samples. Rewrite for this Vue port.
 - Dark-first. Tokens only (`--ds-gray-1000`, `--ds-gray-alpha-400`, …).
 
 ## Must not
 
-- Do not edit `app/components/ui/**` except to import from them.
+- Do not edit `packages/hesoyam/**` except to import from it. Component changes belong in a package commit, not a docs page.
 - Do not install `@vercel/geistcn`.
 - Do not add a second layout or change `geist-docs.ts` unless a slug is wrong.
 - Do not wrap the page in `gap` + rounded cards. `space-y-12` on the root is required for older pages; the layout zeroes it. Spacing is the hairline.
+
+`Card` and `Sidebar` are the exception: they are leftover shadcn surfaces that
+Hesoyam does not publish, so their pages still import from `@/components/ui/<name>`.
 
 ## Page skeleton
 
 ```vue
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
+import { Button } from '@aezakmiproject/hesoyam'
 </script>
 
 <template>

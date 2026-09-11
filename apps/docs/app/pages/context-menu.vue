@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { Copy01Icon, Delete02Icon, LinkSquare02Icon, PencilEdit01Icon } from '@hugeicons/core-free-icons'
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from '@/components/ui/context-menu'
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@aezakmiproject/hesoyam'
+import { Copy, Trash2, SquareArrowOutUpRight, Pencil } from '@lucide/vue'
 
 const { t } = useI18n()
 
@@ -34,7 +29,7 @@ const preview = {
 </ContextMenuItem>`,
   affix: `<ContextMenuItem value="copy" @click="run('Copy URL')">
   <template #prefix>
-    <Icon :icon="Copy01Icon" :size="14" />
+    <Icon :icon="Copy" :size="14" />
   </template>
   Copy URL
 </ContextMenuItem>`,
@@ -154,19 +149,19 @@ const preview = {
             <ContextMenuContent>
               <ContextMenuItem value="copy" @click="run(t('pages.context-menu.copyUrl'))">
                 <template #prefix>
-                  <Icon :icon="Copy01Icon" :size="14" />
+                  <Icon :icon="Copy" :size="14" />
                 </template>
                 {{ $t('pages.context-menu.copyUrl') }}
               </ContextMenuItem>
               <ContextMenuItem value="rename" @click="run(t('pages.context-menu.rename'))">
                 <template #prefix>
-                  <Icon :icon="PencilEdit01Icon" :size="14" />
+                  <Icon :icon="Pencil" :size="14" />
                 </template>
                 {{ $t('pages.context-menu.rename') }}
               </ContextMenuItem>
               <ContextMenuItem value="delete" @click="run(t('pages.context-menu.deleteDeployment'))">
                 <template #prefix>
-                  <Icon :icon="Delete02Icon" :size="14" />
+                  <Icon :icon="Trash2" :size="14" />
                 </template>
                 {{ $t('pages.context-menu.deleteDeployment') }}
               </ContextMenuItem>
@@ -185,19 +180,19 @@ const preview = {
               <ContextMenuItem href="/" value="docs">
                 {{ $t('pages.context-menu.openDocs') }}
                 <template #suffix>
-                  <Icon :icon="LinkSquare02Icon" :size="14" />
+                  <Icon :icon="SquareArrowOutUpRight" :size="14" />
                 </template>
               </ContextMenuItem>
               <ContextMenuItem href="/button" value="button">
                 {{ $t('pages.context-menu.button') }}
                 <template #suffix>
-                  <Icon :icon="LinkSquare02Icon" :size="14" />
+                  <Icon :icon="SquareArrowOutUpRight" :size="14" />
                 </template>
               </ContextMenuItem>
               <ContextMenuItem href="/menu" value="menu">
                 {{ $t('pages.context-menu.menu') }}
                 <template #suffix>
-                  <Icon :icon="LinkSquare02Icon" :size="14" />
+                  <Icon :icon="SquareArrowOutUpRight" :size="14" />
                 </template>
               </ContextMenuItem>
             </ContextMenuContent>

@@ -1,16 +1,6 @@
 <script setup lang="ts">
-import { CheckmarkCircle02Icon, CircleArrowDown01Icon, Clock01Icon } from '@hugeicons/core-free-icons'
-import {
-  Avatar,
-  AvatarBadge,
-  AvatarFallback,
-  AvatarGroup,
-  AvatarImage,
-  AvatarWithIcon,
-  BitbucketAvatar,
-  GitHubAvatar,
-  GitLabAvatar,
-} from '@/components/ui/avatar'
+import { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarImage, AvatarWithIcon, BitbucketAvatar, GitHubAvatar, GitLabAvatar } from '@aezakmiproject/hesoyam'
+import { CircleCheck, CircleArrowDown, Clock } from '@lucide/vue'
 
 const trio = [
   { username: 'evilrabbit' },
@@ -51,7 +41,7 @@ const gitCode = `<GitHubAvatar :size="32" username="rauchg" />
 
 const iconCode = `<AvatarWithIcon :size="32" icon-background>
   <template #icon>
-    <Icon :icon="CircleArrowDown01Icon" :size="10" />
+    <Icon :icon="CircleArrowDown" :size="10" />
   </template>
 </AvatarWithIcon>`
 
@@ -142,17 +132,17 @@ const compoundCode = `<Avatar :size="32">
         <div class="flex flex-wrap items-center gap-4 text-[var(--ds-gray-900)]">
           <AvatarWithIcon :size="32" icon-background>
             <template #icon>
-              <Icon :icon="CircleArrowDown01Icon" :size="10" />
+              <Icon :icon="CircleArrowDown" :size="10" />
             </template>
           </AvatarWithIcon>
           <AvatarWithIcon :size="32" icon-background>
             <template #icon>
-              <Icon :icon="CheckmarkCircle02Icon" :size="10" />
+              <Icon :icon="CircleCheck" :size="10" />
             </template>
           </AvatarWithIcon>
           <AvatarWithIcon :size="32" icon-background>
             <template #icon>
-              <Icon :icon="Clock01Icon" :size="10" />
+              <Icon :icon="Clock" :size="10" />
             </template>
           </AvatarWithIcon>
         </div>

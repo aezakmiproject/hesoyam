@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { FlashIcon } from '@hugeicons/core-free-icons'
-import { Gauge } from '@/components/ui/gauge'
+import { Gauge } from '@aezakmiproject/hesoyam'
+import { Zap } from '@lucide/vue'
 
 const sizes = ['tiny', 'small', 'medium', 'large'] as const
 
@@ -67,7 +67,7 @@ const indeterminateCode = `<Gauge indeterminate size="tiny" :value="25" />
 <Gauge indeterminate size="large" :value="25" />`
 
 const overlayCode = `<Gauge size="medium" :value="72">
-  <Icon :icon="FlashIcon" :size="18" class="text-[var(--ds-gray-1000)]" />
+  <Icon :icon="Zap" :size="18" class="text-[var(--ds-gray-1000)]" />
 </Gauge>`
 </script>
 
@@ -187,7 +187,7 @@ const overlayCode = `<Gauge size="medium" :value="72">
       <DocsPreview :code="overlayCode">
         <Gauge size="medium" :value="72">
           <Icon
-            :icon="FlashIcon"
+            :icon="Zap"
             :size="18"
             class="text-[var(--ds-gray-1000)]"
           />

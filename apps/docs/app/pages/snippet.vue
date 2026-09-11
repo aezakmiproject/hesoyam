@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Snippet } from '@/components/ui/snippet'
+import { Snippet } from '@aezakmiproject/hesoyam'
 
 const lastCopy = ref('')
 const copied = ref(false)

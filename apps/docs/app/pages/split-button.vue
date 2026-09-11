@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ChatGptIcon, FloppyDiskIcon, ReloadIcon, SparklesIcon } from '@hugeicons/core-free-icons'
-import { SplitButton, SplitButtonMenuItem } from '@/components/ui/split-button'
+import { SplitButton, SplitButtonMenuItem } from '@aezakmiproject/hesoyam'
+import { Bot, Save, RefreshCw, Sparkles } from '@lucide/vue'
 
 const { t } = useI18n()
 
@@ -45,7 +45,7 @@ const iconCode = `<SplitButton
       description="Open this page in v0"
     >
       <template #icon>
-        <Icon :icon="SparklesIcon" :size="16" />
+        <Icon :icon="Sparkles" :size="16" />
       </template>
     </SplitButtonMenuItem>
   </template>
@@ -54,7 +54,7 @@ const iconCode = `<SplitButton
 const titleIconCode = `<SplitButtonMenuItem description="Save changes">
   <template #title>
     <span class="flex items-center gap-2">
-      <Icon :icon="FloppyDiskIcon" :size="14" />
+      <Icon :icon="Save" :size="14" />
       Save
     </span>
   </template>
@@ -206,7 +206,7 @@ const alignmentCode = `<SplitButton
               :menu-item-props="{ onClick: () => run(t('pages.split-button.openInV0')) }"
             >
               <template #icon>
-                <Icon :icon="SparklesIcon" :size="16" />
+                <Icon :icon="Sparkles" :size="16" />
               </template>
             </SplitButtonMenuItem>
             <SplitButtonMenuItem
@@ -215,7 +215,7 @@ const alignmentCode = `<SplitButton
               :menu-item-props="{ onClick: () => run(t('pages.split-button.openInChatGPT')) }"
             >
               <template #icon>
-                <Icon :icon="ChatGptIcon" :size="16" />
+                <Icon :icon="Bot" :size="16" />
               </template>
             </SplitButtonMenuItem>
           </template>
@@ -248,7 +248,7 @@ const alignmentCode = `<SplitButton
               >
                 <template #title>
                   <span class="flex items-center gap-2">
-                    <Icon :icon="FloppyDiskIcon" :size="14" />
+                    <Icon :icon="Save" :size="14" />
                     {{ $t('pages.split-button.save') }}
                   </span>
                 </template>
@@ -259,7 +259,7 @@ const alignmentCode = `<SplitButton
               >
                 <template #title>
                   <span class="flex items-center gap-2">
-                    <Icon :icon="ReloadIcon" :size="14" />
+                    <Icon :icon="RefreshCw" :size="14" />
                     {{ $t('pages.split-button.saveRedeploy') }}
                   </span>
                 </template>

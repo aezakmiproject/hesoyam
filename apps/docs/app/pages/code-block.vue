@@ -30,8 +30,10 @@ const diffCode = `export default defineNuxtConfig({
   payloadExtraction: true,
 })`
 
-const switcherLang = ref('ts')
-const tabLang = ref('ts')
+type SampleLang = 'ts' | 'vue' | 'bash'
+
+const switcherLang = ref<SampleLang>('ts')
+const tabLang = ref<SampleLang>('ts')
 
 const switcherOptions = [
   { label: 'TypeScript', value: 'ts' },
@@ -39,7 +41,7 @@ const switcherOptions = [
   { label: 'Bash', value: 'bash' },
 ]
 
-const samples: Record<string, { filename: string, language: string, code: string }> = {
+const samples: Record<SampleLang, { filename: string, language: string, code: string }> = {
   ts: {
     filename: 'format-bytes.ts',
     language: 'ts',
@@ -67,14 +69,19 @@ pnpm preview --port 3000`,
   },
 }
 
-const switcherCurrent = computed(() => samples[switcherLang.value] ?? samples.ts)
-const tabCurrent = computed(() => samples[tabLang.value] ?? samples.ts)
+function isSampleLang(value: string): value is SampleLang {
+  return value === 'ts' || value === 'vue' || value === 'bash'
+}
+
+const switcherCurrent = computed(() => samples[switcherLang.value])
+const tabCurrent = computed(() => samples[tabLang.value])
 
 const switcher = computed<CodeBlockSwitcher>(() => ({
   options: switcherOptions,
   value: switcherLang.value,
   onChange: (value: string) => {
-    switcherLang.value = value
+    if (isSampleLang(value))
+      switcherLang.value = value
   },
 }))
 
@@ -82,7 +89,8 @@ const tabs = computed<CodeBlockSwitcher>(() => ({
   options: switcherOptions,
   value: tabLang.value,
   onChange: (value: string) => {
-    tabLang.value = value
+    if (isSampleLang(value))
+      tabLang.value = value
   },
 }))
 

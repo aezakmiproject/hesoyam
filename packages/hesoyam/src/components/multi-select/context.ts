@@ -1,4 +1,5 @@
 import type { InjectionKey, Ref } from 'vue'
+import { inject } from 'vue'
 
 export type MultiSelectAlign = 'start' | 'center' | 'end'
 export type MultiSelectFocusTarget = 'checkbox' | 'button'
@@ -27,3 +28,10 @@ export interface MultiSelectContext {
 }
 
 export const MULTI_SELECT_KEY: InjectionKey<MultiSelectContext> = Symbol('geist-multi-select')
+
+export function useMultiSelectContext(): MultiSelectContext {
+  const ctx = inject(MULTI_SELECT_KEY)
+  if (!ctx)
+    throw new Error('MultiSelect components must be used inside MultiSelectRoot')
+  return ctx
+}

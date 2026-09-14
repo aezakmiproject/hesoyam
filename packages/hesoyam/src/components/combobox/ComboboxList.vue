@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { onClickOutside, useEventListener } from '@vueuse/core'
-import { computed, inject, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { cn } from '../../lib/utils'
-import { COMBOBOX_KEY } from './context'
+import { useComboboxContext } from './context'
 
 const props = defineProps<{
   maxWidth?: number
@@ -11,9 +11,7 @@ const props = defineProps<{
   class?: HTMLAttributes['class']
 }>()
 
-const ctx = inject(COMBOBOX_KEY)
-if (!ctx)
-  throw new Error('ComboboxList must be used inside Combobox')
+const ctx = useComboboxContext()
 
 const listRef = ref<HTMLElement | null>(null)
 const coords = ref({ top: 0, left: 0, width: 0 })

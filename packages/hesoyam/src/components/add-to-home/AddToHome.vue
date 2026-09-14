@@ -22,7 +22,7 @@ const STEP_MS: Record<AddToHomeStep, number> = {
   home: 2400,
 }
 
-const STEPS: AddToHomeStep[] = ['browse', 'sheet', 'confirm', 'home']
+const STEPS = ['browse', 'sheet', 'confirm', 'home'] as const satisfies readonly AddToHomeStep[]
 
 const props = withDefaults(defineProps<{
   name?: string
@@ -108,7 +108,7 @@ function clearTimer() {
 
 function nextStep(step: AddToHomeStep): AddToHomeStep {
   const index = STEPS.indexOf(step)
-  return STEPS[(index + 1) % STEPS.length]
+  return STEPS[(index + 1) % STEPS.length] ?? 'browse'
 }
 
 function schedule(ms: number) {

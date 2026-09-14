@@ -2,9 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { MultiSelectAlign } from './context'
 import { useEventListener } from '@vueuse/core'
-import { computed, inject, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { cn } from '../../lib/utils'
-import { MULTI_SELECT_KEY } from './context'
+import { useMultiSelectContext } from './context'
 
 const props = withDefaults(defineProps<{
   align?: MultiSelectAlign
@@ -13,16 +13,14 @@ const props = withDefaults(defineProps<{
   align: 'start',
 })
 
-const ctx = inject(MULTI_SELECT_KEY)
-if (!ctx)
-  throw new Error('MultiSelectContent must be used inside MultiSelectRoot')
+const ctx = useMultiSelectContext()
 
 ctx.align.value = props.align
 
 const coords = ref({ top: 0, left: 0, width: 0 })
 
-function setContentRef(el: Element | null) {
-  ctx.contentRef.value = el as HTMLElement | null
+function setContentRef(el: unknown) {
+  ctx.contentRef.value = el instanceof HTMLElement ? el : null
 }
 
 function updatePosition() {

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Check } from '@lucide/vue'
-import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { cn } from '../../lib/utils'
-import { COMBOBOX_KEY } from './context'
+import { useComboboxContext } from './context'
 
 const props = defineProps<{
   value: string
@@ -13,9 +13,7 @@ const props = defineProps<{
   class?: HTMLAttributes['class']
 }>()
 
-const ctx = inject(COMBOBOX_KEY)
-if (!ctx)
-  throw new Error('ComboboxOption must be used inside Combobox')
+const ctx = useComboboxContext()
 
 const hidden = ref(false)
 const rootRef = ref<HTMLElement | null>(null)

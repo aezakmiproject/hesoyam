@@ -52,9 +52,11 @@ const current = computed(() => {
 const thumbs = computed(() => current.value.length > 0 ? current.value : [props.min])
 
 const displayValue = computed(() => {
+  const start = thumbs.value[0] ?? props.min
+  const end = thumbs.value[thumbs.value.length - 1] ?? start
   if (thumbs.value.length > 1)
-    return `${formatNumber(thumbs.value[0])} – ${formatNumber(thumbs.value[thumbs.value.length - 1])}`
-  return formatNumber(thumbs.value[0] ?? props.min)
+    return `${formatNumber(start)} – ${formatNumber(end)}`
+  return formatNumber(start)
 })
 
 const showLiveValue = computed(() => !props.showStartInput && !props.showEndInput)

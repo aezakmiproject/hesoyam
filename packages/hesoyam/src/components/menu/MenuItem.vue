@@ -24,7 +24,7 @@ const emits = defineEmits<DropdownMenuItemEmits & {
 
 const itemAs = computed(() => props.href ? 'a' : props.as)
 
-const delegatedProps = reactiveOmit(props, 'class', 'type', 'href', 'prefix', 'suffix')
+const delegatedProps = reactiveOmit(props, 'class', 'type', 'href', 'prefix', 'suffix', 'as')
 const forwarded = useForwardProps(delegatedProps)
 
 function onSelect(event: Event) {

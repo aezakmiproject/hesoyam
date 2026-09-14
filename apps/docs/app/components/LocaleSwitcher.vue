@@ -15,7 +15,7 @@ const currentName = computed(() =>
 )
 
 async function selectLocale(code: string) {
-  if (code === locale.value)
+  if (code === locale.value || (code !== 'en' && code !== 'ru'))
     return
   await setLocale(code)
 }

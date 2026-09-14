@@ -1,4 +1,5 @@
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
+import { inject } from 'vue'
 
 export type ComboboxSize = 'small' | 'medium' | 'large' | 'default'
 
@@ -34,3 +35,10 @@ export interface ComboboxContext {
 }
 
 export const COMBOBOX_KEY: InjectionKey<ComboboxContext> = Symbol('geist-combobox')
+
+export function useComboboxContext(): ComboboxContext {
+  const ctx = inject(COMBOBOX_KEY)
+  if (!ctx)
+    throw new Error('Combobox components must be used inside Combobox')
+  return ctx
+}

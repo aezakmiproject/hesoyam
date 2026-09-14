@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { HTMLAttributes, Ref } from 'vue'
 import type { ComboboxContext, ComboboxOptionApi, ComboboxSize } from './context'
 import { useVModel } from '@vueuse/core'
 import { computed, provide, ref, shallowRef, useAttrs, useId, watch } from 'vue'
@@ -155,7 +155,7 @@ const context: ComboboxContext = {
   id,
   ariaLabel,
   query,
-  value: selected,
+  value: selected as Ref<string | null>,
   open,
   disabled,
   errored,

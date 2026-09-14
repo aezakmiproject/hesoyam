@@ -19,8 +19,8 @@ const props = defineProps<{
   class?: HTMLAttributes['class']
 }>()
 
-function onClick(event: MouseEvent) {
-  props.menuItemProps?.onClick?.(event)
+function onClick(event: Event) {
+  props.menuItemProps?.onClick?.(event as MouseEvent)
 }
 </script>
 

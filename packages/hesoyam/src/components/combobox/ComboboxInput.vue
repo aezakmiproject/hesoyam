@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { ChevronDown, X } from '@lucide/vue'
-import { computed, inject } from 'vue'
+import { computed } from 'vue'
 import { cn } from '../../lib/utils'
-import { COMBOBOX_KEY } from './context'
+import { useComboboxContext } from './context'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
@@ -14,9 +14,7 @@ const emit = defineEmits<{
   change: [event: Event]
 }>()
 
-const ctx = inject(COMBOBOX_KEY)
-if (!ctx)
-  throw new Error('ComboboxInput must be used inside Combobox')
+const ctx = useComboboxContext()
 
 const iconSize = computed(() => ctx.size.value === 'large' ? 18 : ctx.size.value === 'small' ? 14 : 16)
 

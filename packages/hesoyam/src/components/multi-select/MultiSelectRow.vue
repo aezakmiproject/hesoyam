@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { Check } from '@lucide/vue'
-import { computed, inject, onBeforeUnmount, onMounted, ref, useId } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, useId } from 'vue'
 import { cn } from '../../lib/utils'
-import { MULTI_SELECT_KEY } from './context'
+import { useMultiSelectContext } from './context'
 
 const props = withDefaults(defineProps<{
   name: string
@@ -26,9 +26,7 @@ const emit = defineEmits<{
   selectAll: []
 }>()
 
-const ctx = inject(MULTI_SELECT_KEY)
-if (!ctx)
-  throw new Error('MultiSelectRow must be used inside MultiSelectRoot')
+const ctx = useMultiSelectContext()
 
 const rowId = useId()
 const checkboxRef = ref<HTMLButtonElement | null>(null)
@@ -55,12 +53,12 @@ function runAction() {
   emit('selectOnly')
 }
 
-function setCheckboxRef(el: Element | null) {
-  checkboxRef.value = el as HTMLButtonElement | null
+function setCheckboxRef(el: unknown) {
+  checkboxRef.value = el instanceof HTMLButtonElement ? el : null
 }
 
-function setButtonRef(el: Element | null) {
-  buttonRef.value = el as HTMLButtonElement | null
+function setButtonRef(el: unknown) {
+  buttonRef.value = el instanceof HTMLButtonElement ? el : null
 }
 
 function onRowKeydown(event: KeyboardEvent) {

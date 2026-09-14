@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes, VNode } from 'vue'
-import type { ButtonVariants } from '../button'
+import type { ButtonSize, ButtonVariant, ButtonVariants } from '../button'
 import { ChevronDown } from '@lucide/vue'
 import { computed } from 'vue'
 import { cn } from '../../lib/utils'
@@ -39,7 +39,7 @@ const emit = defineEmits<{
   click: [event: MouseEvent]
 }>()
 
-function mapSize(size?: SplitButtonButtonProps['size']): ButtonVariants['size'] {
+function mapSize(size?: SplitButtonButtonProps['size']): ButtonSize {
   if (size === 'small' || size === 'sm')
     return 'sm'
   if (size === 'large' || size === 'lg')
@@ -47,7 +47,7 @@ function mapSize(size?: SplitButtonButtonProps['size']): ButtonVariants['size'] 
   return 'default'
 }
 
-function mapVariant(variant?: SplitButtonVariant): ButtonVariants['variant'] {
+function mapVariant(variant?: SplitButtonVariant): ButtonVariant {
   if (variant === 'secondary')
     return 'outline'
   return 'default'
@@ -55,7 +55,7 @@ function mapVariant(variant?: SplitButtonVariant): ButtonVariants['variant'] {
 
 const size = computed(() => mapSize(props.buttonProps?.size))
 const variant = computed(() => mapVariant(props.buttonProps?.variant))
-const iconSize = computed(() => {
+const iconSize = computed((): ButtonSize => {
   if (props.buttonProps?.size === 'large' || props.buttonProps?.size === 'lg')
     return 'icon-lg'
   if (props.buttonProps?.size === 'small' || props.buttonProps?.size === 'sm')

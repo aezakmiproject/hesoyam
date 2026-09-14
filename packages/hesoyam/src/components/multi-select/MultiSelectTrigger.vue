@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { ChevronDown } from '@lucide/vue'
-import { inject } from 'vue'
 import { cn } from '../../lib/utils'
-import { MULTI_SELECT_KEY } from './context'
+import { useMultiSelectContext } from './context'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
 }>()
 
-const ctx = inject(MULTI_SELECT_KEY)
-if (!ctx)
-  throw new Error('MultiSelectTrigger must be used inside MultiSelectRoot')
+const ctx = useMultiSelectContext()
 
-function setTriggerRef(el: Element | null) {
-  ctx.triggerRef.value = el as HTMLElement | null
+function setTriggerRef(el: unknown) {
+  ctx.triggerRef.value = el instanceof HTMLElement ? el : null
 }
 
 function onToggle() {

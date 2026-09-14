@@ -21,7 +21,7 @@ const emits = defineEmits<ContextMenuItemEmits & {
 
 const itemAs = computed(() => props.href ? 'a' : props.as)
 
-const delegatedProps = reactiveOmit(props, 'class', 'href', 'value', 'prefix', 'suffix')
+const delegatedProps = reactiveOmit(props, 'class', 'href', 'value', 'prefix', 'suffix', 'as')
 const forwarded = useForwardProps(delegatedProps)
 
 function onSelect(event: Event) {

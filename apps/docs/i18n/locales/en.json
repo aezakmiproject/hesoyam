@@ -17,7 +17,11 @@
       "leftovers": "Leftovers"
     },
     "items": {
-      "introduction": "Introduction"
+      "introduction": "Introduction",
+      "installation": "Installation"
+    },
+    "badges": {
+      "inDev": "In dev"
     },
     "pagination": {
       "label": "Pagination",
@@ -41,7 +45,7 @@
       "materials": "Materials",
       "materialsBody": "Radius, hairline borders, and elevation. 6px controls, 8px cards, 12px menus. Docs chrome stays square.",
       "import": "Import",
-      "importDescription": "Named exports from each folder. Keep existing {'@/components/ui/*'} paths.",
+      "importDescription": "Named exports from {pkg}. Setup lives on {installation}.",
       "rules": "Rules",
       "rulesDark": "Dark-first. Page background is {bg} {hex}.",
       "rulesBlocks": "Docs chrome follows {blocks}: full-width hairlines, not a column of rounded cards.",
@@ -54,42 +58,6 @@
     }
   },
   "pages": {
-    "add-to-home": {
-      "title": "Add to Home",
-      "description": "A phone that walks through pinning the site to the home screen as an app.",
-      "default": "iOS",
-      "defaultHint": "Safari share sheet, then Add to Home Screen. Hover pauses the loop.",
-      "android": "Android",
-      "androidHint": "Chrome overflow, then Install app.",
-      "custom": "Name and icon",
-      "customHint": "Pass name, url, and an icon slot so the walkthrough matches the product.",
-      "sizes": "Sizes",
-      "sizesHint": "small, medium, and large. medium is the default.",
-      "step": "Step",
-      "stepHint": "Pass step to freeze a frame. Autoplay stops.",
-      "stepHome": "Home",
-      "previewName": "Hesoyam",
-      "previewUrl": "hesoyam.dev",
-      "share": "Share",
-      "addToHome": "Add to Home Screen",
-      "add": "Add",
-      "cancel": "Cancel",
-      "copy": "Copy",
-      "more": "More",
-      "bookmark": "Add Bookmark",
-      "install": "Install app",
-      "installAction": "Install",
-      "openIn": "Open in…",
-      "desktopSite": "Desktop site",
-      "aria": "How to add {name} to the home screen",
-      "bestPractices": "Best practices",
-      "bestPractice1": "Use Add to Home on an install or empty state — one phone, one product. Do not stack two platforms in the same row unless you are comparing them.",
-      "bestPractice2": "Set {name} and {url} to the real app. Put the mark in the {icon} slot or pass {iconSrc}.",
-      "bestPractice3": "Leave autoplay on. {pauseOnHover} is the default so a pointer can inspect a frame.",
-      "bestPractice4": "Pass {step} only when you need a still: the share sheet, the confirm, or the home icon.",
-      "bestPractice5": "{reducedMotion} jumps to the home frame and stops. Do not re-enable the loop.",
-      "bestPractice6": "This is a guide, not an install prompt. The real PWA prompt stays in the browser."
-    },
     "avatar": {
       "title": "Avatar",
       "description": "Face or initials for a person, team, or org. Stack two or more with AvatarGroup.",
@@ -977,6 +945,38 @@
       "bp4": "Keep the field focusable while saving. {disabled} only when typing is impossible.",
       "bp5": "{sizeMedium} matches {sizeDefault} (40px). New code can use either; product chrome often wants {sizeSmall}.",
       "bp6": "Bind with {vmodel}. Native attributes ({type}, {placeholder}, {autocomplete}) fall through to the inner {input}."
+    },
+    "installation": {
+      "title": "Installation",
+      "description": "Source-distributed Vue 3 kit. Tailwind has to scan the shipped components.",
+      "install": "Install",
+      "ariaInstall": "Install command",
+      "sourceHint": "The package is source, not a prebuilt bundle. A compiled dist would strip the Tailwind utilities that live inside the {vue} files.",
+      "peersHint": "The second line is the peer set. If Vue and Tailwind are already in the app, add only reka-ui and {'@lucide/vue'}.",
+      "nuxt": "Nuxt",
+      "nuxtHint": "The module auto-imports components, injects the theme into the Tailwind entry stylesheet, and keeps the package out of Vite pre-bundling.",
+      "nuxtOptions": "Module options",
+      "nuxtOptionsHint": "Defaults are empty prefix, auto-import on, theme on.",
+      "optionPrefix": "{prefix}: 'Hesoyam' exposes {example} instead of Button.",
+      "optionComponents": "{components}: auto-import. Set false to import by hand.",
+      "optionTheme": "{theme}: inject {css} after the Tailwind import. If that file already imports the theme, the module leaves it alone.",
+      "vite": "Vue + Vite",
+      "viteHint": "Import the theme from the same stylesheet as Tailwind. Tell Vite not to pre-bundle the package — esbuild cannot process the .vue files it ships.",
+      "global": "Register everything",
+      "globalHint": "A Vue plugin if you want every component on the app instance.",
+      "resolver": "Auto-import in Vite",
+      "resolverHint": "unplugin-vue-components with the Hesoyam resolver.",
+      "theme": "Theme",
+      "themeHint": "theme.css defines the --ds-* scales, type, radius, and the {'@source'} rules that let Tailwind see the components. Override tokens after the import.",
+      "fontsHint": "Typography expects Geologica ({sans}) and Geist Mono ({mono}). Both fall back to system fonts if you do not load them.",
+      "imports": "Imports",
+      "importsHint": "Named exports from the barrel, or a folder if you prefer not to go through the index.",
+      "practices": "Practices",
+      "practice1": "Never pre-bundle the package. The Nuxt module already adds {exclude}. Vite apps must set it by hand.",
+      "practice2": "Import the theme from the stylesheet that imports Tailwind. A second CSS file will not scan the components.",
+      "practice3": "Dark mode is a {dark} class on a parent, usually html. The dark palette is the reference; light is the adaptation.",
+      "practice4": "Typecheck with {vueTsc} or Volar. Plain {tsc} cannot type .vue source.",
+      "practice5": "Node 20.19 or newer. Nuxt 3.13+ or Vue 3.5+."
     },
     "keyboard-input": {
       "title": "Keyboard Input",

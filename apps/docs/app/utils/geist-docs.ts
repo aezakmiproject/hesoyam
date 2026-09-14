@@ -2,6 +2,8 @@ export interface GeistNavItem {
   title: string
   href: string
   titleKey?: string
+  disabled?: boolean
+  badgeKey?: string
 }
 
 export interface GeistNavGroup {
@@ -16,10 +18,11 @@ export const geistNav: GeistNavGroup[] = [
     title: 'Foundations',
     items: [
       { title: 'Introduction', href: '/', titleKey: 'geist.items.introduction' },
+      { title: 'Installation', href: '/installation', titleKey: 'geist.items.installation' },
       { title: 'Colors', href: '/colors' },
       { title: 'Typography', href: '/typography' },
       { title: 'Materials', href: '/materials' },
-      { title: 'Blocks', href: '/blocks' },
+      { title: 'Blocks', href: '/blocks', disabled: true, badgeKey: 'geist.badges.inDev' },
       { title: 'Icons', href: '/icons' },
     ],
   },
@@ -27,7 +30,6 @@ export const geistNav: GeistNavGroup[] = [
     id: 'components',
     title: 'Components',
     items: [
-      { title: 'Add to Home', href: '/add-to-home' },
       { title: 'Avatar', href: '/avatar' },
       { title: 'Badge', href: '/badge' },
       { title: 'Banner', href: '/banner' },

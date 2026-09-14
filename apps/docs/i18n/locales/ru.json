@@ -17,7 +17,11 @@
       "leftovers": "Остальное"
     },
     "items": {
-      "introduction": "Введение"
+      "introduction": "Введение",
+      "installation": "Установка"
+    },
+    "badges": {
+      "inDev": "In dev"
     },
     "pagination": {
       "label": "Пагинация",
@@ -41,7 +45,7 @@
       "materials": "Материалы",
       "materialsBody": "Радиусы, hairline-бордеры и тени. Контролы 6px, карточки 8px, меню 12px. Хром доков остаётся без скруглений.",
       "import": "Импорт",
-      "importDescription": "Именованные экспорты из каждой папки. Оставляйте пути {'@/components/ui/*'}.",
+      "importDescription": "Именованные экспорты из {pkg}. Сетап — на странице {installation}.",
       "rules": "Правила",
       "rulesDark": "Dark-first. Фон страницы — {bg} {hex}.",
       "rulesBlocks": "Хром доков строится по правилам {blocks}: на всю ширину hairline, не колонка скруглённых карточек.",
@@ -54,42 +58,6 @@
     }
   },
   "pages": {
-    "add-to-home": {
-      "title": "Add to Home",
-      "description": "Телефон, который показывает, как закрепить сайт на домашнем экране как приложение.",
-      "default": "iOS",
-      "defaultHint": "Шторка Share в Safari, затем Add to Home Screen. Наведение ставит цикл на паузу.",
-      "android": "Android",
-      "androidHint": "Меню Chrome, затем Install app.",
-      "custom": "Имя и иконка",
-      "customHint": "Передайте name, url и слот icon — чтобы проход совпал с продуктом.",
-      "sizes": "Размеры",
-      "sizesHint": "small, medium и large. По умолчанию medium.",
-      "step": "Шаг",
-      "stepHint": "step фиксирует кадр. Autoplay останавливается.",
-      "stepHome": "Home",
-      "previewName": "Hesoyam",
-      "previewUrl": "hesoyam.dev",
-      "share": "Поделиться",
-      "addToHome": "На экран «Домой»",
-      "add": "Добавить",
-      "cancel": "Отменить",
-      "copy": "Скопировать",
-      "more": "Ещё",
-      "bookmark": "Закладка",
-      "install": "Установить приложение",
-      "installAction": "Установить",
-      "openIn": "Открыть в…",
-      "desktopSite": "Версия для компьютера",
-      "aria": "Как добавить {name} на домашний экран",
-      "bestPractices": "Рекомендации",
-      "bestPractice1": "Add to Home — для экрана установки или empty state: один телефон, один продукт. Две платформы в одном ряду только если сравниваете.",
-      "bestPractice2": "Задайте {name} и {url} настоящего приложения. Метку кладите в слот {icon} или в {iconSrc}.",
-      "bestPractice3": "Оставляйте autoplay. {pauseOnHover} включён по умолчанию, чтобы указатель мог рассмотреть кадр.",
-      "bestPractice4": "{step} — только для стоп-кадра: шторка Share, подтверждение или иконка на Home.",
-      "bestPractice5": "{reducedMotion} прыгает на домашний кадр и останавливается. Не включайте цикл обратно.",
-      "bestPractice6": "Это гайд, не системный install prompt. Настоящий PWA prompt остаётся в браузере."
-    },
     "avatar": {
       "title": "Avatar",
       "description": "Лицо или инициалы человека, команды или организации. Два и больше — через AvatarGroup.",
@@ -977,6 +945,38 @@
       "bp4": "Поле остаётся в фокусе во время сохранения. {disabled} — только когда ввод невозможен.",
       "bp5": "{sizeMedium} совпадает с {sizeDefault} (40px). В новом коде можно использовать любой; продуктовый хром часто предпочитает {sizeSmall}.",
       "bp6": "Привязывайте через {vmodel}. Нативные атрибуты ({type}, {placeholder}, {autocomplete}) проходят во внутренний {input}."
+    },
+    "installation": {
+      "title": "Установка",
+      "description": "Vue 3 кит исходниками. Tailwind должен сканировать поставленные компоненты.",
+      "install": "Пакет",
+      "ariaInstall": "Команда установки",
+      "sourceHint": "Пакет — исходники, не собранный бандл. Из prebuilt dist Tailwind выпилил бы утилиты, которые живут внутри {vue} файлов.",
+      "peersHint": "Вторая строка — peer-зависимости. Если Vue и Tailwind уже в приложении, добавьте только reka-ui и {'@lucide/vue'}.",
+      "nuxt": "Nuxt",
+      "nuxtHint": "Модуль сам импортирует компоненты, вшивает тему в Tailwind-entrypoint и не даёт Vite пребандлить пакет.",
+      "nuxtOptions": "Опции модуля",
+      "nuxtOptionsHint": "По умолчанию: пустой prefix, auto-import включён, тема включена.",
+      "optionPrefix": "{prefix}: 'Hesoyam' даёт {example} вместо Button.",
+      "optionComponents": "{components}: auto-import. false — импортировать руками.",
+      "optionTheme": "{theme}: вставляет {css} сразу после импорта Tailwind. Если файл уже импортирует тему, модуль его не трогает.",
+      "vite": "Vue + Vite",
+      "viteHint": "Импортируйте тему из той же таблицы стилей, что и Tailwind. Запретите Vite пребандлить пакет — esbuild не умеет в поставляемые .vue файлы.",
+      "global": "Зарегистрировать всё",
+      "globalHint": "Vue-плагин, если нужны все компоненты на инстансе приложения.",
+      "resolver": "Auto-import в Vite",
+      "resolverHint": "unplugin-vue-components с резолвером Hesoyam.",
+      "theme": "Тема",
+      "themeHint": "theme.css задаёт шкалы --ds-*, типографику, радиусы и {'@source'}, чтобы Tailwind видел компоненты. Токены переопределяйте после импорта.",
+      "fontsHint": "Типографика ждёт Geologica ({sans}) и Geist Mono ({mono}). Оба откатываются на системные шрифты, если их не подключить.",
+      "imports": "Импорты",
+      "importsHint": "Именованные экспорты из барреля или из папки, если не хотите идти через index.",
+      "practices": "Практики",
+      "practice1": "Не пребандлите пакет. Nuxt-модуль уже ставит {exclude}. В Vite это нужно прописать руками.",
+      "practice2": "Импортируйте тему из той же таблицы, что импортирует Tailwind. Второй CSS-файл компоненты не увидит.",
+      "practice3": "Тёмная тема — класс {dark} на родителе, обычно html. Тёмная палитра — эталон, светлая — адаптация.",
+      "practice4": "Проверяйте типы через {vueTsc} или Volar. Обычный {tsc} не умеет в .vue исходники.",
+      "practice5": "Node 20.19 или новее. Nuxt 3.13+ или Vue 3.5+."
     },
     "keyboard-input": {
       "title": "Keyboard Input",

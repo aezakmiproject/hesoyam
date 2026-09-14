@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IconTile, Scroller } from '@aezakmiproject/hesoyam'
+import { Badge, IconTile, Scroller } from '@aezakmiproject/hesoyam'
 
 const route = useRoute()
 const { groups } = useGeistNav()
@@ -27,7 +27,25 @@ function isActive(href: string) {
           </p>
           <ul class="flex flex-col gap-0.5">
             <li v-for="item in group.items" :key="item.href">
+              <span
+                v-if="item.disabled"
+                aria-disabled="true"
+                class="flex cursor-not-allowed items-center gap-2.5 rounded-[8px] px-2 py-1 text-[15px] leading-6 text-[var(--ds-gray-900)] opacity-60"
+              >
+                <IconTile :icon="item.icon" :variant="item.variant" theme-sync />
+                <span class="min-w-0 truncate">{{ item.title }}</span>
+                <Badge
+                  v-if="item.badge"
+                  size="sm"
+                  variant="gray"
+                  contrast="low"
+                  class="ml-auto"
+                >
+                  {{ item.badge }}
+                </Badge>
+              </span>
               <NuxtLink
+                v-else
                 :to="item.href"
                 :class="isActive(item.href)
                   ? 'bg-[var(--ds-gray-100)] text-[var(--ds-gray-1000)]'
@@ -36,6 +54,15 @@ function isActive(href: string) {
               >
                 <IconTile :icon="item.icon" :variant="item.variant" theme-sync />
                 <span class="min-w-0 truncate">{{ item.title }}</span>
+                <Badge
+                  v-if="item.badge"
+                  size="sm"
+                  variant="gray"
+                  contrast="low"
+                  class="ml-auto"
+                >
+                  {{ item.badge }}
+                </Badge>
               </NuxtLink>
             </li>
           </ul>

@@ -21,6 +21,7 @@ import {
   Columns2,
   Copy,
   CreditCard,
+  Download,
   Ellipsis,
   FolderTree,
   Gauge,
@@ -49,7 +50,6 @@ import {
   Search,
   Shapes,
   SlidersHorizontal,
-  Smartphone,
   Smile,
   Sparkles,
   Square,
@@ -81,13 +81,13 @@ export const navChipFallback: NavChip = {
 
 export const navChipByHref: Record<string, NavChip> = {
   '/': { icon: BookOpen, variant: 'blue' },
+  '/installation': { icon: Download, variant: 'green' },
   '/colors': { icon: Palette, variant: 'pink' },
   '/typography': { icon: ALargeSmall, variant: 'gray' },
   '/materials': { icon: Layers, variant: 'purple' },
   '/blocks': { icon: Boxes, variant: 'teal' },
   '/icons': { icon: Smile, variant: 'amber' },
 
-  '/add-to-home': { icon: Smartphone, variant: 'blue' },
   '/avatar': { icon: CircleUser, variant: 'blue' },
   '/badge': { icon: Award, variant: 'green' },
   '/banner': { icon: Megaphone, variant: 'purple' },

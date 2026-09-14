@@ -5,7 +5,7 @@ export { default as IconTile } from './IconTile.vue'
 export { iconTileGradientFromHex, iconTileSourceHex, parseHexColor } from './gradient'
 
 export const iconTileVariants = cva(
-  'ds-icon-tile relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[6px] [&_svg]:pointer-events-none [&_svg]:shrink-0',
+  'ds-icon-tile relative inline-flex shrink-0 items-center justify-center rounded-[6px] [&_svg]:pointer-events-none [&_svg]:shrink-0',
   {
     variants: {
       variant: {

@@ -16,11 +16,17 @@ export function useGeistNav(searchOverride?: Ref<string>) {
     return item.titleKey ? t(item.titleKey) : item.title
   }
 
+  function itemBadge(item: (typeof geistNav)[number]['items'][number]) {
+    return item.badgeKey ? t(item.badgeKey) : undefined
+  }
+
   const pages = computed(() =>
-    geistNav.flatMap(group => group.items).map(item => ({
-      href: item.href,
-      title: itemTitle(item),
-    })),
+    geistNav.flatMap(group => group.items)
+      .filter(item => !item.disabled)
+      .map(item => ({
+        href: item.href,
+        title: itemTitle(item),
+      })),
   )
 
   const currentIndex = computed(() =>
@@ -47,6 +53,7 @@ export function useGeistNav(searchOverride?: Ref<string>) {
       items: group.items.map(item => ({
         ...item,
         title: itemTitle(item),
+        badge: itemBadge(item),
         ...navChipFor(item.href),
       })),
     }))

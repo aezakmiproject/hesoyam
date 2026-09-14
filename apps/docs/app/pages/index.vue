@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CodeBlock } from '@aezakmiproject/hesoyam'
+import { Badge, CodeBlock } from '@aezakmiproject/hesoyam'
 import {
   Bell,
   Bookmark,
@@ -137,8 +137,8 @@ const importCode = `import { Button } from '@aezakmiproject/hesoyam'`
         </p>
       </DocsCell>
 
-      <DocsCell href="/blocks">
-        <div class="mb-10 flex h-28 flex-col justify-center gap-3">
+      <DocsCell>
+        <div class="mb-10 flex h-28 flex-col justify-center gap-3 opacity-60">
           <div class="flex h-9 items-center gap-2 rounded-[6px] border border-[var(--ds-gray-alpha-400)] px-3">
             <span class="text-[13px] text-[var(--ds-gray-900)]">{{ $t('geist.index.label') }}</span>
             <span class="ml-auto text-[13px] text-[var(--ds-gray-900)]">{{ $t('geist.index.value') }}</span>
@@ -148,7 +148,10 @@ const importCode = `import { Button } from '@aezakmiproject/hesoyam'`
             <span class="flex h-8 min-w-0 flex-1 items-center rounded-[6px] border border-[var(--ds-gray-alpha-400)] px-3 text-[13px] text-[var(--ds-gray-900)]">{{ $t('geist.index.search') }}</span>
           </div>
         </div>
-        <p class="text-[16px] font-medium text-[var(--ds-gray-1000)]">{{ $t('geist.index.blocks') }}</p>
+        <p class="flex items-center gap-2 text-[16px] font-medium text-[var(--ds-gray-1000)]">
+          {{ $t('geist.index.blocks') }}
+          <Badge size="sm" variant="gray" contrast="low">{{ $t('geist.badges.inDev') }}</Badge>
+        </p>
         <p class="mt-1.5 text-[15px] leading-6 text-[var(--ds-gray-900)]">
           {{ $t('geist.index.blocksBody') }}
         </p>
@@ -167,7 +170,19 @@ const importCode = `import { Button } from '@aezakmiproject/hesoyam'`
       </DocsCell>
     </DocsCells>
 
-    <DocsSection :title="$t('geist.index.import')" :description="$t('geist.index.importDescription')">
+    <DocsSection :title="$t('geist.index.import')">
+      <template #description>
+        <i18n-t keypath="geist.index.importDescription" tag="span">
+          <template #pkg>
+            <code class="font-mono text-[13px]">@aezakmiproject/hesoyam</code>
+          </template>
+          <template #installation>
+            <NuxtLink to="/installation" class="underline underline-offset-2">
+              {{ $t('geist.items.installation') }}
+            </NuxtLink>
+          </template>
+        </i18n-t>
+      </template>
       <CodeBlock language="ts">{{ importCode }}</CodeBlock>
     </DocsSection>
 
@@ -182,7 +197,7 @@ const importCode = `import { Button } from '@aezakmiproject/hesoyam'`
         <li>
           <i18n-t keypath="geist.index.rulesBlocks" tag="span">
             <template #blocks>
-              <NuxtLink to="/blocks" class="underline underline-offset-2">{{ $t('geist.index.blocks') }}</NuxtLink>
+              <span class="text-[var(--ds-gray-1000)]">{{ $t('geist.index.blocks') }}</span>
             </template>
           </i18n-t>
         </li>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Maximize2, Pause, Play, Volume2, VolumeX } from '@lucide/vue'
+import { Maximize2, Pause, Volume2, VolumeX } from '@lucide/vue'
 import { cn } from '../../lib/utils'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
@@ -33,6 +33,7 @@ const showControls = computed(() => props.controls && (hovering.value || !playin
 
 const resolvedSrc = computed(() => (inView.value ? props.src : undefined))
 const decorative = computed(() => !props.controls)
+const playPath = 'M2 1.4c0-.18.2-.3.36-.22l13.2 6.6c.18.09.18.35 0 .44l-13.2 6.6A.25.25 0 0 1 2 14.6z'
 
 function formatTime(value: number) {
   if (!Number.isFinite(value) || value < 0) return '0:00'
@@ -154,10 +155,12 @@ watch(resolvedSrc, async (src) => {
       v-if="controls && !playing"
       type="button"
       aria-label="Play"
-      class="absolute inset-0 z-10 m-auto size-12 rounded-full bg-black/55 text-white outline-none ring-1 ring-white/15 backdrop-blur-sm hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white/50"
+      class="absolute inset-0 z-10 m-auto inline-flex size-12 items-center justify-center rounded-full bg-black/55 p-0 text-white outline-none ring-1 ring-white/15 backdrop-blur-sm hover:bg-black/70 focus-visible:ring-2 focus-visible:ring-white/50"
       @click="togglePlay"
     >
-      <Play :size="20" :stroke-width="1.75" class="ml-0.5" />
+      <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true">
+        <path fill="currentColor" :d="playPath" />
+      </svg>
     </button>
 
     <div
@@ -173,10 +176,10 @@ watch(resolvedSrc, async (src) => {
         class="inline-flex size-7 items-center justify-center rounded-md outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40"
         @click="togglePlay"
       >
-        <component :is="playing ? Pause : Play"
-          :size="16"
-          :stroke-width="1.75"
-        />
+        <Pause v-if="playing" :size="16" fill="currentColor" :stroke-width="0" />
+        <svg v-else viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path fill="currentColor" :d="playPath" />
+        </svg>
       </button>
 
       <span class="min-w-10 font-mono text-[11px] tabular-nums text-white/80">

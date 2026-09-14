@@ -5,11 +5,7 @@ import { ChevronDown } from '@lucide/vue'
 import { computed } from 'vue'
 import { cn } from '../../lib/utils'
 import { Button } from '../button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '../dropdown-menu'
+import { Menu, MenuButton, MenuContainer } from '../menu'
 
 export type SplitButtonSize = 'small' | 'medium' | 'large'
 export type SplitButtonVariant = 'default' | 'secondary'
@@ -66,7 +62,6 @@ const iconSize = computed(() => {
     return 'icon-sm'
   return 'icon'
 })
-const menuAlign = computed(() => props.menuAlignment === 'bottom-end' ? 'end' : 'start')
 const menuItems = computed(() => {
   const items = props.menuItems
   if (!items)
@@ -102,27 +97,22 @@ function onPrimaryClick(event: MouseEvent) {
       <slot />
     </Button>
 
-    <DropdownMenu>
-      <DropdownMenuTrigger as-child>
-        <Button
-          type="button"
-          :variant="variant"
-          :size="iconSize"
-          :disabled="buttonProps?.disabled"
-          :aria-label="menuButtonLabel"
-          class="-ml-px rounded-l-none"
-        >
-          <ChevronDown
-            :size="16"
-            :stroke-width="1.75"
-          />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        :align="menuAlign"
-        :style="menuProps?.width
-          ? { width: `${menuProps.width}px`, minWidth: `${menuProps.width}px` }
-          : undefined"
+    <MenuContainer :position="menuAlignment">
+      <MenuButton
+        :variant="variant"
+        :size="iconSize"
+        svg-only
+        :disabled="buttonProps?.disabled"
+        :aria-label="menuButtonLabel"
+        class="-ml-px rounded-l-none"
+      >
+        <ChevronDown
+          :size="16"
+          :stroke-width="1.75"
+        />
+      </MenuButton>
+      <Menu
+        :width="menuProps?.width"
         class="w-auto min-w-56"
       >
         <slot name="menuItems">
@@ -132,7 +122,7 @@ function onPrimaryClick(event: MouseEvent) {
             :key="index"
           />
         </slot>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </Menu>
+    </MenuContainer>
   </div>
 </template>

@@ -11,6 +11,7 @@ const props = withDefaults(defineProps<{
   width?: string
   dark?: boolean
   prompt?: boolean
+  caret?: boolean
   type?: SnippetType
   copied?: boolean
   copyText?: string
@@ -20,6 +21,7 @@ const props = withDefaults(defineProps<{
 }>(), {
   text: '',
   prompt: true,
+  caret: false,
   type: 'default',
   copied: undefined,
 })
@@ -41,6 +43,14 @@ const clipboardText = computed(() => {
 
 const isEmpty = computed(() => lines.value.length === 0)
 
+const displayLines = computed(() => {
+  if (lines.value.length > 0) return lines.value
+  if (props.caret && !props.placeholder) return ['']
+  return []
+})
+
+const lastLineIndex = computed(() => displayLines.value.length - 1)
+
 const typeClass = computed(() => {
   switch (props.type) {
     case 'success':
@@ -60,6 +70,7 @@ const typeClass = computed(() => {
     data-slot="snippet"
     :data-type="type"
     :data-inverted="dark ? '' : undefined"
+    :data-caret="caret ? '' : undefined"
     :class="cn(
       'relative flex items-stretch rounded-md border bg-[var(--ds-background-100)] font-mono text-[13px] leading-5',
       typeClass,
@@ -78,7 +89,7 @@ const typeClass = computed(() => {
       </p>
       <template v-else>
         <div
-          v-for="(line, index) in lines"
+          v-for="(line, index) in displayLines"
           :key="index"
           class="flex min-h-5 items-start gap-2 whitespace-pre"
         >
@@ -87,12 +98,24 @@ const typeClass = computed(() => {
             class="select-none text-[var(--ds-gray-900)]"
             aria-hidden="true"
           >$</span>
-          <span class="min-w-0">{{ line }}</span>
+          <span class="inline-flex min-w-0 items-center">
+            {{ line }}<span
+              v-if="caret && index === lastLineIndex"
+              data-slot="snippet-caret"
+              class="ds-snippet-caret ml-[0.12em] inline-block h-[0.95em] w-[0.5em] shrink-0 translate-y-[0.06em] bg-current"
+              aria-hidden="true"
+            />
+          </span>
         </div>
       </template>
     </div>
 
-    <div class="flex items-start pr-1 pt-0.5">
+    <div
+      :class="cn(
+        'flex shrink-0 pr-1',
+        displayLines.length > 1 ? 'items-start pt-1' : 'items-center',
+      )"
+    >
       <CopyButton
         :text-to-copy="clipboardText"
         v-bind="copied === undefined ? {} : { copied }"

@@ -24,6 +24,8 @@ const props = withDefaults(defineProps<{
   name?: string
   class?: HTMLAttributes['class']
 }>(), {
+  checked: undefined,
+  modelValue: undefined,
   size: 'default',
   color: 'blue',
   direction: 'label-first',
@@ -41,7 +43,14 @@ const slots = useSlots()
 const id = computed(() => props.id ?? useId())
 const uncontrolled = ref(false)
 
-const isChecked = computed(() => props.checked ?? props.modelValue ?? uncontrolled.value)
+const isControlled = computed(() => props.checked !== undefined || props.modelValue !== undefined)
+const isChecked = computed(() => {
+  if (props.checked !== undefined)
+    return props.checked
+  if (props.modelValue !== undefined)
+    return props.modelValue
+  return uncontrolled.value
+})
 
 if (isDev) {
   onMounted(() => {
@@ -96,7 +105,7 @@ function onToggle() {
   if (props.disabled)
     return
   const next = !isChecked.value
-  if (props.checked === undefined && props.modelValue === undefined)
+  if (!isControlled.value)
     uncontrolled.value = next
   emit('change', next)
   emit('update:checked', next)

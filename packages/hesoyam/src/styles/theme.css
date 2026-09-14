@@ -34,9 +34,6 @@
 :root {
   --ds-background-100: #ffffff;
   --ds-background-200: #fafafa;
-  --ds-icon-tile-macos-fill:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 38%),
-    linear-gradient(180deg, #f5f5f7 0%, #d1d1d6 100%);
   --ds-gray-100: #f2f2f2;
   --ds-gray-200: #ebebeb;
   --ds-gray-300: #e6e6e6;
@@ -206,9 +203,25 @@
   color: #fff;
 }
 
-.ds-icon-tile[data-theme-sync] {
+.ds-icon-tile__glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  -webkit-mask-image: linear-gradient(143.34deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
+  mask-image: linear-gradient(143.34deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.dark .ds-icon-tile[data-theme-sync] {
   background-image: var(--ds-icon-tile-macos-fill);
   color: var(--icon-tile-source);
+}
+
+.dark .ds-icon-tile[data-theme-sync] .ds-icon-tile__glyph {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .ds-icon-tile::after {
@@ -246,15 +259,61 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes ds-spinner-opacity {
+  0% { opacity: 1; }
+  100% { opacity: 0.15; }
+}
+
 @keyframes ds-loading-dots {
   0%, 80%, 100% { opacity: 0.2; }
   40% { opacity: 1; }
 }
 
+@keyframes ds-toast-in {
+  from { transform: translate3d(calc(100% + 1.5rem), 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes ds-toast-out {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(calc(100% + 1.5rem), 0, 0); }
+}
+
+@keyframes ds-snippet-caret {
+  50% { opacity: 0; }
+}
+
+.ds-snippet-caret {
+  animation: ds-snippet-caret 1s step-end infinite;
+}
+
+[data-slot="toaster"] .ds-toast-in {
+  animation: ds-toast-in 420ms cubic-bezier(0.32, 0.72, 0, 1) backwards;
+}
+
+[data-slot="toaster"] .ds-toast-out {
+  animation: ds-toast-out 280ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.ds-toast-move {
+  transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ds-skeleton-animated,
   .ds-spinner-animated,
-  .ds-loading-dot {
+  .ds-spinner-animated *,
+  .ds-loading-dot,
+  .ds-marquee-track,
+  .ds-snippet-caret,
+  .ds-toast-in,
+  .ds-toast-out,
+  .ds-ath-animated,
+  .ds-ath-animated * {
     animation: none !important;
+  }
+
+  .ds-toast-move {
+    transition: none !important;
   }
 }

@@ -9,7 +9,7 @@
     "sizes": "Sizes",
     "sizesHint": "small is 22px — the nav default. medium is 28px, large is 32px.",
     "themeSync": "Theme sync",
-    "themeSyncHint": "Pass theme-sync to follow light and dark. Dark uses a macOS graphite plate with a colored glyph; light uses a silver plate with the same glyph color.",
+    "themeSyncHint": "Pass theme-sync to follow light and dark. Light keeps the colored well and white glyph. Dark switches to a graphite plate with a colored glyph.",
     "inList": "In a list",
     "inListHint": "Pair the tile with a label. Keep one tile per row; do not stack them as a filter group.",
     "previewAvatar": "Avatar",
@@ -22,7 +22,7 @@
     "bestPractice3": "Pick a tone that stays distinct from its neighbors. Repeating blue on every row removes the scan value.",
     "bestPractice4": "The glass stroke is decorative. Do not add an extra border or drop shadow around the tile.",
     "bestPractice5": "For a custom fill, pass color as hex. Do not set background-image yourself — iconTileGradientFromHex already builds the ramp.",
-    "bestPractice6": "Use theme-sync in nav and settings rows so the plate tracks the document theme. Leave it off when the tile should stay a colored well in both appearances."
+    "bestPractice6": "Use theme-sync in nav and settings rows so dark appearance gets the graphite plate. Leave it off when the tile should stay a colored well in both appearances."
   },
   "ru": {
     "title": "Icon Tile",
@@ -34,7 +34,7 @@
     "sizes": "Размеры",
     "sizesHint": "small — 22px, размер для навигации. medium — 28px, large — 32px.",
     "themeSync": "Синхронизация с темой",
-    "themeSyncHint": "theme-sync следит за светлой и тёмной темой. В тёмной — графитовая плита как в macOS и цветной глиф; в светлой — серебряная плита и тот же цвет глифа.",
+    "themeSyncHint": "theme-sync следит за светлой и тёмной темой. В светлой остаётся цветной колодец и белый глиф. В тёмной — графитовая плита и цветной глиф.",
     "inList": "В списке",
     "inListHint": "Ставьте плитку рядом с подписью. Одна плитка на строку; не собирайте из них группу фильтров.",
     "previewAvatar": "Avatar",
@@ -47,6 +47,6 @@
     "bestPractice3": "Соседние строки должны отличаться тоном. Если все плитки синие, сканировать список нечем.",
     "bestPractice4": "Стеклянная обводка декоративная. Не добавляйте вокруг плитки ещё одну рамку или тень.",
     "bestPractice5": "Свой цвет передавайте hex в color. Не задавайте background-image сами — рамп собирает iconTileGradientFromHex.",
-    "bestPractice6": "theme-sync — для навигации и строк настроек, чтобы плита шла за темой документа. Без флага тайл остаётся цветным колодцем в обеих темах."
+    "bestPractice6": "theme-sync — для навигации и строк настроек: в тёмной теме плита становится графитовой. Без флага тайл остаётся цветным колодцем в обеих темах."
   }
 }

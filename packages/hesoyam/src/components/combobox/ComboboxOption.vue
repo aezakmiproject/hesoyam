@@ -24,14 +24,17 @@ const selected = computed(() => ctx.value.value === props.value)
 const active = computed(() => ctx.highlighted.value === props.value)
 
 function getLabel() {
-  return rootRef.value?.innerText?.replace(/\s+/g, ' ').trim() || props.value
+  return rootRef.value?.textContent?.replace(/\s+/g, ' ').trim() || props.value
 }
 
 onMounted(() => {
   ctx.registerOption({
     value: props.value,
     getLabel,
-    hidden,
+    isHidden: () => hidden.value,
+    setHidden: (value) => {
+      hidden.value = value
+    },
   })
 })
 

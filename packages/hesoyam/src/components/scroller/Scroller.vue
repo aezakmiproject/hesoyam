@@ -6,6 +6,7 @@ import { computed, nextTick, onMounted, ref } from 'vue'
 import { cn } from '../../lib/utils'
 
 export type ScrollerOverflow = 'x' | 'y' | 'both'
+type ScrollerFadeSide = 'left' | 'right' | 'top' | 'bottom'
 
 const props = withDefaults(defineProps<{
   height?: number | string
@@ -26,6 +27,20 @@ const canStartY = ref(false)
 const canEndY = ref(false)
 const canStart = computed(() => canStartX.value || canStartY.value)
 const canEnd = computed(() => canEndX.value || canEndY.value)
+const fadeSides = computed(() => {
+  const sides: ScrollerFadeSide[] = []
+  if (props.overflow === 'x' || props.overflow === 'both')
+    sides.push('left', 'right')
+  if (props.overflow === 'y' || props.overflow === 'both')
+    sides.push('top', 'bottom')
+  return sides
+})
+const fadeVisible = computed(() => ({
+  left: canStartX.value,
+  right: canEndX.value,
+  top: canStartY.value,
+  bottom: canEndY.value,
+}))
 
 function toCssSize(value: number | string | undefined): string | undefined {
   if (value === undefined)
@@ -115,7 +130,7 @@ useResizeObserver(scrollRef, updateEdges)
   <div
     data-slot="scroller"
     :data-overflow="overflow"
-    :class="cn('relative', props.class)"
+    :class="cn('relative isolate', props.class)"
     :style="sizeStyle"
   >
     <button
@@ -144,25 +159,15 @@ useResizeObserver(scrollRef, updateEdges)
     </button>
 
     <div
-      v-if="canStartX"
+      v-for="side in fadeSides"
+      :key="side"
       aria-hidden="true"
-      class="pointer-events-none absolute inset-y-0 left-0 z-[1] w-10 bg-gradient-to-r from-[var(--ds-background-100)] to-transparent"
-    />
-    <div
-      v-if="canEndX"
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-y-0 right-0 z-[1] w-10 bg-gradient-to-l from-[var(--ds-background-100)] to-transparent"
-    />
-    <div
-      v-if="canStartY"
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 top-0 z-[1] h-10 bg-gradient-to-b from-[var(--ds-background-100)] to-transparent"
-    />
-    <div
-      v-if="canEndY"
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-10 bg-gradient-to-t from-[var(--ds-background-100)] to-transparent"
-    />
+      class="geist-scroller-fade"
+      :data-side="side"
+      :data-visible="fadeVisible[side] ? 'true' : 'false'"
+    >
+      <span /><span /><span /><span /><span />
+    </div>
 
     <div
       ref="scrollRef"
@@ -183,5 +188,78 @@ useResizeObserver(scrollRef, updateEdges)
 .geist-scroller {
   scrollbar-width: thin;
   scrollbar-color: var(--ds-gray-500) transparent;
+}
+
+.geist-scroller-fade {
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 220ms ease-out;
+}
+
+.geist-scroller-fade[data-visible='true'] {
+  opacity: 1;
+}
+
+.geist-scroller-fade[data-side='left'] {
+  inset: 0 auto 0 0;
+  width: 4.5rem;
+  --fade-dir: to right;
+}
+
+.geist-scroller-fade[data-side='right'] {
+  inset: 0 0 0 auto;
+  width: 4.5rem;
+  --fade-dir: to left;
+}
+
+.geist-scroller-fade[data-side='top'] {
+  inset: 0 0 auto 0;
+  height: 4.5rem;
+  --fade-dir: to bottom;
+}
+
+.geist-scroller-fade[data-side='bottom'] {
+  inset: auto 0 0 0;
+  height: 4.5rem;
+  --fade-dir: to top;
+}
+
+.geist-scroller-fade > span {
+  position: absolute;
+  inset: 0;
+}
+
+.geist-scroller-fade > span:nth-child(1) {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 95%);
+  -webkit-mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 95%);
+}
+
+.geist-scroller-fade > span:nth-child(2) {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 75%);
+  -webkit-mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 75%);
+}
+
+.geist-scroller-fade > span:nth-child(3) {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 52%);
+  -webkit-mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 52%);
+}
+
+.geist-scroller-fade > span:nth-child(4) {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 32%);
+  -webkit-mask-image: linear-gradient(var(--fade-dir), #000 0%, transparent 32%);
+}
+
+.geist-scroller-fade > span:nth-child(5) {
+  background: linear-gradient(var(--fade-dir), var(--ds-background-100) 0%, transparent 70%);
 }
 </style>

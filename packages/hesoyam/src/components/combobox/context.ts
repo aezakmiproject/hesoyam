@@ -5,7 +5,8 @@ export type ComboboxSize = 'small' | 'medium' | 'large' | 'default'
 export interface ComboboxOptionApi {
   value: string
   getLabel: () => string
-  hidden: Ref<boolean>
+  isHidden: () => boolean
+  setHidden: (value: boolean) => void
 }
 
 export interface ComboboxContext {
@@ -21,6 +22,7 @@ export interface ComboboxContext {
   placeholder: ComputedRef<string>
   highlighted: Ref<string | null>
   options: Ref<ComboboxOptionApi[]>
+  triggerRef: Ref<HTMLElement | null>
   displayValue: ComputedRef<string>
   setQuery: (next: string) => void
   setOpen: (next: boolean) => void

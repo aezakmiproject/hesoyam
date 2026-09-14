@@ -10,7 +10,6 @@ import {
   Boxes,
   Building2,
   Calendar,
-  ChevronDown,
   ChevronRight,
   ChevronsDownUp,
   ChevronsLeftRight,
@@ -38,6 +37,7 @@ import {
   MessageCircle,
   Minus,
   MoreHorizontal,
+  MoveHorizontal,
   MousePointerClick,
   Palette,
   PanelBottom,
@@ -49,6 +49,7 @@ import {
   Search,
   Shapes,
   SlidersHorizontal,
+  Smartphone,
   Smile,
   Sparkles,
   Square,
@@ -86,6 +87,7 @@ export const navChipByHref: Record<string, NavChip> = {
   '/blocks': { icon: Boxes, variant: 'teal' },
   '/icons': { icon: Smile, variant: 'amber' },
 
+  '/add-to-home': { icon: Smartphone, variant: 'blue' },
   '/avatar': { icon: CircleUser, variant: 'blue' },
   '/badge': { icon: Award, variant: 'green' },
   '/banner': { icon: Megaphone, variant: 'purple' },
@@ -112,6 +114,7 @@ export const navChipByHref: Record<string, NavChip> = {
   '/keyboard-input': { icon: Keyboard, variant: 'purple' },
   '/label': { icon: Tag, variant: 'pink' },
   '/loading-dots': { icon: Ellipsis, variant: 'teal' },
+  '/marquee': { icon: MoveHorizontal, variant: 'teal' },
   '/menu': { icon: Menu, variant: 'gray' },
   '/modal': { icon: AppWindow, variant: 'blue' },
   '/multi-select': { icon: ListChecks, variant: 'green' },
@@ -141,7 +144,6 @@ export const navChipByHref: Record<string, NavChip> = {
   '/video': { icon: Video, variant: 'pink' },
 
   '/card': { icon: Square, variant: 'gray' },
-  '/dropdown-menu': { icon: ChevronDown, variant: 'blue' },
   '/sidebar': { icon: PanelLeft, variant: 'purple' },
 }
 

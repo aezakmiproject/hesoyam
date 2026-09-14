@@ -4,12 +4,7 @@ import { ChevronDown } from '@lucide/vue'
 import { isClient } from '../../lib/env'
 import { cn } from '../../lib/utils'
 import { CopyButton } from '../copy-button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '../dropdown-menu'
+import { Menu, MenuButton, MenuContainer, MenuItem } from '../menu'
 import { highlightLines } from './highlight'
 import { Comment, Fragment, Text, computed, onMounted, onUnmounted, ref, useSlots } from 'vue'
 
@@ -191,23 +186,24 @@ onUnmounted(() => {
         </button>
       </div>
 
-      <DropdownMenu v-if="switcher && !tabs">
-        <DropdownMenuTrigger
+      <MenuContainer v-if="switcher && !tabs" position="bottom-end">
+        <MenuButton
+          type="unstyled"
           class="inline-flex h-7 items-center gap-1 rounded-md px-2 text-[12px] font-medium text-[var(--ds-gray-900)] outline-none hover:bg-[var(--ds-gray-200)] hover:text-[var(--ds-gray-1000)] focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]/40"
         >
           {{ switcherLabel }}
           <ChevronDown :size="14" :stroke-width="1.75" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" class="min-w-36">
-          <DropdownMenuItem
+        </MenuButton>
+        <Menu class="min-w-36">
+          <MenuItem
             v-for="option in switcher.options"
             :key="option.value"
             @click="switcher.onChange(option.value)"
           >
             {{ option.label }}
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+          </MenuItem>
+        </Menu>
+      </MenuContainer>
 
       <button
         v-if="v0"

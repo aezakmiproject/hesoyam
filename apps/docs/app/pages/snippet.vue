@@ -20,6 +20,7 @@ function onControlledCopy() {
 
 const defaultCode = '<Snippet text="npm init next-app" width="300px" />'
 const darkCode = '<Snippet dark text="npm init next-app" width="300px" />'
+const caretCode = '<Snippet caret text="npm init next-app" width="300px" />'
 const multiCode = `<Snippet :text="['cd project', 'now']" width="100%" />`
 const noPromptCode = '<Snippet :prompt="false" text="npm init next-app" width="300px" />'
 const callbackCode = `<Snippet
@@ -66,6 +67,12 @@ const copiedCode = `<Snippet
     <DocsSection :title="$t('pages.snippet.inverted')" :description="$t('pages.snippet.invertedHint')">
       <DocsPreview :code="darkCode">
         <Snippet dark text="npm init next-app" width="300px" />
+      </DocsPreview>
+    </DocsSection>
+
+    <DocsSection :title="$t('pages.snippet.caret')" :description="$t('pages.snippet.caretHint')">
+      <DocsPreview :code="caretCode">
+        <Snippet caret text="npm init next-app" width="300px" />
       </DocsPreview>
     </DocsSection>
 

@@ -43,9 +43,7 @@ const isStringText = computed(() => typeof props.toast.text === 'string')
     :data-type="toast.type"
     :class="[
       'pointer-events-auto flex w-[min(100%,380px)] items-start gap-2.5 rounded-md border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-gray-100)] px-3 py-2.5 text-[13px] leading-5 text-[var(--ds-gray-1000)] shadow-[0_8px_30px_rgba(0,0,0,0.28)]',
-      toast.leaving
-        ? 'animate-out fade-out-0 slide-out-to-bottom-2 duration-150'
-        : 'animate-in fade-in-0 slide-in-from-bottom-2 duration-200',
+      toast.leaving ? 'ds-toast-out' : 'ds-toast-in',
     ]"
   >
     <component :is="icon.data"

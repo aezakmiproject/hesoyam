@@ -186,51 +186,53 @@ useResizeObserver(rootRef, updateIndicator)
       :style="indicatorStyle"
     />
     <template v-for="(tab, index) in tabs" :key="tab.value">
-      <Tooltip :text="tab.tooltip" :disabled="!tab.tooltip">
-        <span class="relative z-10 inline-flex">
-          <button
-            :ref="(el) => setTabRef(el, index)"
-            type="button"
-            role="tab"
-            :aria-selected="selectedValue === tab.value"
-            :aria-disabled="tab.disabled || disabled || undefined"
-            :tabindex="selectedValue === tab.value ? 0 : -1"
-            :disabled="tab.disabled || disabled"
-            data-slot="tab"
-            :data-selected="selectedValue === tab.value ? '' : undefined"
-            :class="cn(
-              'relative z-10 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap text-[13px] leading-none outline-none transition-colors select-none',
-              'focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]',
-              'disabled:cursor-not-allowed disabled:opacity-50',
-              variant === 'default' && cn(
-                '-mb-px border-b-2 border-transparent px-3 text-[var(--ds-gray-900)]',
-                'hover:text-[var(--ds-gray-1000)]',
-                selectedValue === tab.value && 'font-medium text-[var(--ds-gray-1000)]',
-              ),
-              variant === 'secondary' && cn(
-                'rounded-[5px] px-2.5 text-[var(--ds-gray-900)]',
-                'hover:text-[var(--ds-gray-1000)]',
-                selectedValue === tab.value && 'font-medium text-[var(--ds-gray-1000)]',
-              ),
-            )"
-            @click="select(tab.value)"
-            @keydown="onKeydown($event, index)"
+      <component
+        :is="tab.tooltip ? Tooltip : 'span'"
+        v-bind="tab.tooltip ? { text: tab.tooltip } : {}"
+        class="relative z-10 inline-flex"
+      >
+        <button
+          :ref="(el) => setTabRef(el, index)"
+          type="button"
+          role="tab"
+          :aria-selected="selectedValue === tab.value"
+          :aria-disabled="tab.disabled || disabled || undefined"
+          :tabindex="selectedValue === tab.value ? 0 : -1"
+          :disabled="tab.disabled || disabled"
+          data-slot="tab"
+          :data-selected="selectedValue === tab.value ? '' : undefined"
+          :class="cn(
+            'relative z-10 inline-flex h-8 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap text-[13px] leading-none outline-none transition-colors select-none',
+            'focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]',
+            'disabled:cursor-not-allowed disabled:opacity-50',
+            variant === 'default' && cn(
+              '-mb-px border-b-2 border-transparent px-3 text-[var(--ds-gray-900)]',
+              'hover:text-[var(--ds-gray-1000)]',
+              selectedValue === tab.value && 'font-medium text-[var(--ds-gray-1000)]',
+            ),
+            variant === 'secondary' && cn(
+              'rounded-[5px] px-2.5 text-[var(--ds-gray-900)]',
+              'hover:text-[var(--ds-gray-1000)]',
+              selectedValue === tab.value && 'font-medium text-[var(--ds-gray-1000)]',
+            ),
+          )"
+          @click="select(tab.value)"
+          @keydown="onKeydown($event, index)"
+        >
+          <component
+            :is="renderIcon(tab.icon)"
+            v-if="iconIs(tab.icon)"
+            class="size-4 shrink-0 [&_svg]:size-4"
+          />
+          <span>{{ tab.title }}</span>
+          <span
+            v-if="tab.badge != null && tab.badge !== 0 && tab.badge !== '0'"
+            class="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--ds-gray-100)] px-1 text-[10px] font-medium text-[var(--ds-gray-1000)]"
           >
-            <component
-              :is="renderIcon(tab.icon)"
-              v-if="iconIs(tab.icon)"
-              class="size-4 shrink-0 [&_svg]:size-4"
-            />
-            <span>{{ tab.title }}</span>
-            <span
-              v-if="tab.badge != null && tab.badge !== 0 && tab.badge !== '0'"
-              class="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[var(--ds-gray-100)] px-1 text-[10px] font-medium text-[var(--ds-gray-1000)]"
-            >
-              {{ tab.badge }}
-            </span>
-          </button>
-        </span>
-      </Tooltip>
+            {{ tab.badge }}
+          </span>
+        </button>
+      </component>
     </template>
   </div>
 </template>

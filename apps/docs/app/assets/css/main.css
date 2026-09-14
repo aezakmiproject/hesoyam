@@ -109,7 +109,8 @@
 @layer base {
   html {
     color-scheme: dark;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
+    font-synthesis: none;
     font-weight: 300;
   }
   * {

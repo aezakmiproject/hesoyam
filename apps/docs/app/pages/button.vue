@@ -27,8 +27,13 @@ const prefixCode = `<Button size="small">
   Upload
 </Button>`
 
-const stateCode = `<Button size="small" loading>Upload</Button>
-<Button size="small" disabled>Upload</Button>`
+const loadingCode = `<Button variant="secondary" size="small" loading>Upload</Button>
+<Button variant="secondary" size="medium" loading>Upload</Button>
+<Button variant="secondary" size="large" loading>Upload</Button>`
+
+const disabledCode = `<Button size="small" disabled>Upload</Button>
+<Button size="medium" disabled>Upload</Button>
+<Button size="large" disabled>Upload</Button>`
 
 const linkCode = `<ButtonLink href="/" size="small">Sign Up</ButtonLink>`
 
@@ -125,13 +130,22 @@ const customCode = `<CustomButton
       </DocsPreview>
     </DocsSection>
 
-    <DocsSection :title="$t('pages.button.loadingAndDisabled')">
-      <DocsPreview :code="stateCode">
+    <DocsSection :title="$t('pages.button.loading')">
+      <DocsPreview :code="loadingCode">
         <div class="flex flex-wrap items-center gap-3">
-          <Button size="small" loading>{{ $t('pages.button.upload') }}</Button>
+          <Button variant="secondary" size="small" loading>{{ $t('pages.button.upload') }}</Button>
+          <Button variant="secondary" size="medium" loading>{{ $t('pages.button.upload') }}</Button>
+          <Button variant="secondary" size="large" loading>{{ $t('pages.button.upload') }}</Button>
+        </div>
+      </DocsPreview>
+    </DocsSection>
+
+    <DocsSection :title="$t('pages.button.disabled')">
+      <DocsPreview :code="disabledCode">
+        <div class="flex flex-wrap items-center gap-3">
           <Button size="small" disabled>{{ $t('pages.button.upload') }}</Button>
-          <Button size="small" variant="secondary" disabled>{{ $t('pages.button.secondary') }}</Button>
-          <Button size="small" variant="error" disabled>{{ $t('pages.button.error') }}</Button>
+          <Button size="medium" disabled>{{ $t('pages.button.upload') }}</Button>
+          <Button size="large" disabled>{{ $t('pages.button.upload') }}</Button>
         </div>
       </DocsPreview>
     </DocsSection>

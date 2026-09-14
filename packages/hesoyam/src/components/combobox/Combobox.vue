@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import type { ComboboxContext, ComboboxOptionApi, ComboboxSize } from './context'
 import { useVModel } from '@vueuse/core'
-import { computed, provide, ref, useAttrs, useId, watch } from 'vue'
+import { computed, provide, ref, shallowRef, useAttrs, useId, watch } from 'vue'
 import { cn } from '../../lib/utils'
 import { COMBOBOX_KEY } from './context'
 
@@ -47,7 +47,8 @@ watch(() => props.value, (value) => {
 const query = ref('')
 const open = ref(false)
 const highlighted = ref<string | null>(null)
-const options = ref<ComboboxOptionApi[]>([])
+const options = shallowRef<ComboboxOptionApi[]>([])
+const triggerRef = ref<HTMLElement | null>(null)
 const typing = ref(false)
 
 const id = computed(() => (typeof attrs.id === 'string' && attrs.id) || generatedId)
@@ -73,14 +74,14 @@ const displayValue = computed(() => {
   return selectedLabel.value || (selected.value ?? '') || query.value
 })
 
-const visibleOptions = computed(() => options.value.filter(option => !option.hidden.value))
+const visibleOptions = computed(() => options.value.filter(option => !option.isHidden()))
 
 function applyFilter() {
   const selectedMatchesQuery = Boolean(selectedLabel.value && query.value === selectedLabel.value)
   const needle = (!typing.value || selectedMatchesQuery) ? '' : query.value.trim().toLowerCase()
   for (const option of options.value) {
     const label = option.getLabel().toLowerCase()
-    option.hidden.value = needle ? !label.includes(needle) : false
+    option.setHidden(needle ? !label.includes(needle) : false)
   }
 }
 
@@ -163,6 +164,7 @@ const context: ComboboxContext = {
   placeholder,
   highlighted,
   options,
+  triggerRef,
   displayValue,
   setQuery,
   setOpen,
@@ -180,6 +182,7 @@ const rootStyle = computed(() => props.width ? { width: `${props.width}px` } : u
 
 <template>
   <div
+    ref="triggerRef"
     data-slot="combobox"
     :data-size="size"
     :data-disabled="disabled ? '' : undefined"

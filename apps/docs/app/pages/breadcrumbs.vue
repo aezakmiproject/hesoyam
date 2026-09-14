@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Breadcrumb, BreadcrumbItem, DropdownMenuItem } from '@aezakmiproject/hesoyam'
+import { Breadcrumb, BreadcrumbItem, MenuItem } from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Breadcrumb type="text">
   <BreadcrumbItem href="/">Home</BreadcrumbItem>
@@ -28,8 +28,8 @@ const menuCode = `<Breadcrumb type="menu">
   <BreadcrumbItem>
     Home
     <template #menu>
-      <DropdownMenuItem>Home</DropdownMenuItem>
-      <DropdownMenuItem>Projects</DropdownMenuItem>
+      <MenuItem>Home</MenuItem>
+      <MenuItem>Projects</MenuItem>
     </template>
   </BreadcrumbItem>
   <BreadcrumbItem active>Overview</BreadcrumbItem>
@@ -86,15 +86,15 @@ const menuCode = `<Breadcrumb type="menu">
           <BreadcrumbItem>
             {{ $t('pages.breadcrumbs.home') }}
             <template #menu>
-              <DropdownMenuItem>{{ $t('pages.breadcrumbs.home') }}</DropdownMenuItem>
-              <DropdownMenuItem>{{ $t('pages.breadcrumbs.projects') }}</DropdownMenuItem>
+              <MenuItem>{{ $t('pages.breadcrumbs.home') }}</MenuItem>
+              <MenuItem>{{ $t('pages.breadcrumbs.projects') }}</MenuItem>
             </template>
           </BreadcrumbItem>
           <BreadcrumbItem>
             {{ $t('pages.breadcrumbs.dashboard') }}
             <template #menu>
-              <DropdownMenuItem>{{ $t('pages.breadcrumbs.overview') }}</DropdownMenuItem>
-              <DropdownMenuItem>{{ $t('pages.breadcrumbs.activity') }}</DropdownMenuItem>
+              <MenuItem>{{ $t('pages.breadcrumbs.overview') }}</MenuItem>
+              <MenuItem>{{ $t('pages.breadcrumbs.activity') }}</MenuItem>
             </template>
           </BreadcrumbItem>
           <BreadcrumbItem active>{{ $t('pages.breadcrumbs.overview') }}</BreadcrumbItem>

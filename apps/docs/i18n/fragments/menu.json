@@ -1,7 +1,7 @@
 {
   "en": {
     "title": "Menu",
-    "description": "A list of actions anchored to a trigger. Compose MenuContainer, MenuButton, and Menu — not DropdownMenu.",
+    "description": "A list of actions anchored to a trigger. Compose MenuContainer, MenuButton, and Menu.",
     "default": "Default",
     "defaultDescription": "MenuContainer owns open state. MenuButton is the trigger. Menu portals the list.",
     "actions": "Actions",
@@ -47,7 +47,7 @@
     "bestPractice2b": " + ",
     "bestPractice2c": " + ",
     "bestPractice2d": " + ",
-    "bestPractice2e": ". Do not reach for DropdownMenu on new screens.",
+    "bestPractice2e": ".",
     "bestPractice3a": "Destructive rows use ",
     "bestPractice3b": " and sit last, under a divider.",
     "bestPractice4a": "Disable a row only when the action is impossible. Locked plan features use ",
@@ -58,7 +58,7 @@
   },
   "ru": {
     "title": "Menu",
-    "description": "Список действий, привязанный к триггеру. Собирайте MenuContainer, MenuButton и Menu — не DropdownMenu.",
+    "description": "Список действий, привязанный к триггеру. Собирайте MenuContainer, MenuButton и Menu.",
     "default": "Default",
     "defaultDescription": "MenuContainer хранит состояние открытия. MenuButton — триггер. Menu порталит список.",
     "actions": "Действия",
@@ -104,7 +104,7 @@
     "bestPractice2b": " + ",
     "bestPractice2c": " + ",
     "bestPractice2d": " + ",
-    "bestPractice2e": ". На новых экранах не берите DropdownMenu.",
+    "bestPractice2e": ".",
     "bestPractice3a": "Деструктивные строки используют ",
     "bestPractice3b": " и стоят последними, после divider.",
     "bestPractice4a": "Отключайте строку только когда действие невозможно. Заблокированные функции плана — ",

@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import { isVNode } from 'vue'
 import { cn } from '../../lib/utils'
-import { DropdownMenuItem } from '../dropdown-menu'
+import { MenuItem } from '../menu'
 
 export interface SplitButtonMenuItemProps {
   onClick?: (event: MouseEvent) => void
@@ -25,10 +25,10 @@ function onClick(event: MouseEvent) {
 </script>
 
 <template>
-  <DropdownMenuItem
+  <MenuItem
     :disabled="menuItemProps?.disabled"
     :class="cn(
-      'items-start py-2',
+      'h-auto items-start py-2 [&_[data-slot=menu-item-label]]:flex [&_[data-slot=menu-item-label]]:items-start [&_[data-slot=menu-item-label]]:gap-2 [&_[data-slot=menu-item-label]]:overflow-visible [&_[data-slot=menu-item-label]]:whitespace-normal',
       props.class,
       menuItemProps?.class,
       menuItemProps?.className,
@@ -57,5 +57,5 @@ function onClick(event: MouseEvent) {
         {{ description }}
       </span>
     </span>
-  </DropdownMenuItem>
+  </MenuItem>
 </template>

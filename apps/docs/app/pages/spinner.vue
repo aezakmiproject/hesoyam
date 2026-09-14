@@ -4,6 +4,7 @@ import { Spinner } from '@aezakmiproject/hesoyam'
 const sizes = ['sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'] as const
 
 const defaultCode = '<Spinner />'
+const circleCode = '<Spinner circle />'
 const sizesCode = `<Spinner size="sm" />
 <Spinner size="md" />
 <Spinner size="lg" />
@@ -28,6 +29,12 @@ const colorsCode = `<Spinner />
     <DocsSection :title="$t('pages.spinner.default')" :description="$t('pages.spinner.defaultHint')">
       <DocsPreview :code="defaultCode">
         <Spinner />
+      </DocsPreview>
+    </DocsSection>
+
+    <DocsSection :title="$t('pages.spinner.circle')" :description="$t('pages.spinner.circleHint')">
+      <DocsPreview :code="circleCode">
+        <Spinner circle />
       </DocsPreview>
     </DocsSection>
 
@@ -84,9 +91,6 @@ const colorsCode = `<Spinner />
           <i18n-t keypath="pages.spinner.bestPractice6" tag="span">
             <template #ariaBusy>
               <code class="font-mono">aria-busy="true"</code>
-            </template>
-            <template #ariaHidden>
-              <code class="font-mono">aria-hidden</code>
             </template>
           </i18n-t>
         </li>

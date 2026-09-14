@@ -6,7 +6,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   app: {
+    // `/` for a custom domain; set NUXT_APP_BASE_URL=/hesoyam/ for project Pages.
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
     pageTransition: { name: 'fadeInUp', mode: 'out-in' },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+    },
   },
 
   vite: {

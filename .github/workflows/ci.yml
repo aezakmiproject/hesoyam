@@ -1,0 +1,154 @@
+# Required secrets: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+# Optional vars: NUXT_APP_BASE_URL (default /), DOCS_URL (custom domain)
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Notify build started
+        continue-on-error: true
+        uses: ./.github/actions/telegram
+        with:
+          bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          chat-id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          text: |
+            🏗 Сборка началась
+
+            ${{ github.repository }}
+            ${{ github.event_name }} · ${{ github.ref_name }}
+            ${{ github.event.pull_request.title || github.event.head_commit.message || github.sha }}
+            ${{ github.actor }}
+
+            ${{ github.event.pull_request.html_url || format('{0}/{1}/commit/{2}', github.server_url, github.repository, github.sha) }}
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck package
+        run: pnpm --filter @aezakmiproject/hesoyam typecheck
+
+      - name: Typecheck docs
+        run: pnpm typecheck
+
+      - name: Generate docs
+        run: pnpm generate
+        env:
+          NUXT_APP_BASE_URL: ${{ vars.NUXT_APP_BASE_URL || '/' }}
+
+      - name: Check generate output
+        run: test -d apps/docs/.output/public && ls apps/docs/.output/public
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/docs/.output/public
+
+      - name: Notify build succeeded
+        if: success()
+        continue-on-error: true
+        uses: ./.github/actions/telegram
+        with:
+          bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          chat-id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          text: |
+            ✅ Сборка прошла успешно
+
+            ${{ github.repository }}
+            ${{ github.event_name }} · ${{ github.ref_name }}
+            ${{ github.actor }}
+
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Notify build failed
+        if: failure()
+        continue-on-error: true
+        uses: ./.github/actions/telegram
+        with:
+          bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          chat-id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          text: |
+            ❌ Сборка провалилась
+
+            ${{ github.repository }}
+            ${{ github.event_name }} · ${{ github.ref_name }}
+            ${{ github.event.pull_request.title || github.event.head_commit.message || github.sha }}
+            ${{ github.actor }}
+
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  deploy-docs:
+    name: Deploy docs
+    needs: build
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+      - name: Notify docs deployed
+        if: success()
+        continue-on-error: true
+        uses: ./.github/actions/telegram
+        with:
+          bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          chat-id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          text: |
+            📚 Дока задеплоена
+
+            ${{ vars.DOCS_URL || steps.deploy.outputs.page_url }}
+            ${{ github.sha }}
+            ${{ github.actor }}
+
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Notify docs deploy failed
+        if: failure()
+        continue-on-error: true
+        uses: ./.github/actions/telegram
+        with:
+          bot-token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          chat-id: ${{ secrets.TELEGRAM_CHAT_ID }}
+          text: |
+            ❌ Деплой доки провалился
+
+            ${{ github.repository }}
+            ${{ github.ref_name }}
+            ${{ github.actor }}
+
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

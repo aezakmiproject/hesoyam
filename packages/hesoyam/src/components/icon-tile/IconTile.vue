@@ -56,13 +56,15 @@ const tileStyle = computed(() => ({
     :class="cn(iconTileVariants({ variant, size }), props.class)"
     :style="tileStyle"
   >
-    <slot>
-      <component
-        :is="icon"
-        v-if="icon"
-        :size="iconPx"
-        :stroke-width="iconStroke"
-      />
-    </slot>
+    <span class="ds-icon-tile__glyph">
+      <slot>
+        <component
+          :is="icon"
+          v-if="icon"
+          :size="iconPx"
+          :stroke-width="iconStroke"
+        />
+      </slot>
+    </span>
   </span>
 </template>

@@ -1,0 +1,40 @@
+name: Telegram notify
+description: Send a Telegram message; no-ops if bot secrets are missing.
+
+inputs:
+  bot-token:
+    required: true
+  chat-id:
+    required: true
+  text:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Send Telegram message
+      shell: bash
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ inputs.bot-token }}
+        TELEGRAM_CHAT_ID: ${{ inputs.chat-id }}
+        TELEGRAM_TEXT: ${{ inputs.text }}
+      run: |
+        if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+          echo "TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not set — skipping."
+          exit 0
+        fi
+
+        tmp="$(mktemp)"
+        code="$(
+          curl -sS -o "$tmp" -w "%{http_code}" \
+            -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${TELEGRAM_TEXT}" \
+            --data-urlencode "disable_web_page_preview=true"
+        )"
+
+        if [ "$code" != "200" ]; then
+          echo "Telegram API returned HTTP $code"
+          cat "$tmp"
+          exit 1
+        fi

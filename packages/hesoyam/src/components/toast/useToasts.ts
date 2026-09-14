@@ -55,7 +55,7 @@ export function dismiss(id: number) {
 
   setTimeout(() => {
     toasts.value = toasts.value.filter(item => item.id !== id)
-  }, 160)
+  }, 300)
 }
 
 function normalize(payload: ToastPayload, type: ToastType): Omit<ToastItem, 'id'> {

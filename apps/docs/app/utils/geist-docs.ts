@@ -27,6 +27,7 @@ export const geistNav: GeistNavGroup[] = [
     id: 'components',
     title: 'Components',
     items: [
+      { title: 'Add to Home', href: '/add-to-home' },
       { title: 'Avatar', href: '/avatar' },
       { title: 'Badge', href: '/badge' },
       { title: 'Banner', href: '/banner' },
@@ -53,6 +54,7 @@ export const geistNav: GeistNavGroup[] = [
       { title: 'Keyboard Input', href: '/keyboard-input' },
       { title: 'Label', href: '/label' },
       { title: 'Loading Dots', href: '/loading-dots' },
+      { title: 'Marquee', href: '/marquee' },
       { title: 'Menu', href: '/menu' },
       { title: 'Modal', href: '/modal' },
       { title: 'Multi Select', href: '/multi-select' },
@@ -87,7 +89,6 @@ export const geistNav: GeistNavGroup[] = [
     title: 'Leftovers',
     items: [
       { title: 'Card', href: '/card' },
-      { title: 'Dropdown Menu', href: '/dropdown-menu' },
       { title: 'Sidebar', href: '/sidebar' },
     ],
   },

@@ -52,7 +52,7 @@ function onSelect(event: Event) {
         <component :is="prefix" />
       </slot>
     </span>
-    <span class="min-w-0 flex-1 truncate">
+    <span data-slot="menu-item-label" class="min-w-0 flex-1 truncate">
       <slot />
     </span>
     <span

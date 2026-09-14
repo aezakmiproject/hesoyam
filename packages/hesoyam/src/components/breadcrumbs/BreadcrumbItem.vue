@@ -2,11 +2,7 @@
 import { ChevronDown } from '@lucide/vue'
 import { computed, inject, useSlots } from 'vue'
 import { cn } from '../../lib/utils'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '../dropdown-menu'
+import { Menu, MenuButton, MenuContainer } from '../menu'
 import { breadcrumbContextKey } from './context'
 
 const props = defineProps<{
@@ -44,25 +40,20 @@ const itemClass = computed(() => cn(
       'after:mx-2 after:text-[13px] after:text-[var(--ds-gray-600)] after:content-[\'/\'] last:after:hidden',
     )"
   >
-    <DropdownMenu v-if="showMenu">
-      <DropdownMenuTrigger
-        as-child
+    <MenuContainer v-if="showMenu">
+      <MenuButton
+        type="unstyled"
         :disabled="disabled"
+        :aria-current="active ? 'page' : undefined"
+        :class="cn(itemClass, 'outline-none focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]')"
       >
-        <button
-          type="button"
-          :aria-current="active ? 'page' : undefined"
-          :disabled="disabled"
-          :class="cn(itemClass, 'outline-none focus-visible:ring-2 focus-visible:ring-[var(--ds-focus)]')"
-        >
-          <span class="truncate"><slot /></span>
-          <ChevronDown :size="12" class="ml-1 shrink-0" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
+        <span class="truncate"><slot /></span>
+        <ChevronDown :size="12" class="ml-1 shrink-0" />
+      </MenuButton>
+      <Menu>
         <slot name="menu" />
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </Menu>
+    </MenuContainer>
 
     <component
       :is="href && !disabled ? 'a' : (isMenu ? 'button' : 'span')"

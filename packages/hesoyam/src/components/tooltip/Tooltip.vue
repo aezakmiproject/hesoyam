@@ -48,8 +48,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
+  <slot v-if="disabled" />
+
   <TooltipProvider
-    v-if="isCompact"
+    v-else-if="isCompact"
     :delay-duration="delayDuration"
   >
     <TooltipRoot
@@ -77,12 +79,16 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
     </TooltipRoot>
   </TooltipProvider>
 
-  <TooltipRoot
+  <TooltipProvider
     v-else
-    v-slot="slotProps"
-    data-slot="tooltip"
-    v-bind="forwarded"
+    :delay-duration="delayDuration"
   >
-    <slot v-bind="slotProps" />
-  </TooltipRoot>
+    <TooltipRoot
+      v-slot="slotProps"
+      data-slot="tooltip"
+      v-bind="forwarded"
+    >
+      <slot v-bind="slotProps" />
+    </TooltipRoot>
+  </TooltipProvider>
 </template>

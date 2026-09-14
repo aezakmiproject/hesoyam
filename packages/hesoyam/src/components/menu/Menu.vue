@@ -31,7 +31,8 @@ const placement = computed(() => parseMenuPosition(injectedPosition.value))
 const widthStyle = computed(() => {
   if (props.width == null)
     return undefined
-  return { width: typeof props.width === 'number' ? `${props.width}px` : props.width }
+  const width = typeof props.width === 'number' ? `${props.width}px` : props.width
+  return { width, minWidth: width }
 })
 
 const delegatedProps = reactiveOmit(props, 'class', 'width')

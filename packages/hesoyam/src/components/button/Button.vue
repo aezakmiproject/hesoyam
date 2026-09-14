@@ -5,6 +5,7 @@ import type { ButtonShape, ButtonSize, ButtonVariant } from '.'
 import { Primitive } from 'reka-ui'
 import { computed, useSlots } from 'vue'
 import { cn } from '../../lib/utils'
+import { Spinner } from '../spinner'
 import { buttonVariants } from '.'
 
 const VISUAL_TYPES = new Set([
@@ -74,6 +75,19 @@ const resolvedAs = computed(() => {
 
 const hasPrefix = computed(() => Boolean(props.prefix || slots.prefix))
 const hasSuffix = computed(() => Boolean(props.suffix || slots.suffix))
+const showPrefix = computed(() => hasPrefix.value && !props.loading)
+const showSuffix = computed(() => hasSuffix.value && !props.loading)
+const showLabel = computed(() => !(props.loading && props.svgOnly))
+
+const spinnerSize = computed(() => {
+  if (props.size === 'tiny' || props.size === 'xs' || props.size === 'icon-xs')
+    return 12
+  if (props.size === 'large' || props.size === 'lg')
+    return 20
+  if (props.size === 'medium' || props.size === 'icon-lg')
+    return 16
+  return 14
+})
 
 function onActivate(event: Event) {
   if (props.disabled || props.loading) {
@@ -107,34 +121,22 @@ function onActivate(event: Event) {
       props.class,
     )"
   >
-    <span
-      v-if="loading"
-      class="absolute inset-0 flex items-center justify-center"
-      aria-hidden="true"
-    >
-      <svg
-        class="animate-spin"
-        :class="size === 'tiny' || size === 'xs' || size === 'icon-xs' ? 'size-3' : size === 'large' || size === 'lg' ? 'size-5' : 'size-4'"
-        viewBox="0 0 16 16"
-        fill="none"
-      >
-        <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" />
-        <path d="M14 8a6 6 0 0 0-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-      </svg>
-    </span>
-
-    <span
-      class="inline-flex items-center justify-center gap-[inherit]"
-      :class="loading && 'invisible'"
-    >
-      <span v-if="hasPrefix" data-slot="button-prefix" class="inline-flex shrink-0 items-center">
+    <span class="inline-flex items-center justify-center gap-[inherit]">
+      <Spinner
+        v-if="loading"
+        :size="spinnerSize"
+        class="text-[var(--ds-gray-700)] [filter:drop-shadow(0_0.5px_0_#171717)_drop-shadow(0.5px_0_0_#171717)_drop-shadow(0_-0.5px_0_#171717)_drop-shadow(-0.5px_0_0_#171717)]"
+        role="presentation"
+        aria-hidden="true"
+      />
+      <span v-if="showPrefix" data-slot="button-prefix" class="inline-flex shrink-0 items-center">
         <slot name="prefix">
           <template v-if="typeof prefix === 'string'">{{ prefix }}</template>
           <component :is="prefix" v-else-if="prefix" />
         </slot>
       </span>
-      <slot />
-      <span v-if="hasSuffix" data-slot="button-suffix" class="inline-flex shrink-0 items-center">
+      <slot v-if="showLabel" />
+      <span v-if="showSuffix" data-slot="button-suffix" class="inline-flex shrink-0 items-center">
         <slot name="suffix">
           <template v-if="typeof suffix === 'string'">{{ suffix }}</template>
           <component :is="suffix" v-else-if="suffix" />

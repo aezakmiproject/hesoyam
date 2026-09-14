@@ -1,6 +1,7 @@
 // Every Hesoyam component folder, re-exported for the package entry point
 // and for the Vue plugin's global registration.
 
+export * from './add-to-home'
 export * from './avatar'
 export * from './badge'
 export * from './banner'
@@ -15,7 +16,6 @@ export * from './context-card'
 export * from './context-menu'
 export * from './copy-button'
 export * from './drawer'
-export * from './dropdown-menu'
 export * from './empty-state'
 export * from './entity'
 export * from './error'
@@ -28,6 +28,7 @@ export * from './input'
 export * from './keyboard-input'
 export * from './label'
 export * from './loading-dots'
+export * from './marquee'
 export * from './menu'
 export * from './modal'
 export * from './multi-select'

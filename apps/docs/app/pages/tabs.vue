@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Tabs, TooltipProvider } from '@aezakmiproject/hesoyam'
+import { Tabs } from '@aezakmiproject/hesoyam'
 import { GitBranch, GitCommit, GitMerge } from '@lucide/vue'
 import { h } from 'vue'
 import Icon from '@/components/Icon.vue'
@@ -99,7 +99,6 @@ const badgeCode = `<Tabs
 </script>
 
 <template>
-  <TooltipProvider>
   <div class="space-y-12">
     <DocsPageHeader
       :title="$t('pages.tabs.title')"
@@ -177,5 +176,4 @@ const badgeCode = `<Tabs
       </ul>
     </DocsSection>
   </div>
-  </TooltipProvider>
 </template>

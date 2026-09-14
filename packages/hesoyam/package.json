@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.1",
   "description": "Hesoyam design system — Vue 3 components distributed as Tailwind CSS v4 source, for Vue and Nuxt",
-  "license": "MIT",
+  "license": "ISC",
   "author": "Aezakmi Project",
   "homepage": "https://github.com/aezakmiproject/hesoyam#readme",
   "repository": {

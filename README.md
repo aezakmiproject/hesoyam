@@ -49,4 +49,4 @@ They stay in `apps/docs/app/components/ui/`.
 
 ## License
 
-MIT
+ISC

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Component, VNode } from 'vue'
+import type { Component, HTMLAttributes, VNode } from 'vue'
 import type { TabItem } from '.'
 import { useResizeObserver } from '@vueuse/core'
 import { computed, isVNode, nextTick, onMounted, ref, watch } from 'vue'
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
   tabs: TabItem[]
   disabled?: boolean
   variant?: 'default' | 'secondary'
-  class?: string
+  class?: HTMLAttributes['class']
   ariaLabel?: string
 }>(), {
   variant: 'default',

@@ -7,7 +7,7 @@ export interface GeistNavItem {
 }
 
 export interface GeistNavGroup {
-  id: 'foundations' | 'components' | 'leftovers'
+  id: 'foundations' | 'components'
   title: string
   items: GeistNavItem[]
 }
@@ -35,6 +35,7 @@ export const geistNav: GeistNavGroup[] = [
       { title: 'Banner', href: '/banner' },
       { title: 'Breadcrumbs', href: '/breadcrumbs' },
       { title: 'Button', href: '/button' },
+      { title: 'Card', href: '/card' },
       { title: 'Calendar', href: '/calendar' },
       { title: 'Checkbox', href: '/checkbox' },
       { title: 'Code Block', href: '/code-block' },
@@ -70,6 +71,7 @@ export const geistNav: GeistNavGroup[] = [
       { title: 'Separator', href: '/separator' },
       { title: 'Sheet', href: '/sheet' },
       { title: 'Show More', href: '/show-more' },
+      { title: 'Sidebar', href: '/sidebar' },
       { title: 'Skeleton', href: '/skeleton' },
       { title: 'Slider', href: '/slider' },
       { title: 'Snippet', href: '/snippet' },
@@ -84,14 +86,6 @@ export const geistNav: GeistNavGroup[] = [
       { title: 'Toggle', href: '/toggle' },
       { title: 'Tooltip', href: '/tooltip' },
       { title: 'Video', href: '/video' },
-    ],
-  },
-  {
-    id: 'leftovers',
-    title: 'Leftovers',
-    items: [
-      { title: 'Card', href: '/card' },
-      { title: 'Sidebar', href: '/sidebar' },
     ],
   },
 ]

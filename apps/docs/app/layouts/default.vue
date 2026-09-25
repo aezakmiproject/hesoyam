@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Badge, IconTile, Menu, MenuButton, MenuContainer, MenuItem, MenuLink, MenuSection, SearchInput } from '@aezakmiproject/hesoyam'
+import { Badge, IconTile, Menu, MenuButton, MenuContainer, MenuItem, MenuLink, MenuSection, SearchInput, ThemeSwitcher } from '@aezakmiproject/hesoyam'
 import DocsPagination from '~/components/docs/DocsPagination.vue'
 import { geistNav } from '~/utils/geist-docs'
 
@@ -39,6 +39,7 @@ useHead({
         </div>
 
         <div class="ml-auto flex items-center gap-2">
+          <ThemeSwitcher small />
           <LocaleSwitcher />
           <div class="lg:hidden">
             <MenuContainer position="bottom-end">

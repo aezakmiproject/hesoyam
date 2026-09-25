@@ -31,7 +31,17 @@
     "bp5": "Labels are short Title Case nouns ({description}, {releaseNotes}). Placeholders show an example, not \"Enter a description\".",
     "bp6": "Error copy names the field and the constraint, ends with a period, and skips \"please\": {example}.",
     "bp7": "{medium} is a size alias of {default}. New code should use {small}, {default}, or {large}.",
-    "bp8": "Always give the control an accessible name: a visible label or {ariaLabel}."
+    "bp8": "Always give the control an accessible name: a visible label or {ariaLabel}.",
+    "markdown": "Markdown",
+    "markdownHint": "TextareaMarkdown adds a formatting toolbar above the field. Supports bold, italic, strikethrough, headings, lists, links, images, code blocks, quotes, and horizontal rules. Keyboard shortcuts: Ctrl+B, Ctrl+I, Ctrl+K.",
+    "markdownPlaceholder": "Write markdown...",
+    "markdownDisabled": "Markdown disabled",
+    "markdownDisabledPlaceholder": "Disabled editor",
+    "markdownError": "Markdown with error",
+    "markdownErrorMessage": "Body must not be empty.",
+    "markdownHideToolbar": "Hidden toolbar",
+    "markdownHideToolbarHint": "Set hide-toolbar to remove the toolbar. Keyboard shortcuts still work.",
+    "markdownHideToolbarPlaceholder": "Toolbar hidden, shortcuts still work."
   },
   "ru": {
     "title": "Textarea",
@@ -65,6 +75,16 @@
     "bp5": "Подписи — короткие существительные в Title Case ({description}, {releaseNotes}). Placeholder показывает пример, а не «Enter a description».",
     "bp6": "Текст ошибки называет поле и ограничение, заканчивается точкой, без «please»: {example}.",
     "bp7": "{medium} — алиас размера {default}. В новом коде используйте {small}, {default} или {large}.",
-    "bp8": "Всегда давайте контролу доступное имя: видимую подпись или {ariaLabel}."
+    "bp8": "Всегда давайте контролу доступное имя: видимую подпись или {ariaLabel}.",
+    "markdown": "Markdown",
+    "markdownHint": "TextareaMarkdown добавляет панель форматирования над полем. Поддерживает жирный, курсив, зачёркивание, заголовки, списки, ссылки, изображения, блоки кода, цитаты и горизонтальные линии. Горячие клавиши: Ctrl+B, Ctrl+I, Ctrl+K.",
+    "markdownPlaceholder": "Пишите markdown...",
+    "markdownDisabled": "Markdown disabled",
+    "markdownDisabledPlaceholder": "Редактор отключён",
+    "markdownError": "Markdown с ошибкой",
+    "markdownErrorMessage": "Тело не может быть пустым.",
+    "markdownHideToolbar": "Скрытая панель",
+    "markdownHideToolbarHint": "Установите hide-toolbar, чтобы убрать панель. Горячие клавиши продолжают работать.",
+    "markdownHideToolbarPlaceholder": "Панель скрыта, шорткаты работают."
   }
 }

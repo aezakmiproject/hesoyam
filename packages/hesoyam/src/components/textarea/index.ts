@@ -2,6 +2,7 @@ import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 export { default as Textarea } from './Textarea.vue'
+export { default as TextareaMarkdown } from './TextareaMarkdown.vue'
 
 export const textareaVariants = cva(
   [

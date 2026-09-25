@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from '@/components/ui/sidebar'
+} from '@aezakmiproject/hesoyam'
 
 const partsCode = `<SidebarProvider class="min-h-0 h-[240px] max-w-sm overflow-hidden rounded-[8px] border border-[var(--ds-gray-alpha-400)]">
   <Sidebar collapsible="none">
@@ -45,9 +45,6 @@ const partsCode = `<SidebarProvider class="min-h-0 h-[240px] max-w-sm overflow-h
       :title="$t('pages.sidebar.parts')"
       :description="$t('pages.sidebar.partsHint')"
     >
-      <DocsCallout variant="warning">
-        {{ $t('pages.sidebar.callout') }}
-      </DocsCallout>
       <DocsPreview :code="partsCode">
         <SidebarProvider class="h-[240px] max-w-sm min-h-0 overflow-hidden rounded-[8px] border border-[var(--ds-gray-alpha-400)]">
           <Sidebar collapsible="none">

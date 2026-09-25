@@ -2,9 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { Theme } from './useTheme'
 import { Monitor, Moon, Sun } from '@lucide/vue'
-import { cn } from '../../lib/utils'
-import { useTheme } from './useTheme'
 import { computed } from 'vue'
+import { Tabs } from '../tabs'
+import { useTheme } from './useTheme'
 
 const props = defineProps<{
   small?: boolean
@@ -15,72 +15,30 @@ const props = defineProps<{
 
 const { theme, setTheme } = useTheme()
 
-const options: { value: Theme, label: string, icon: typeof Sun }[] = [
-  { value: 'light', label: 'Light', icon: Sun },
-  { value: 'system', label: 'System', icon: Monitor },
-  { value: 'dark', label: 'Dark', icon: Moon },
+const tabs = [
+  { value: 'light', title: 'Light', icon: Sun },
+  { value: 'system', title: 'System', icon: Monitor },
+  { value: 'dark', title: 'Dark', icon: Moon },
 ]
 
-const selectedIndex = computed(() => {
-  if (props.forcedTheme) {
-    return options.findIndex(option => option.value === props.forcedTheme)
-  }
-  return Math.max(0, options.findIndex(option => option.value === theme.value))
-})
-
+const selected = computed(() => props.forcedTheme ?? theme.value)
 const isDisabled = computed(() => Boolean(props.disabled || props.forcedTheme))
 
-function select(next: Theme) {
-  if (isDisabled.value) return
-  setTheme(next)
+function onSelect(value: string) {
+  if (!isDisabled.value)
+    setTheme(value as Theme)
 }
 </script>
 
 <template>
-  <div
-    role="radiogroup"
-    aria-label="Theme"
+  <Tabs
     data-slot="theme-switcher"
-    :data-small="small ? '' : undefined"
-    :data-disabled="isDisabled ? '' : undefined"
-    :aria-disabled="isDisabled || undefined"
-    :inert="isDisabled ? true : undefined"
-    :class="cn(
-      'relative inline-flex items-stretch rounded-lg border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-gray-100)] p-0.5',
-      isDisabled && 'cursor-not-allowed opacity-50',
-      props.class,
-    )"
-  >
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute top-0.5 left-0.5 bottom-0.5 rounded-md bg-[var(--ds-background-100)] shadow-[0_1px_2px_rgba(0,0,0,0.12)] ring-1 ring-[var(--ds-gray-alpha-400)] transition-transform duration-200 ease-out"
-      :style="{
-        width: 'calc((100% - 4px) / 3)',
-        transform: `translateX(calc(${selectedIndex} * 100%))`,
-      }"
-    />
-
-    <button
-      v-for="option in options"
-      :key="option.value"
-      type="button"
-      role="radio"
-      :aria-label="option.label"
-      :aria-checked="(forcedTheme ?? theme) === option.value"
-      :disabled="isDisabled"
-      :class="cn(
-        'relative z-10 inline-flex flex-1 items-center justify-center gap-1.5 rounded-md font-medium text-[var(--ds-gray-900)] transition-colors outline-none',
-        'focus-visible:text-[var(--ds-gray-1000)]',
-        (forcedTheme ?? theme) === option.value && 'text-[var(--ds-gray-1000)]',
-        small ? 'h-7 px-2 text-xs' : 'h-8 px-2.5 text-[13px]',
-      )"
-      @click="select(option.value)"
-    >
-      <component :is="option.icon"
-        :size="small ? 14 : 16"
-        :stroke-width="1.75"
-      />
-      <span>{{ option.label }}</span>
-    </button>
-  </div>
+    variant="secondary"
+    aria-label="Theme"
+    :tabs="tabs"
+    :selected="selected"
+    :disabled="isDisabled"
+    :class="props.class"
+    @update:selected="onSelect"
+  />
 </template>

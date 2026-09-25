@@ -227,27 +227,18 @@
   mask-size: 100% 100%;
 }
 
-.ds-icon-tile[data-theme-sync] {
-  background-clip: padding-box, padding-box, border-box, border-box;
-  background-image:
-    var(--ds-icon-tile-macos-sheen),
-    var(--ds-icon-tile-macos-fill),
-    var(--ds-icon-tile-rim-a),
-    var(--ds-icon-tile-rim-b);
-  color: var(--icon-tile-source);
-}
-
-.ds-icon-tile[data-theme-sync] .ds-icon-tile__glyph {
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-
 .dark .ds-icon-tile[data-theme-sync] {
   background-clip: padding-box, border-box, border-box;
   background-image:
     var(--ds-icon-tile-macos-fill),
     var(--ds-icon-tile-rim-a),
     var(--ds-icon-tile-rim-b);
+  color: var(--icon-tile-source);
+}
+
+.dark .ds-icon-tile[data-theme-sync] .ds-icon-tile__glyph {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 @keyframes ds-skeleton-shimmer {

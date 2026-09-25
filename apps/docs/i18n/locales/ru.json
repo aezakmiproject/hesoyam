@@ -13,8 +13,7 @@
     "browse": "Разделы",
     "groups": {
       "foundations": "Основы",
-      "components": "Компоненты",
-      "leftovers": "Остальное"
+      "components": "Компоненты"
     },
     "items": {
       "introduction": "Введение",
@@ -53,8 +52,7 @@
       "rulesHeight": "Высота контрола по умолчанию — 32px ({small} / Button {default}).",
       "rulesBorders": "Hairline-бордеры — {border}. Основной текст — {primary}, вторичный — {secondary}.",
       "rulesIcons": "Иконки: {icons} через {icon}.",
-      "rulesAliases": "Алиасы shadcn оставляем, чтобы старые экраны собирались: Button {ghost} → tertiary, {outline} → secondary.",
-      "rulesLeftovers": "У Card и Sidebar нет аналога в Hesoyam. Эти папки не трогаем; это leftovers, не замены."
+      "rulesAliases": "Алиасы shadcn оставляем, чтобы старые экраны собирались: Button {ghost} → tertiary, {outline} → secondary."
     }
   },
   "pages": {
@@ -256,10 +254,9 @@
     },
     "card": {
       "title": "Card",
-      "description": "Остаток shadcn. У Hesoyam нет аналога Card — оставьте эту папку, не изобретайте замену.",
+      "description": "Составной компонент из Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent и CardFooter.",
       "default": "Default",
       "defaultHint": "Составные части: Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter. size — default или sm.",
-      "callout": "Card — остаток shadcn. Новый product UI не должен плодить параллельную «Hesoyam card». Для hover-превью с идентичностью и парой фактов — Context Card. Для блока настроек с заголовком и действиями в footer — Fieldset.",
       "previewProduction": "Production",
       "previewLastDeploy": "Последний deploy 12 минут назад.",
       "previewOpen": "Открыть",
@@ -270,11 +267,11 @@
       "previewHobbyDesc": "Shared CPU, 100 GB bandwidth.",
       "previewPrice": "$0 / month",
       "bestPractices": "Практики",
-      "practiceNoPort": "Не переносите Hesoyam «cards» сюда. Экраны, которые уже импортируют Card, могут остаться.",
+      "practiceNoPort": "Trailing-контрол помещайте в CardAction, чтобы header grid держал title и description слева.",
       "practiceFieldset": "Новый settings copy — в Fieldset. Hover identity — в Context Card.",
       "practiceSizeAfter": "уменьшает padding и gap. Не выдумывайте третий size.",
       "practiceCardAction": "Trailing control — в CardAction, чтобы header grid держал title и description слева.",
-      "practiceTokensBefore": "Только tokens. Hairline в footer использует"
+      "practiceTokensBefore": "Footer по умолчанию без разделителя — добавьте"
     },
     "checkbox": {
       "title": "Checkbox",
@@ -1592,10 +1589,9 @@
     },
     "sidebar": {
       "title": "Sidebar",
-      "description": "Остаток shadcn app shell. У Hesoyam нет аналога Sidebar — документируйте использование, не придумывайте замену.",
+      "description": "Навигационный shell приложения из SidebarProvider, Sidebar и составных подкомпонентов.",
       "parts": "Состав",
       "partsHint": "Оборачивайте приложение в SidebarProvider. Sidebar — rail. SidebarInset — основная колонка. SidebarTrigger переключает collapse на desktop и mobile sheet.",
-      "callout": "Sidebar — остаток shadcn. У Hesoyam нет navigation rail. Оставьте эту папку для существующего shell. Новый chrome должен переиспользовать текущее дерево Sidebar, а не одноразовый список ссылок.",
       "previewAcme": "Acme",
       "previewProject": "Проект",
       "previewOverview": "Обзор",
@@ -1912,7 +1908,17 @@
       "bp5": "Подписи — короткие существительные в Title Case ({description}, {releaseNotes}). Placeholder показывает пример, а не «Enter a description».",
       "bp6": "Текст ошибки называет поле и ограничение, заканчивается точкой, без «please»: {example}.",
       "bp7": "{medium} — алиас размера {default}. В новом коде используйте {small}, {default} или {large}.",
-      "bp8": "Всегда давайте контролу доступное имя: видимую подпись или {ariaLabel}."
+      "bp8": "Всегда давайте контролу доступное имя: видимую подпись или {ariaLabel}.",
+      "markdown": "Markdown",
+      "markdownHint": "TextareaMarkdown добавляет панель форматирования над полем. Поддерживает жирный, курсив, зачёркивание, заголовки, списки, ссылки, изображения, блоки кода, цитаты и горизонтальные линии. Горячие клавиши: Ctrl+B, Ctrl+I, Ctrl+K.",
+      "markdownPlaceholder": "Пишите markdown...",
+      "markdownDisabled": "Markdown disabled",
+      "markdownDisabledPlaceholder": "Редактор отключён",
+      "markdownError": "Markdown с ошибкой",
+      "markdownErrorMessage": "Тело не может быть пустым.",
+      "markdownHideToolbar": "Скрытая панель",
+      "markdownHideToolbarHint": "Установите hide-toolbar, чтобы убрать панель. Горячие клавиши продолжают работать.",
+      "markdownHideToolbarPlaceholder": "Панель скрыта, шорткаты работают."
     },
     "theme-switcher": {
       "title": "Theme Switcher",

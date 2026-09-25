@@ -13,8 +13,7 @@
     "browse": "Browse",
     "groups": {
       "foundations": "Foundations",
-      "components": "Components",
-      "leftovers": "Leftovers"
+      "components": "Components"
     },
     "items": {
       "introduction": "Introduction",
@@ -53,8 +52,7 @@
       "rulesHeight": "Default control height is 32px ({small} / Button {default}).",
       "rulesBorders": "Hairline borders use {border}. Primary text is {primary}, secondary is {secondary}.",
       "rulesIcons": "Icons: {icons} through {icon}.",
-      "rulesAliases": "shadcn aliases stay so older screens compile: Button {ghost} → tertiary, {outline} → secondary.",
-      "rulesLeftovers": "Card and Sidebar have no Hesoyam analog. Leave those folders; they are leftovers, not replacements."
+      "rulesAliases": "shadcn aliases stay so older screens compile: Button {ghost} → tertiary, {outline} → secondary."
     }
   },
   "pages": {
@@ -256,10 +254,9 @@
     },
     "card": {
       "title": "Card",
-      "description": "Leftover shadcn surface. Hesoyam has no Card analog — keep this folder, do not invent a replacement.",
+      "description": "Compound surface built from Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, and CardFooter.",
       "default": "Default",
       "defaultHint": "Compound parts: Card, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter. size is default or sm.",
-      "callout": "Card is leftover shadcn. New product UI should not grow a parallel “Hesoyam card”. For a hover preview with identity and a few facts, use Context Card. For a settings block with a title and footer actions, use Fieldset.",
       "previewProduction": "Production",
       "previewLastDeploy": "Last deploy 12 minutes ago.",
       "previewOpen": "Open",
@@ -270,11 +267,11 @@
       "previewHobbyDesc": "Shared CPU, 100 GB bandwidth.",
       "previewPrice": "$0 / month",
       "bestPractices": "Best practices",
-      "practiceNoPort": "Do not port Hesoyam “cards” here. Existing screens that already import Card can stay.",
+      "practiceNoPort": "Put trailing controls in CardAction so the header grid keeps title and description on the left.",
       "practiceFieldset": "New settings copy belongs in Fieldset. Hover identity belongs in Context Card.",
       "practiceSizeAfter": "tightens padding and gap. Do not invent a third size.",
       "practiceCardAction": "Put the trailing control in CardAction so the header grid keeps title and description on the left.",
-      "practiceTokensBefore": "Tokens only. Hairline on footer uses"
+      "practiceTokensBefore": "Footer has no separator by default — add"
     },
     "checkbox": {
       "title": "Checkbox",
@@ -1592,10 +1589,9 @@
     },
     "sidebar": {
       "title": "Sidebar",
-      "description": "Leftover shadcn app shell. Hesoyam has no Sidebar analog — document usage, do not invent a replacement.",
+      "description": "App shell navigation built from SidebarProvider, Sidebar, and composable sub-parts.",
       "parts": "Parts",
       "partsHint": "Wrap the app in SidebarProvider. Sidebar is the rail. SidebarInset is the main column. SidebarTrigger toggles desktop collapse and the mobile sheet.",
-      "callout": "Sidebar is leftover shadcn. There is no Hesoyam navigation rail. Keep this folder for the existing shell. New chrome should reuse the current Sidebar tree, not a one-off list of links.",
       "previewAcme": "Acme",
       "previewProject": "Project",
       "previewOverview": "Overview",
@@ -1912,7 +1908,17 @@
       "bp5": "Labels are short Title Case nouns ({description}, {releaseNotes}). Placeholders show an example, not \"Enter a description\".",
       "bp6": "Error copy names the field and the constraint, ends with a period, and skips \"please\": {example}.",
       "bp7": "{medium} is a size alias of {default}. New code should use {small}, {default}, or {large}.",
-      "bp8": "Always give the control an accessible name: a visible label or {ariaLabel}."
+      "bp8": "Always give the control an accessible name: a visible label or {ariaLabel}.",
+      "markdown": "Markdown",
+      "markdownHint": "TextareaMarkdown adds a formatting toolbar above the field. Supports bold, italic, strikethrough, headings, lists, links, images, code blocks, quotes, and horizontal rules. Keyboard shortcuts: Ctrl+B, Ctrl+I, Ctrl+K.",
+      "markdownPlaceholder": "Write markdown...",
+      "markdownDisabled": "Markdown disabled",
+      "markdownDisabledPlaceholder": "Disabled editor",
+      "markdownError": "Markdown with error",
+      "markdownErrorMessage": "Body must not be empty.",
+      "markdownHideToolbar": "Hidden toolbar",
+      "markdownHideToolbarHint": "Set hide-toolbar to remove the toolbar. Keyboard shortcuts still work.",
+      "markdownHideToolbarPlaceholder": "Toolbar hidden, shortcuts still work."
     },
     "theme-switcher": {
       "title": "Theme Switcher",

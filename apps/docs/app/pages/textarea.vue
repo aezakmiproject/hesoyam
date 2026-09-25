@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { Textarea } from '@aezakmiproject/hesoyam'
+import { Textarea, TextareaMarkdown } from '@aezakmiproject/hesoyam'
 
 const { t } = useI18n()
 
+const markdownContent = ref('')
 const sample = computed(() => t('pages.textarea.sample'))
 
 const defaultCode = `<Textarea
@@ -40,6 +41,30 @@ const rowsCode = `<Textarea
   :rows="5"
   aria-label="Commit message"
   placeholder="Summarize the change in one paragraph."
+/>`
+
+const markdownCode = `<TextareaMarkdown
+  v-model="content"
+  placeholder="Write markdown..."
+  class="min-h-[140px]"
+/>`
+
+const markdownDisabledCode = `<TextareaMarkdown
+  disabled
+  placeholder="Disabled editor"
+  class="min-h-[100px]"
+/>`
+
+const markdownErrorCode = `<TextareaMarkdown
+  error="Body must not be empty."
+  placeholder="Write markdown..."
+  class="min-h-[100px]"
+/>`
+
+const markdownHideToolbarCode = `<TextareaMarkdown
+  hide-toolbar
+  placeholder="Toolbar hidden, shortcuts still work."
+  class="min-h-[100px]"
 />`
 </script>
 
@@ -141,6 +166,46 @@ const rowsCode = `<Textarea
           :rows="5"
           :aria-label="$t('pages.textarea.commitMessage')"
           :placeholder="$t('pages.textarea.commitPlaceholder')"
+        />
+      </DocsPreview>
+    </DocsSection>
+
+    <DocsSection :title="$t('pages.textarea.markdown')" :description="$t('pages.textarea.markdownHint')">
+      <DocsPreview :code="markdownCode">
+        <TextareaMarkdown
+          v-model="markdownContent"
+          :placeholder="$t('pages.textarea.markdownPlaceholder')"
+          class="min-h-[140px]"
+        />
+      </DocsPreview>
+    </DocsSection>
+
+    <DocsSection :title="$t('pages.textarea.markdownDisabled')">
+      <DocsPreview :code="markdownDisabledCode">
+        <TextareaMarkdown
+          disabled
+          :placeholder="$t('pages.textarea.markdownDisabledPlaceholder')"
+          class="min-h-[100px]"
+        />
+      </DocsPreview>
+    </DocsSection>
+
+    <DocsSection :title="$t('pages.textarea.markdownError')">
+      <DocsPreview :code="markdownErrorCode">
+        <TextareaMarkdown
+          :error="$t('pages.textarea.markdownErrorMessage')"
+          :placeholder="$t('pages.textarea.markdownPlaceholder')"
+          class="min-h-[100px]"
+        />
+      </DocsPreview>
+    </DocsSection>
+
+    <DocsSection :title="$t('pages.textarea.markdownHideToolbar')" :description="$t('pages.textarea.markdownHideToolbarHint')">
+      <DocsPreview :code="markdownHideToolbarCode">
+        <TextareaMarkdown
+          hide-toolbar
+          :placeholder="$t('pages.textarea.markdownHideToolbarPlaceholder')"
+          class="min-h-[100px]"
         />
       </DocsPreview>
     </DocsSection>

@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@aezakmiproject/hesoyam'
 
 const defaultCode = `<Card class="w-[320px]">
   <CardHeader>
@@ -21,7 +21,7 @@ const defaultCode = `<Card class="w-[320px]">
   <CardContent>
     Region fra1 · 3 instances
   </CardContent>
-  <CardFooter class="border-t border-[var(--ds-gray-alpha-400)]">
+  <CardFooter>
     <Button size="small">Promote</Button>
   </CardFooter>
 </Card>`
@@ -45,9 +45,6 @@ const smallCode = `<Card size="sm" class="w-[280px]">
     />
 
     <DocsSection :title="$t('pages.card.default')" :description="$t('pages.card.defaultHint')">
-      <DocsCallout variant="warning">
-        {{ $t('pages.card.callout') }}
-      </DocsCallout>
       <DocsPreview :code="defaultCode">
         <Card class="w-[320px]">
           <CardHeader>
@@ -62,7 +59,7 @@ const smallCode = `<Card size="sm" class="w-[280px]">
               {{ $t('pages.card.previewRegion') }}
             </p>
           </CardContent>
-          <CardFooter class="border-t border-[var(--ds-gray-alpha-400)]">
+          <CardFooter>
             <Button size="small">{{ $t('pages.card.previewPromote') }}</Button>
           </CardFooter>
         </Card>

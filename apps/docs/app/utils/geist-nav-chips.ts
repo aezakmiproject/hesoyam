@@ -52,7 +52,6 @@ import {
   SlidersHorizontal,
   Smile,
   Sparkles,
-  Square,
   SquareCheck,
   SquareMousePointer,
   StickyNote,
@@ -128,6 +127,7 @@ export const navChipByHref: Record<string, NavChip> = {
   '/separator': { icon: Minus, variant: 'gray' },
   '/sheet': { icon: PanelRight, variant: 'blue' },
   '/show-more': { icon: MoreHorizontal, variant: 'teal' },
+  '/sidebar': { icon: PanelLeft, variant: 'purple' },
   '/skeleton': { icon: RectangleHorizontal, variant: 'gray' },
   '/slider': { icon: SlidersHorizontal, variant: 'green' },
   '/snippet': { icon: Terminal, variant: 'purple' },
@@ -143,8 +143,6 @@ export const navChipByHref: Record<string, NavChip> = {
   '/tooltip': { icon: MessageCircle, variant: 'blue' },
   '/video': { icon: Video, variant: 'pink' },
 
-  '/card': { icon: Square, variant: 'gray' },
-  '/sidebar': { icon: PanelLeft, variant: 'purple' },
 }
 
 export function navChipFor(href: string): NavChip {

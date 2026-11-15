@@ -50,3 +50,8 @@ They stay in `apps/docs/app/components/ui/`.
 ## License
 
 ISC
+
+
+## Community
+
+Before contributing, read [the contribution guide](CONTRIBUTING.md). Project discussions follow the [code of conduct](CODE_OF_CONDUCT.md).
